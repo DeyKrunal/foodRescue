@@ -23,7 +23,6 @@ public class RequestController {
     @Autowired
     private UserRepository userRepository;
 
-    @SuppressWarnings("null")
     @PostMapping("/create")
     public ResponseEntity<?> createRequest(@RequestBody Request request) {
         if (request.getDonation() == null || request.getDonation().getId() == null) {
@@ -33,8 +32,8 @@ public class RequestController {
             return ResponseEntity.badRequest().body("NGO must be specified");
         }
 
-        Long donationId = request.getDonation().getId();
-        Long ngoId = request.getNgo().getId();
+        String donationId = request.getDonation().getId();
+        String ngoId = request.getNgo().getId();
 
         Donation donation = donationRepository.findById(donationId)
                 .orElseThrow(() -> new RuntimeException("Donation not found"));
@@ -59,7 +58,7 @@ public class RequestController {
     }
 
     @GetMapping("/ngo/{ngoId}")
-    public List<Request> getNgoRequests(@PathVariable Long ngoId) {
+    public List<Request> getNgoRequests(@PathVariable String ngoId) {
         return requestRepository.findByNgoId(ngoId);
     }
 }

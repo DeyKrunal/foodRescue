@@ -26,7 +26,7 @@ public class DonationController {
     }
 
     @PostMapping("/{id}/claim")
-    public Donation claimDonation(@PathVariable long id) {
+    public Donation claimDonation(@PathVariable String id) {
         Donation donation = donationRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         donation.setStatus("CLAIMED");
         return donationRepository.save(donation);

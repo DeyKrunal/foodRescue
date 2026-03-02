@@ -21,10 +21,19 @@ public class AdminController {
     @GetMapping("/stats")
     public Map<String, Object> getGlobalStats() {
         Map<String, Object> stats = new HashMap<>();
-        stats.put("totalUsers", userRepository.count());
+        List<User> allUsers = userRepository.findAll();
+
+        long donors = allUsers.stream().filter(u -> "DONOR".equals(u.getRole())).count();
+        long ngos = allUsers.stream().filter(u -> "NGO".equals(u.getRole())).count();
+        long pending = allUsers.stream().filter(u -> !u.isVerified() && !"ADMIN".equals(u.getRole())).count();
+
+        stats.put("totalUsers", allUsers.size());
+        stats.put("totalDonors", donors);
+        stats.put("totalNgos", ngos);
         stats.put("totalDonations", donationRepository.count());
         stats.put("totalRequests", requestRepository.count());
         stats.put("activeListings", donationRepository.findByStatus("AVAILABLE").size());
+        stats.put("pendingVerifications", pending);
         return stats;
     }
 
@@ -39,8 +48,7 @@ public class AdminController {
     }
 
     @PostMapping("/users/{id}/verify")
-    public User verifyUser(@PathVariable Long id) {
-        @SuppressWarnings("null")
+    public User verifyUser(@PathVariable String id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         user.setVerified(true);
         return userRepository.save(user);

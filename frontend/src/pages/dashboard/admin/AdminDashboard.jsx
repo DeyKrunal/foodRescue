@@ -4,6 +4,28 @@ import DashboardLayout from '../../../components/layout/DashboardLayout';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
+    const [stats, setStats] = useState({
+        totalDonors: 0,
+        totalNgos: 0,
+        activeListings: 0,
+        pendingVerifications: 0
+    });
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const res = await api.get('/admin/stats');
+                setStats(res.data);
+            } catch (err) {
+                console.error("Error fetching stats", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchStats();
+    }, []);
+
     return (
         <DashboardLayout role="ADMIN">
             <div className="animate-fade">
@@ -12,19 +34,21 @@ const AdminDashboard = () => {
                 <div className="stats-row">
                     <div className="stat-mini-card">
                         <h4>Total Donors</h4>
-                        <p>42</p>
+                        <p>{loading ? '...' : stats.totalDonors}</p>
                     </div>
                     <div className="stat-mini-card">
                         <h4>Total NGOs</h4>
-                        <p>18</p>
+                        <p>{loading ? '...' : stats.totalNgos}</p>
                     </div>
                     <div className="stat-mini-card">
                         <h4>Active Donations</h4>
-                        <p>24</p>
+                        <p>{loading ? '...' : stats.activeListings}</p>
                     </div>
                     <div className="stat-mini-card">
                         <h4>Pending Verifications</h4>
-                        <p style={{ color: '#e67e22' }}>5</p>
+                        <p style={{ color: stats.pendingVerifications > 0 ? '#e67e22' : 'inherit' }}>
+                            {loading ? '...' : stats.pendingVerifications}
+                        </p>
                     </div>
                 </div>
 

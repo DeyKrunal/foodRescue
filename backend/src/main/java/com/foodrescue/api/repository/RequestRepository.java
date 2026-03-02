@@ -1,13 +1,13 @@
 package com.foodrescue.api.repository;
 
 import com.foodrescue.api.model.Request;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
-public interface RequestRepository extends JpaRepository<Request, Long> {
-    List<Request> findByNgoId(Long ngoId);
+public interface RequestRepository extends MongoRepository<Request, String> {
+    List<Request> findByNgoId(String ngoId);
 
-    List<Request> findByDonationDonorId(Long donorId);
+    List<Request> findByDonationDonorId(String donorId);
 
-    List<Request> findByDonationId(Long donationId);
+    List<Request> findByDonationId(String donationId);
 }

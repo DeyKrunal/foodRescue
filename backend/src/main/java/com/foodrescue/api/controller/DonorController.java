@@ -18,18 +18,17 @@ public class DonorController {
     private RequestRepository requestRepository;
 
     @GetMapping("/{donorId}/donations")
-    public List<Donation> getMyDonations(@PathVariable Long donorId) {
+    public List<Donation> getMyDonations(@PathVariable String donorId) {
         return donationRepository.findByDonorId(donorId);
     }
 
     @GetMapping("/{donorId}/requests")
-    public List<Request> getRequestsForMe(@PathVariable Long donorId) {
+    public List<Request> getRequestsForMe(@PathVariable String donorId) {
         return requestRepository.findByDonationDonorId(donorId);
     }
 
     @PostMapping("/requests/{requestId}/respond")
-    public Request respondToRequest(@PathVariable Long requestId, @RequestParam String status) {
-        @SuppressWarnings("null")
+    public Request respondToRequest(@PathVariable String requestId, @RequestParam String status) {
         Request request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Request not found"));
         request.setStatus(status); // APPROVED or REJECTED
@@ -45,8 +44,7 @@ public class DonorController {
     }
 
     @PostMapping("/requests/{requestId}/collect")
-    public Request collectRequest(@PathVariable Long requestId) {
-        @SuppressWarnings("null")
+    public Request collectRequest(@PathVariable String requestId) {
         Request request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Request not found"));
 

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { registerUser } from '../services/api';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 const Register = () => {
     const [searchParams] = useSearchParams();
@@ -12,75 +10,281 @@ const Register = () => {
         name: '',
         email: '',
         password: '',
-        role: initialRole
+        confirmPassword: '',
+        role: initialRole,
+        mobileNumber: '',
+        address: '',
+        city: '',
+        state: '',
+        pincode: '',
+        // NGO Specific
+        ngoName: '',
+        authorizedPersonName: '',
+        serviceRadius: '',
+        ngoRegistrationNumber: '',
+        vehicleAvailable: true,
+        numberOfVolunteers: '',
+        vehicleType: '',
+        storageCapacity: '',
+        availabilityTiming: '',
+        // Restaurant Specific
+        restaurantName: '',
+        ownerManagerName: '',
+        geoLocation: '',
+        foodType: 'Both',
+        pickupTimeWindow: '',
+        averageDonationCapacity: '',
+        fssaiLicenseNumber: '',
+        refrigerationAvailable: true,
+        emergencyContact: ''
     });
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+        setLoading(true);
+        setError('');
         try {
             await registerUser(formData);
             navigate('/login');
         } catch (err) {
             setError('Registration failed. Email might already exist.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const renderSidebarContent = () => {
+        if (formData.role === 'NGO') {
+            return (
+                <div className="registration-sidebar-content animate-fade">
+                    <div className="sidebar-illustration">
+                        <img src="/ngo.jpg" alt="NGO Mission" />
+                    </div>
+                    <div className="sidebar-text">
+                        <h1>NGO Partner</h1>
+                        <p>Join our network of verified NGOs and help rescue food to serve those in need. Your efforts make a direct impact on hunger relief.</p>
+                    </div>
+                </div>
+            );
+        } else if (formData.role === 'DONOR') {
+            return (
+                <div className="registration-sidebar-content animate-fade">
+                    <div className="sidebar-illustration">
+                        <img src="/hotel.png" alt="Restaurant Donation" />
+                    </div>
+                    <div className="sidebar-text">
+                        <h1>Food Donor</h1>
+                        <p>Restaurants, hotels, and businesses — stop food waste today. Share your excess food with people who need it most.</p>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="registration-sidebar-content animate-fade">
+                    <div className="sidebar-text">
+                        <div className="role-icon">🌱</div>
+                        <h1>Food Rescue</h1>
+                        <p>Join our platform to bridge the gap between food waste and hunger. Choose your role to get started.</p>
+                    </div>
+                </div>
+            );
         }
     };
 
     return (
-        <>
-            <Navbar />
-            <div className="auth-page">
-                <div className="auth-card animate-fade">
-                    <h2>Create Account</h2>
-                    {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: '20px' }}>{error}</p>}
-                    <form onSubmit={handleSubmit}>
+        <div className="registration-container">
+            <div className="registration-sidebar" style={{
+                backgroundColor: formData.role === 'NGO' ? '#274B59' : '#2D5A27'
+            }}>
+                {renderSidebarContent()}
+            </div>
+
+            <div className="registration-form-section">
+                <div className="auth-nav">
+                    <span>Already have an account? </span>
+                    <Link to="/login" style={{ color: 'var(--primary-color)', fontWeight: '600', textDecoration: 'none' }}>Login</Link>
+                </div>
+
+                <div className="registration-form-container">
+                    <h2>Join the Mission</h2>
+                    <p>Fill in the details below to create your account.</p>
+
+                    {error && <div style={{ color: '#D32F2F', padding: '12px', background: '#FFEBEE', borderRadius: '6px', marginBottom: '24px', fontSize: '0.9rem' }}>{error}</div>}
+
+                    <div className="role-cards">
+                        <div
+                            className={`role-card ${formData.role === 'DONOR' ? 'active' : ''}`}
+                            onClick={() => setFormData({ ...formData, role: 'DONOR' })}
+                        >
+                            <i>🏢</i>
+                            <h3>Restaurant</h3>
+                            <p>Hotels, Cafes, Plots</p>
+                        </div>
+                        <div
+                            className={`role-card ${formData.role === 'NGO' ? 'active' : ''}`}
+                            onClick={() => setFormData({ ...formData, role: 'NGO' })}
+                        >
+                            <i>🏠</i>
+                            <h3>NGO</h3>
+                            <p>Charity Organizations</p>
+                        </div>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="form-grid">
+                        <div className="form-section-title">Common Profile Info</div>
+
                         <div className="form-group">
-                            <label>Organization Name / Your Name</label>
-                            <input
-                                type="text"
-                                required
-                                value={formData.name}
-                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            />
+                            <label>Contact Person/Full Name *</label>
+                            <input type="text" name="name" required value={formData.name} onChange={handleChange} placeholder="e.g. John Doe" />
                         </div>
                         <div className="form-group">
-                            <label>Email Address</label>
-                            <input
-                                type="email"
-                                required
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            />
+                            <label>Official Email Address *</label>
+                            <input type="email" name="email" required value={formData.email} onChange={handleChange} placeholder="john@example.com" />
                         </div>
                         <div className="form-group">
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                required
-                                value={formData.password}
-                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                            />
+                            <label>Mobile Number *</label>
+                            <input type="tel" name="mobileNumber" required value={formData.mobileNumber} onChange={handleChange} placeholder="+91 XXXXX XXXXX" />
                         </div>
                         <div className="form-group">
-                            <label>Join as</label>
-                            <select
-                                value={formData.role}
-                                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                            >
-                                <option value="DONOR">Donor (Restaurant/Hotel/Plot)</option>
-                                <option value="NGO">NGO (Requesting Food)</option>
-                            </select>
+                            <label>Password *</label>
+                            <input type="password" name="password" required value={formData.password} onChange={handleChange} placeholder="••••••••" />
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Create Account</button>
+                        <div className="form-group">
+                            <label>Confirm Password *</label>
+                            <input type="password" name="confirmPassword" required value={formData.confirmPassword} onChange={handleChange} placeholder="••••••••" />
+                        </div>
+
+                        <div className="form-section-title">Location Details</div>
+                        <div className="form-group full-width">
+                            <label>Full Address *</label>
+                            <input type="text" name="address" required value={formData.address} onChange={handleChange} placeholder="Street, Landmark" />
+                        </div>
+                        <div className="form-group">
+                            <label>City *</label>
+                            <input type="text" name="city" required value={formData.city} onChange={handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label>State *</label>
+                            <input type="text" name="state" required value={formData.state} onChange={handleChange} />
+                        </div>
+                        <div className="form-group">
+                            <label>Pincode *</label>
+                            <input type="text" name="pincode" required value={formData.pincode} onChange={handleChange} />
+                        </div>
+
+                        {formData.role === 'NGO' ? (
+                            <>
+                                <div className="form-section-title">NGO Operational Info</div>
+                                <div className="form-group">
+                                    <label>NGO Name *</label>
+                                    <input type="text" name="ngoName" required value={formData.ngoName} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Authorized Person Name *</label>
+                                    <input type="text" name="authorizedPersonName" required value={formData.authorizedPersonName} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>NGO Registration Number *</label>
+                                    <input type="text" name="ngoRegistrationNumber" required value={formData.ngoRegistrationNumber} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Service Radius (in km) *</label>
+                                    <input type="number" name="serviceRadius" required value={formData.serviceRadius} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Vehicle Available? *</label>
+                                    <select name="vehicleAvailable" value={formData.vehicleAvailable} onChange={(e) => setFormData({ ...formData, vehicleAvailable: e.target.value === 'true' })}>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>Number of Volunteers</label>
+                                    <input type="number" name="numberOfVolunteers" value={formData.numberOfVolunteers} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Vehicle Type (if any)</label>
+                                    <input type="text" name="vehicleType" value={formData.vehicleType} onChange={handleChange} placeholder="e.g. Van, Bike" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Storage Capacity</label>
+                                    <input type="text" name="storageCapacity" value={formData.storageCapacity} onChange={handleChange} placeholder="e.g. 100kg" />
+                                </div>
+                                <div className="form-group full-width">
+                                    <label>Availability Timing</label>
+                                    <input type="text" name="availabilityTiming" value={formData.availabilityTiming} onChange={handleChange} placeholder="e.g. 9 AM - 9 PM" />
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="form-section-title">Restaurant Operational Info</div>
+                                <div className="form-group">
+                                    <label>Restaurant/Hotel Name *</label>
+                                    <input type="text" name="restaurantName" required value={formData.restaurantName} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Owner/Manager Name *</label>
+                                    <input type="text" name="ownerManagerName" required value={formData.ownerManagerName} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>FSSAI License Number *</label>
+                                    <input type="text" name="fssaiLicenseNumber" required value={formData.fssaiLicenseNumber} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Food Type *</label>
+                                    <select name="foodType" value={formData.foodType} onChange={handleChange}>
+                                        <option value="Veg">Pure Veg</option>
+                                        <option value="Non-Veg">Non-Veg</option>
+                                        <option value="Both">Both</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>Average Donation Capacity (kg/day)</label>
+                                    <input type="text" name="averageDonationCapacity" value={formData.averageDonationCapacity} onChange={handleChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label>Refrigeration Available? *</label>
+                                    <select name="refrigerationAvailable" value={formData.refrigerationAvailable} onChange={(e) => setFormData({ ...formData, refrigerationAvailable: e.target.value === 'true' })}>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>Pickup Time Window</label>
+                                    <input type="text" name="pickupTimeWindow" value={formData.pickupTimeWindow} onChange={handleChange} placeholder="e.g. 10 PM - 11 PM" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Emergency Contact Number</label>
+                                    <input type="tel" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} />
+                                </div>
+                                <div className="form-group full-width">
+                                    <label>Geo Location (GPS Coordinates)</label>
+                                    <input type="text" name="geoLocation" value={formData.geoLocation} onChange={handleChange} placeholder="Latitude, Longitude" />
+                                </div>
+                            </>
+                        )}
+
+                        <div className="form-group full-width" style={{ marginTop: '32px' }}>
+                            <button type="submit" className="btn btn-primary" style={{ width: '100%', height: '54px' }} disabled={loading}>
+                                {loading ? 'Registering...' : 'Create My Account'}
+                            </button>
+                        </div>
                     </form>
-                    <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                        Already have an account? <Link to="/login" style={{ color: 'var(--primary-color)', fontWeight: '600' }}>Sign in</Link>
-                    </p>
                 </div>
             </div>
-            <Footer />
-        </>
+        </div>
     );
 };
 

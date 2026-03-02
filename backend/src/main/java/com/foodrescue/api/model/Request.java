@@ -1,32 +1,28 @@
 package com.foodrescue.api.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "requests")
+@Document(collection = "requests")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Request {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne
-    @JoinColumn(name = "donation_id")
+    @DBRef
     private Donation donation;
 
-    @ManyToOne
-    @JoinColumn(name = "ngo_id")
+    @DBRef
     private User ngo;
 
-    @Column(nullable = false)
-    private String status = "PENDING"; // PENDING, APPROVED, REJECTED, COLLECTED
-
+    private String status = "PENDING";
     private String message;
     private LocalDateTime requestedAt = LocalDateTime.now();
     private LocalDateTime respondedAt;

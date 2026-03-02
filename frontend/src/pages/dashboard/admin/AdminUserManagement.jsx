@@ -40,9 +40,11 @@ const AdminUserManagement = () => {
                     <table className="data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Organization</th>
+                                <th>Contact Person</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                <th>Type</th>
+                                <th>Location</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -50,9 +52,16 @@ const AdminUserManagement = () => {
                         <tbody>
                             {users.map(u => (
                                 <tr key={u.id}>
-                                    <td style={{ fontWeight: '500' }}>{u.name}</td>
+                                    <td style={{ fontWeight: '600' }}>
+                                        {u.role === 'NGO' ? u.ngoName : (u.role === 'DONOR' ? u.restaurantName : 'System Admin')}
+                                        {(u.role === 'NGO' && u.ngoRegistrationNumber) &&
+                                            <div style={{ fontSize: '0.75rem', fontWeight: '400', color: 'var(--text-muted)' }}>{u.ngoRegistrationNumber}</div>
+                                        }
+                                    </td>
+                                    <td>{u.name}</td>
                                     <td>{u.email}</td>
                                     <td><span className="badge" style={{ background: '#f0f0f0' }}>{u.role}</span></td>
+                                    <td>{u.city ? `${u.city}, ${u.state}` : 'N/A'}</td>
                                     <td>
                                         {u.verified ? (
                                             <span className="badge badge-available">Verified</span>
@@ -61,7 +70,7 @@ const AdminUserManagement = () => {
                                         )}
                                     </td>
                                     <td>
-                                        {!u.verified && (
+                                        {!u.verified && u.role !== 'ADMIN' && (
                                             <button
                                                 onClick={() => handleVerify(u.id)}
                                                 className="btn btn-primary"
