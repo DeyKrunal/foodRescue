@@ -5,7 +5,8 @@ import api from '../../../services/api';
 const DonorMyDonations = () => {
     const [donations, setDonations] = useState([]);
     const [loading, setLoading] = useState(true);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const userString = sessionStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {
         const fetchDonations = async () => {

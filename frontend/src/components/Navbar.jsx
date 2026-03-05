@@ -1,12 +1,14 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const location = useLocation();
+  const userString = sessionStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
+    document.cookie = "user_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     navigate('/login');
   };
 
@@ -14,6 +16,14 @@ const Navbar = () => {
     user.role === 'DONOR' ? '/donor/dashboard' :
       user.role === 'NGO' ? '/ngo/dashboard' : '/admin/dashboard'
   ) : '/';
+
+  // Check if current path belongs to a dashboard
+  const isDashboardActive = user && (
+    location.pathname.startsWith('/donor/') ||
+    location.pathname.startsWith('/ngo/') ||
+    location.pathname.startsWith('/admin/') ||
+    location.pathname === dashboardPath
+  );
 
   return (
     <nav className="navbar">
@@ -24,11 +34,20 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="nav-links">
-          <li><Link to="/about">Our Mission</Link></li>
-          <li><Link to="/how-it-works">How It Works</Link></li>
-          {user && <li><Link to={dashboardPath} style={{ color: 'var(--primary-color)', fontWeight: '600' }}>Dashboard</Link></li>}
-          {user && user.role === 'DONOR' && <li><Link to="/donate-food">Donate</Link></li>}
-          {user && user.role === 'NGO' && <li><Link to="/rescue-food">Rescue</Link></li>}
+          <li><NavLink to="/about" className={({ isActive }) => isActive ? 'nav-active' : ''}>Our Mission</NavLink></li>
+          <li><NavLink to="/how-it-works" className={({ isActive }) => isActive ? 'nav-active' : ''}>How It Works</NavLink></li>
+          {user && (
+            <li>
+              <NavLink
+                to={dashboardPath}
+                className={isDashboardActive ? 'nav-active dashboard-active' : 'dashboard-link'}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+          {user && user.role === 'DONOR' && <li><NavLink to="/donate-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Donate</NavLink></li>}
+          {user && user.role === 'NGO' && <li><NavLink to="/rescue-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Rescue</NavLink></li>}
         </ul>
         <div className="auth-btns" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           {user ? (

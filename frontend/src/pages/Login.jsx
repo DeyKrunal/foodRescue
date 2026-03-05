@@ -14,7 +14,12 @@ const Login = () => {
         try {
             const res = await loginUser(formData);
             const user = res.data;
-            localStorage.setItem('user', JSON.stringify(user));
+
+            // Use sessionStorage to destroy data when tab is closed
+            sessionStorage.setItem('user', JSON.stringify(user));
+
+            // Set session cookie without expiry (destroyed on browser close)
+            document.cookie = `user_session=${user.id}; path=/`;
 
             // Redirect based on role
             if (user.role === 'ADMIN') navigate('/admin/dashboard');
