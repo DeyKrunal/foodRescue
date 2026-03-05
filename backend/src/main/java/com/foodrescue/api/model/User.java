@@ -2,6 +2,8 @@ package com.foodrescue.api.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,7 +50,11 @@ public class User {
     // Restaurant/Donor Specific Fields
     private String restaurantName;
     private String ownerManagerName;
-    private String geoLocation;
+
+    // GeoSpatial Fields for proximity matching [longitude, latitude]
+    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
+    private double[] location;
+
     private String foodType; // Veg/Non-Veg/Both
     private String pickupTimeWindow;
     private String averageDonationCapacity;
