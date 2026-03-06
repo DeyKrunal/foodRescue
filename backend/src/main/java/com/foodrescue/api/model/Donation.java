@@ -26,6 +26,10 @@ public class Donation {
     private String pickupLocation;
     private String pickupWindow;
 
+    // GeoSpatial field for distance filtering [longitude, latitude]
+    @org.springframework.data.mongodb.core.index.GeoSpatialIndexed(type = org.springframework.data.mongodb.core.index.GeoSpatialIndexType.GEO_2DSPHERE)
+    private double[] location;
+
     @DBRef
     private User donor;
 

@@ -15,7 +15,8 @@ const DonateFood = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
+        const userString = sessionStorage.getItem('user');
+        const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'DONOR') {
             navigate('/login');
         } else {

@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAvailableDonations, createRequest } from '../services/api';
+import { getAvailableDonations, getDonationsNearMe, createRequest } from '../services/api';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const RescueFood = () => {
     const [donations, setDonations] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isLocal, setIsLocal] = useState(false);
     const navigate = useNavigate();
 
     const fetchDonations = async () => {
+        setLoading(true);
         try {
-            const res = await getAvailableDonations();
-            setDonations(res.data);
+            const userString = sessionStorage.getItem('user');
+            const user = userString ? JSON.parse(userString) : null;
+            // Use NGO's stored location if available for proximity matching.
+            if (user?.location && user.location.length === 2) {
+                const [lon, lat] = user.location;
+                const res = await getDonationsNearMe(lon, lat);
+                setDonations(res.data);
+                setIsLocal(true);
+            } else {
+                const res = await getAvailableDonations();
+                setDonations(res.data);
+                setIsLocal(false);
+            }
         } catch (err) {
             console.error("Failed to fetch donations", err);
         } finally {
@@ -21,7 +34,8 @@ const RescueFood = () => {
     };
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
+        const userString = sessionStorage.getItem('user');
+        const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'NGO') {
             navigate('/login');
         } else {
@@ -30,7 +44,8 @@ const RescueFood = () => {
     }, [navigate]);
 
     const handleClaim = async (id) => {
-        const user = JSON.parse(localStorage.getItem('user'));
+        const userString = sessionStorage.getItem('user');
+        const user = userString ? JSON.parse(userString) : null;
         const message = prompt("Add a message for the donor (optional):", "We'd like to rescue this food.");
 
         if (message === null) return; // Cancelled
@@ -52,8 +67,19 @@ const RescueFood = () => {
         <>
             <Navbar />
             <div className="container" style={{ padding: '80px 0' }}>
-                <h1 style={{ marginBottom: '16px' }}>Available for Rescue</h1>
-                <p style={{ marginBottom: '40px' }}>Claim surplus food listings from local donors. Ensure you have the capacity for immediate pickup.</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px' }}>
+                    <div>
+                        <h1 style={{ marginBottom: '8px' }}>Available for Rescue</h1>
+                        {isLocal ? (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary-color)', fontSize: '0.95rem', fontWeight: '500' }}>
+                                <span>📍 Showing food within 30km of your area</span>
+                                <button className="btn-text" onClick={() => setIsLocal(false)} style={{ fontSize: '0.85rem' }}>(Show all)</button>
+                            </div>
+                        ) : (
+                            <p style={{ color: 'var(--text-muted)' }}>Showing all active surplus food listings across the platform.</p>
+                        )}
+                    </div>
+                </div>
 
                 {loading ? (
                     <p>Loading available food...</p>

@@ -5,7 +5,8 @@ import Navbar from '../Navbar';
 
 const DashboardLayout = ({ children, role }) => {
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const userString = sessionStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {
         if (!user) {

@@ -37,7 +37,8 @@ const Register = () => {
         averageDonationCapacity: '',
         fssaiLicenseNumber: '',
         refrigerationAvailable: true,
-        emergencyContact: ''
+        emergencyContact: '',
+        location: null // [longitude, latitude] for GeoSpatial
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -46,6 +47,29 @@ const Register = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                // Store in our [long, lat] double array format for MongoDB
+                setFormData(prev => ({
+                    ...prev,
+                    location: [longitude, latitude],
+                    // Also update a human-readable display if we need one
+                    geoLocation: `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`
+                }));
+            },
+            () => {
+                alert("Please enable location access to use this feature.");
+            }
+        );
     };
 
     const handleSubmit = async (e) => {
@@ -271,9 +295,29 @@ const Register = () => {
                                     <label>Emergency Contact Number</label>
                                     <input type="tel" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} />
                                 </div>
-                                <div className="form-group full-width">
-                                    <label>Geo Location (GPS Coordinates)</label>
-                                    <input type="text" name="geoLocation" value={formData.geoLocation} onChange={handleChange} placeholder="Latitude, Longitude" />
+                                <div className="form-group full-width" style={{ marginTop: '16px' }}>
+                                    <label>Precision Location (GPS) *</label>
+                                    <div style={{ display: 'flex', gap: '12px' }}>
+                                        <input
+                                            type="text"
+                                            name="geoLocation"
+                                            disabled
+                                            value={formData.geoLocation || ''}
+                                            placeholder="Click button to auto-fill"
+                                            style={{ flex: 1, backgroundColor: '#f9f9f9' }}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={getLocation}
+                                            className="btn btn-outline"
+                                            style={{ padding: '0 20px', whiteSpace: 'nowrap' }}
+                                        >
+                                            📍 Get My Location
+                                        </button>
+                                    </div>
+                                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '8px' }}>
+                                        This enables NGOs near you to see your donations first.
+                                    </p>
                                 </div>
                             </>
                         )}

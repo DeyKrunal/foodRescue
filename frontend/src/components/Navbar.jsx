@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = JSON.parse(localStorage.getItem('user'));
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Close menu on route change
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  const userString = sessionStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
+    document.cookie = "user_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     navigate('/login');
   };
 
@@ -27,7 +17,13 @@ const Navbar = () => {
     user.role === 'NGO'   ? '/ngo/dashboard'  : '/admin/dashboard'
   ) : '/';
 
-  const isActive = (path) => location.pathname === path;
+  // Check if current path belongs to a dashboard
+  const isDashboardActive = user && (
+    location.pathname.startsWith('/donor/') ||
+    location.pathname.startsWith('/ngo/') ||
+    location.pathname.startsWith('/admin/') ||
+    location.pathname === dashboardPath
+  );
 
   return (
     <>
@@ -410,25 +406,36 @@ const Navbar = () => {
             <span /><span /><span />
           </button>
         </div>
+        <ul className="nav-links">
+          <li><NavLink to="/about" className={({ isActive }) => isActive ? 'nav-active' : ''}>Our Mission</NavLink></li>
+          <li><NavLink to="/how-it-works" className={({ isActive }) => isActive ? 'nav-active' : ''}>How It Works</NavLink></li>
+          {user && (
+            <li>
+              <NavLink
+                to={dashboardPath}
+                className={isDashboardActive ? 'nav-active dashboard-active' : 'dashboard-link'}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+          {user && user.role === 'DONOR' && <li><NavLink to="/donate-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Donate</NavLink></li>}
+          {user && user.role === 'NGO' && <li><NavLink to="/rescue-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Rescue</NavLink></li>}
+        </ul>
+        <div className="auth-btns" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {user ? (
+            <>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Hello, {user.name}</span>
+              <button onClick={handleLogout} className="btn btn-outline" style={{ padding: '8px 16px' }}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Sign in</Link>
+              <Link to="/register" className="btn btn-primary">Join the movement</Link>
+            </>
+          )}
+        </div>
       </nav>
-
-      {/* Mobile drawer */}
-      <div className={`nav-mobile-drawer${menuOpen ? ' open' : ''}`}>
-        <Link to="/about">Our Mission</Link>
-        <Link to="/how-it-works">How It Works</Link>
-        {user && <Link to={dashboardPath}>⚡ Dashboard</Link>}
-        {user?.role === 'DONOR' && <Link to="/donate-food">Donate Food</Link>}
-        {user?.role === 'NGO'   && <Link to="/rescue-food">Rescue Food</Link>}
-        <div className="nav-mobile-divider" />
-        {user ? (
-          <button onClick={handleLogout}>Sign out</button>
-        ) : (
-          <>
-            <Link to="/login">Sign in</Link>
-            <Link to="/register">🌱 Join the movement</Link>
-          </>
-        )}
-      </div>
     </>
   );
 };

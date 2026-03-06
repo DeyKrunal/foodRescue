@@ -20,6 +20,7 @@ export const loginUser = (credentials) => api.post('/auth/login', credentials);
 
 // Donations
 export const getAvailableDonations = () => api.get('/donations/available');
+export const getDonationsNearMe = (lon, lat) => api.get(`/donations/near-me?lon=${lon}&lat=${lat}`);
 export const createDonation = (donationData) => api.post('/donations/create', donationData);
 export const claimDonation = (id) => api.post(`/donations/${id}/claim`);
 
