@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { registerUser } from '../services/api';
 
 const Register = () => {
+    
     const [searchParams] = useSearchParams();
     const initialRole = searchParams.get('role') || 'DONOR';
 
@@ -103,7 +104,8 @@ const Register = () => {
         }
     };
 
-    return (
+    return (   
+        
         <div className="registration-container">
             <div className="registration-sidebar" style={{
                 backgroundColor: formData.role === 'NGO' ? '#274B59' : '#2D5A27'
