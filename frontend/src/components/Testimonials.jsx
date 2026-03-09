@@ -10,8 +10,8 @@ const Testimonials = () => {
             .catch(err => {
                 console.error("Failed to fetch testimonials, using fallback.", err);
                 setTestimonials([
-                    { name: "John Doe", role: "Restaurant Owner", message: "FoodRescue made it so easy for us to donate excess food." },
-                    { name: "Jane Smith", role: "NGO Director", message: "We've been able to reach hundreds of people thanks to this platform." }
+                    { name: "Ram Shankar Yadav", role: "Restaurant Owner", message: "FoodRescue made it so easy for us to donate excess food." },
+                    { name: "Vaibhav Tripathi", role: "NGO Director", message: "We've been able to reach hundreds of people thanks to this platform." }
                 ]);
             });
     }, []);
