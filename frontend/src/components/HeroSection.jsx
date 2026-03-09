@@ -1,10 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
     const floatRef = useRef(null);
+    const [particles, setParticles] = useState([]);
 
     useEffect(() => {
+         const emojis = ['🍱', '🥗', '🍛', '🥙', '🍜', '🌮', '🥘', '🍲', '🥗', '🍱'];
+        const generated = Array.from({ length: 12 }, (_, i) => ({
+            id: i,
+            emoji: emojis[i % emojis.length],
+            left: `${8 + (i * 8.2) % 84}%`,
+            delay: `${(i * 0.7) % 6}s`,
+            duration: `${7 + (i * 1.1) % 5}s`,
+            size: `${16 + (i * 3) % 16}px`,
+            opacity: 0.12 + (i % 4) * 0.06,
+        }));
+        setParticles(generated);
+        console.log(generated);
         const el = floatRef.current;
         if (!el) return;
         let frame;
@@ -97,6 +110,40 @@ const HeroSection = () => {
                     pointer-events: none;
                     opacity: 0.7;
                 }
+
+                 .food-particle {
+                    position: absolute;
+                    pointer-events: none;
+                    z-index: 6;
+                    animation: floatUp linear infinite;
+                    user-select: none;
+                    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+                }
+                    @keyframes floatUp {
+                        0% {
+                            transform: translateY(-20vh) rotate(0deg) scale(0.9);
+                            opacity: 0;
+                            }
+
+                        15% {
+                            opacity: 0.9;
+                             }
+
+                        50% {
+                            transform: translateY(50vh) rotate(180deg) scale(1);
+                            opacity: 1;
+                             }
+
+                        85% {
+                            opacity: 0.9;
+                             }
+
+                        100% {
+                            transform: translateY(120vh) rotate(360deg) scale(1.2);
+                            opacity: 0;
+                            }
+                        }
+                
 
                 .hero-container {
                     max-width: 1180px;
@@ -362,6 +409,22 @@ const HeroSection = () => {
                 <div className="hero-blob hero-blob-1" />
                 <div className="hero-blob hero-blob-2" />
                 <div className="hero-blob hero-blob-3" />
+                 {particles.map(p => (
+                    <span
+                        key={p.id}
+                        className="food-particle"
+                        style={{
+                            left: p.left,
+                            bottom: '-40px',
+                            fontSize: p.size,
+                            animationDelay: p.delay,
+                            animationDuration: p.duration,
+                            '--p-opacity': p.opacity,
+                        }}
+                    >
+                        {p.emoji}
+                    </span>
+                ))}
 
                 <div className="hero-container">
                     {/* Left: Text */}

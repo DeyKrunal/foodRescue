@@ -1,386 +1,506 @@
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
-  const userString = sessionStorage.getItem('user');
+
+  const isActive = (path) => location.pathname === path;
+
+  const userString = sessionStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   const handleLogout = () => {
-    sessionStorage.removeItem('user');
+    sessionStorage.removeItem("user");
     document.cookie = "user_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    navigate('/login');
+    navigate("/login");
   };
 
-  const dashboardPath = user ? (
-    user.role === 'DONOR' ? '/donor/dashboard' :
-    user.role === 'NGO'   ? '/ngo/dashboard'  : '/admin/dashboard'
-  ) : '/';
+  const dashboardPath = user
+    ? user.role === "DONOR"
+      ? "/donor/dashboard"
+      : user.role === "NGO"
+      ? "/ngo/dashboard"
+      : "/admin/dashboard"
+    : "/";
 
-  // Check if current path belongs to a dashboard
-  const isDashboardActive = user && (
-    location.pathname.startsWith('/donor/') ||
-    location.pathname.startsWith('/ngo/') ||
-    location.pathname.startsWith('/admin/') ||
-    location.pathname === dashboardPath
-  );
+  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : "⚙️ Admin";
+  const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : "#7a3d9e";
+  const roleBg    = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         .nav-root {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1000;
-          transition: all 0.3s ease;
-          padding: 0 40px;
-        }
-        .nav-root.nav-scrolled {
-          background: rgba(250, 248, 243, 0.92);
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          background: rgba(250,248,243,0.97);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border-bottom: 1px solid rgba(184, 217, 160, 0.45);
-          box-shadow: 0 4px 24px rgba(61,122,50,0.07);
+          border-bottom: 1px solid #e6efe2;
+          transition: box-shadow 0.3s ease;
         }
-        .nav-root:not(.nav-scrolled) {
-          background: transparent;
+
+        .nav-root.nav-scrolled {
+          box-shadow: 0 4px 24px rgba(0,0,0,0.07);
         }
 
         .nav-inner {
           max-width: 1160px;
-          margin: 0 auto;
+          margin: auto;
+          padding: 0 40px;
           height: 68px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 32px;
+          gap: 16px;
         }
 
-        /* ── Logo ── */
+        /* ── Original Logo ── */
         .nav-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
           text-decoration: none;
-          display: flex;
-          align-items: center;
-          gap: 9px;
+          font-weight: bold;
+          font-size: 20px;
+          color: #2f6027;
           flex-shrink: 0;
-        }
-        .nav-logo-icon {
-          width: 34px; height: 34px;
-          background: #3d7a32;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 17px;
-          line-height: 1;
-          box-shadow: 0 3px 12px rgba(61,122,50,0.28);
-          transition: transform 0.2s;
-        }
-        .nav-logo:hover .nav-logo-icon { transform: rotate(-6deg) scale(1.08); }
-        .nav-logo-text {
-          font-family: 'Fraunces', serif;
-          font-size: 1.35rem;
-          font-weight: 700;
-          color: #1c2b1a;
-          letter-spacing: -0.02em;
-          line-height: 1;
-        }
-        .nav-logo-text span {
-          font-style: italic;
-          font-weight: 400;
-          color: #3d7a32;
         }
 
         /* ── Nav links ── */
         .nav-links {
           display: flex;
-          align-items: center;
-          gap: 4px;
           list-style: none;
+          gap: 4px;
           margin: 0; padding: 0;
+          align-items: center;
         }
-        .nav-links li a {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14.5px;
+
+        .nav-links a {
+          text-decoration: none;
+          padding: 8px 14px;
+          border-radius: 30px;
+          font-size: 14px;
           font-weight: 500;
           color: #3d5438;
-          text-decoration: none;
-          padding: 7px 13px;
-          border-radius: 100px;
-          transition: background 0.18s, color 0.18s;
-          position: relative;
-          display: block;
+          transition: background 0.2s, color 0.2s;
+          white-space: nowrap;
         }
-        .nav-links li a:hover {
+
+        .nav-links a:hover {
           background: #edf6e8;
           color: #2f6027;
         }
-        .nav-links li a.active-link {
+
+        .nav-links a.active-link {
           background: #e0f0d8;
           color: #2f6027;
           font-weight: 600;
         }
-        /* Dashboard link pill — slightly more prominent */
-        .nav-links li a.dashboard-link {
-          background: #f0f8ec;
-          color: #3d7a32;
+
+        .nav-links a.dashboard-link {
+          background: #2f6027;
+          color: #fff;
           font-weight: 600;
-          border: 1px solid #c4ddb8;
-        }
-        .nav-links li a.dashboard-link:hover {
-          background: #e0f0d8;
+          padding: 8px 18px;
+          box-shadow: 0 3px 10px rgba(47,96,39,0.25);
+          transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
         }
 
-        /* ── Right side auth ── */
+        .nav-links a.dashboard-link:hover {
+          background: #245020;
+          transform: translateY(-1px);
+          box-shadow: 0 5px 16px rgba(47,96,39,0.32);
+        }
+
+        /* ── Auth area ── */
         .nav-auth {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           flex-shrink: 0;
         }
 
-        /* Greeting chip */
-        .nav-greeting {
+        /* Role badge */
+        .nav-role-badge {
+          font-size: 11.5px;
+          font-weight: 600;
+          padding: 4px 11px;
+          border-radius: 100px;
+          letter-spacing: 0.03em;
+        }
+
+        /* User chip */
+        .nav-user-chip {
           display: flex;
           align-items: center;
           gap: 7px;
-          font-family: 'DM Sans', sans-serif;
+          padding: 5px 13px 5px 5px;
+          background: #f3f9ef;
+          border: 1px solid #c8dcc2;
+          border-radius: 100px;
           font-size: 13.5px;
           font-weight: 500;
-          color: #5c6b57;
-          background: #f3f9ef;
-          border: 1px solid #d0e8c4;
-          padding: 5px 12px 5px 8px;
-          border-radius: 100px;
+          color: #2a4025;
         }
+
         .nav-avatar {
-          width: 24px; height: 24px;
+          width: 26px; height: 26px;
           background: #3d7a32;
+          color: #fff;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 11px;
-          color: #fff;
+          font-size: 11.5px;
           font-weight: 700;
-          letter-spacing: 0;
+          flex-shrink: 0;
         }
 
-        /* Logout — ghost/text style */
+        /* Sign out */
         .btn-logout {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13.5px;
-          font-weight: 500;
-          color: #7a9070;
-          background: none;
           border: none;
+          background: none;
           cursor: pointer;
           padding: 7px 12px;
           border-radius: 100px;
-          transition: background 0.18s, color 0.18s;
+          color: #7a9070;
+          font-size: 13.5px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 500;
+          transition: background 0.2s, color 0.2s;
         }
         .btn-logout:hover {
           background: #fde8e8;
           color: #c0392b;
         }
 
-        /* Sign in link */
+        /* ── Sign in button ── */
         .btn-signin {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 500;
-          color: #5c6b57;
           text-decoration: none;
-          padding: 7px 12px;
+          padding: 8px 18px;
           border-radius: 100px;
-          transition: background 0.18s, color 0.18s;
+          font-size: 14px;
+          font-weight: 600;
+          color: #3d5438;
+          border: 1.5px solid #c4ddb8;
+          background: transparent;
+          transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.18s;
+          white-space: nowrap;
         }
         .btn-signin:hover {
           background: #edf6e8;
+          border-color: #3d7a32;
           color: #2f6027;
+          transform: translateY(-1px);
         }
 
-        /* ── Join button — the star ── */
+        /* ── Join the Movement ── */
         .btn-join {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
           text-decoration: none;
-          color: #fff;
-          background: #3d7a32;
-          padding: 9px 20px;
-          border-radius: 100px;
           display: inline-flex;
           align-items: center;
           gap: 7px;
+          padding: 9px 20px;
+          border-radius: 100px;
+          font-size: 14px;
+          font-weight: 700;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          color: #fff;
+          background: linear-gradient(135deg, #d4944a 0%, #e8a84a 100%);
+          box-shadow: 0 4px 16px rgba(212,148,74,0.38);
+          transition: transform 0.2s, box-shadow 0.2s;
+          white-space: nowrap;
           position: relative;
           overflow: hidden;
-          transition: transform 0.2s, box-shadow 0.2s;
-          box-shadow: 0 3px 14px rgba(61,122,50,0.28), inset 0 1px 0 rgba(255,255,255,0.15);
         }
         .btn-join::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+          background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 55%);
           border-radius: inherit;
         }
-        /* Shimmer sweep on hover */
-        .btn-join::after {
-          content: '';
-          position: absolute;
-          top: 0; left: -100%;
-          width: 60%; height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-          transition: left 0.4s ease;
-        }
-        .btn-join:hover::after { left: 160%; }
         .btn-join:hover {
           transform: translateY(-2px);
-          box-shadow: 0 7px 22px rgba(61,122,50,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+          box-shadow: 0 8px 24px rgba(212,148,74,0.50);
         }
-        .btn-join-leaf {
-          font-size: 15px;
-          transition: transform 0.3s;
+        .btn-join:active {
+          transform: translateY(0);
         }
-        .btn-join:hover .btn-join-leaf { transform: rotate(15deg) scale(1.15); }
+        .btn-join-dot {
+          width: 7px; height: 7px;
+          background: rgba(255,255,255,0.9);
+          border-radius: 50%;
+          flex-shrink: 0;
+          animation: joinDotPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes joinDotPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.35; transform: scale(0.55); }
+        }
 
-        /* ── Hamburger (mobile) ── */
+        /* ── Divider ── */
+        .nav-sep {
+          width: 1px;
+          height: 20px;
+          background: #dce8d6;
+          flex-shrink: 0;
+        }
+
+        /* ── Hamburger ── */
         .nav-hamburger {
           display: none;
           flex-direction: column;
+          justify-content: center;
           gap: 5px;
+          width: 36px; height: 36px;
           background: none;
           border: none;
           cursor: pointer;
-          padding: 6px;
+          padding: 4px;
+          border-radius: 8px;
+          transition: background 0.2s;
         }
+        .nav-hamburger:hover { background: #edf6e8; }
         .nav-hamburger span {
           display: block;
-          width: 22px; height: 2px;
+          width: 100%; height: 2px;
           background: #3d7a32;
           border-radius: 2px;
-          transition: all 0.25s;
+          transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
           transform-origin: center;
         }
         .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        /* ── Mobile drawer ── */
-        .nav-mobile-drawer {
+        /* ── Mobile Drawer ── */
+        .nav-drawer {
           position: fixed;
           top: 68px; left: 0; right: 0;
-          background: rgba(250,248,243,0.97);
-          backdrop-filter: blur(16px);
-          border-bottom: 1px solid rgba(184,217,160,0.5);
-          padding: 16px 24px 24px;
+          background: rgba(250,248,243,0.98);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid #e6efe2;
+          box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+          padding: 16px 20px 24px;
           display: flex;
           flex-direction: column;
           gap: 4px;
-          transform: translateY(-8px);
+          transform: translateY(-110%);
           opacity: 0;
+          transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s;
           pointer-events: none;
-          transition: opacity 0.22s, transform 0.22s;
           z-index: 999;
         }
-        .nav-mobile-drawer.open {
-          opacity: 1;
+        .nav-drawer.open {
           transform: translateY(0);
+          opacity: 1;
           pointer-events: all;
         }
-        .nav-mobile-drawer a,
-        .nav-mobile-drawer button {
-          font-family: 'DM Sans', sans-serif;
+
+        .drawer-link {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-decoration: none;
+          padding: 12px 14px;
+          border-radius: 12px;
           font-size: 15px;
           font-weight: 500;
           color: #3d5438;
-          text-decoration: none;
-          padding: 11px 14px;
-          border-radius: 10px;
-          transition: background 0.15s;
-          background: none;
-          border: none;
-          cursor: pointer;
-          text-align: left;
-          width: 100%;
+          transition: background 0.18s;
         }
-        .nav-mobile-drawer a:hover,
-        .nav-mobile-drawer button:hover { background: #edf6e8; }
-        .nav-mobile-divider {
+        .drawer-link:hover, .drawer-link.active-link {
+          background: #edf6e8;
+          color: #2f6027;
+        }
+        .drawer-link-icon {
+          width: 32px; height: 32px;
+          border-radius: 9px;
+          background: #edf6e8;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 15px;
+          flex-shrink: 0;
+        }
+
+        .drawer-sep {
           height: 1px;
-          background: #deecd5;
-          margin: 8px 0;
+          background: #e6efe2;
+          margin: 8px 4px;
         }
 
-        @keyframes navSlideDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to   { opacity: 1; transform: translateY(0); }
+        /* Logged-in user row in drawer */
+        .drawer-user-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 14px;
+          background: #f3f9ef;
+          border: 1px solid #c8dcc2;
+          border-radius: 14px;
+          margin-bottom: 6px;
         }
-        .nav-inner { animation: navSlideDown 0.45s ease both; }
+        .drawer-user-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .drawer-avatar {
+          width: 36px; height: 36px;
+          border-radius: 50%;
+          background: #3d7a32;
+          color: #fff;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 15px;
+          font-weight: 700;
+        }
+        .drawer-name { font-weight: 600; font-size: 14px; color: #2a4025; }
+        .drawer-role { font-size: 12px; color: #7a9070; margin-top: 1px; }
 
-        @media (max-width: 768px) {
-          .nav-links, .nav-auth { display: none; }
+        .drawer-signout {
+          border: none;
+          background: #fde8e8;
+          cursor: pointer;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 12.5px;
+          font-weight: 600;
+          color: #c0392b;
+          padding: 6px 13px;
+          border-radius: 100px;
+          transition: background 0.2s;
+        }
+        .drawer-signout:hover { background: #fbd5d5; }
+
+        /* Drawer auth buttons */
+        .drawer-auth {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 6px;
+        }
+        .drawer-signin-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          padding: 13px;
+          border: 1.5px solid #c4ddb8;
+          color: #2f6027;
+          font-weight: 600;
+          font-size: 14.5px;
+          border-radius: 12px;
+          background: transparent;
+          transition: background 0.2s;
+        }
+        .drawer-signin-btn:hover { background: #edf6e8; }
+
+        .drawer-join-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          text-decoration: none;
+          padding: 14px;
+          border-radius: 12px;
+          font-size: 15px;
+          font-weight: 700;
+          color: #fff;
+          background: linear-gradient(135deg, #d4944a 0%, #e8a84a 100%);
+          box-shadow: 0 4px 18px rgba(212,148,74,0.32);
+          transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .drawer-join-btn:hover {
+          transform: scale(1.01);
+          box-shadow: 0 6px 22px rgba(212,148,74,0.42);
+        }
+
+        @media (max-width: 900px) {
+          .nav-links, .nav-auth, .nav-sep { display: none; }
           .nav-hamburger { display: flex; }
-          .nav-root { padding: 0 20px; }
+          .nav-inner { padding: 0 20px; }
         }
       `}</style>
 
-      <nav className={`nav-root${scrolled ? ' nav-scrolled' : ''}`}>
+      {/* ── Navbar ── */}
+      <nav className={`nav-root ${scrolled ? "nav-scrolled" : ""}`}>
         <div className="nav-inner">
 
-          {/* Logo */}
+          {/* Original Logo */}
           <Link to="/" className="nav-logo">
-            <div className="nav-logo-icon">🌿</div>
-            <div className="nav-logo-text">Food<span>Rescue</span></div>
+            🌿 MealMitra
           </Link>
 
-          {/* Center nav links */}
+          {/* Desktop Nav Links */}
           <ul className="nav-links">
             <li>
-              <Link to="/about" className={isActive('/about') ? 'active-link' : ''}>
+              <Link to="/about" className={isActive("/about") ? "active-link" : ""}>
                 Our Mission
               </Link>
             </li>
             <li>
-              <Link to="/how-it-works" className={isActive('/how-it-works') ? 'active-link' : ''}>
+              <Link to="/how-it-works" className={isActive("/how-it-works") ? "active-link" : ""}>
                 How It Works
               </Link>
             </li>
             {user && (
               <li>
                 <Link to={dashboardPath} className="dashboard-link">
-                  ⚡ Dashboard
+                  Dashboard
                 </Link>
               </li>
             )}
-            {user?.role === 'DONOR' && (
+            {user?.role === "DONOR" && (
               <li>
-                <Link to="/donate-food" className={isActive('/donate-food') ? 'active-link' : ''}>
+                <Link to="/donate-food" className={isActive("/donate-food") ? "active-link" : ""}>
                   Donate
                 </Link>
               </li>
             )}
-            {user?.role === 'NGO' && (
+            {user?.role === "NGO" && (
               <li>
-                <Link to="/rescue-food" className={isActive('/rescue-food') ? 'active-link' : ''}>
+                <Link to="/rescue-food" className={isActive("/rescue-food") ? "active-link" : ""}>
                   Rescue
                 </Link>
               </li>
             )}
           </ul>
 
-          {/* Right auth section */}
+          {/* Desktop Auth */}
           <div className="nav-auth">
             {user ? (
               <>
-                <div className="nav-greeting">
+                <span
+                  className="nav-role-badge"
+                  style={{ color: roleColor, background: roleBg }}
+                >
+                  {roleLabel}
+                </span>
+                <div className="nav-sep" />
+                <div className="nav-user-chip">
                   <div className="nav-avatar">
-                    {user.name?.charAt(0).toUpperCase()}
+                    {user?.name?.charAt(0)?.toUpperCase()}
                   </div>
-                  {user.name.split(' ')[0]}
+                  {user?.name?.split(" ")[0]}
                 </div>
                 <button className="btn-logout" onClick={handleLogout}>
                   Sign out
@@ -388,10 +508,13 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="btn-signin">Sign in</Link>
+                <Link to="/login" className="btn-signin">
+                  Sign in
+                </Link>
+                <div className="nav-sep" />
                 <Link to="/register" className="btn-join">
-                  <span className="btn-join-leaf">🌱</span>
-                  Join the movement
+                  <span className="btn-join-dot" />
+                  Join the Movement
                 </Link>
               </>
             )}
@@ -399,43 +522,83 @@ const Navbar = () => {
 
           {/* Hamburger */}
           <button
-            className={`nav-hamburger${menuOpen ? ' open' : ''}`}
-            onClick={() => setMenuOpen(o => !o)}
+            className={`nav-hamburger ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span /><span /><span />
+            <span />
+            <span />
+            <span />
           </button>
-        </div>
-        <ul className="nav-links">
-          <li><NavLink to="/about" className={({ isActive }) => isActive ? 'nav-active' : ''}>Our Mission</NavLink></li>
-          <li><NavLink to="/how-it-works" className={({ isActive }) => isActive ? 'nav-active' : ''}>How It Works</NavLink></li>
-          {user && (
-            <li>
-              <NavLink
-                to={dashboardPath}
-                className={isDashboardActive ? 'nav-active dashboard-active' : 'dashboard-link'}
-              >
-                Dashboard
-              </NavLink>
-            </li>
-          )}
-          {user && user.role === 'DONOR' && <li><NavLink to="/donate-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Donate</NavLink></li>}
-          {user && user.role === 'NGO' && <li><NavLink to="/rescue-food" className={({ isActive }) => isActive ? 'nav-active' : ''}>Rescue</NavLink></li>}
-        </ul>
-        <div className="auth-btns" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          {user ? (
-            <>
-              <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Hello, {user.name}</span>
-              <button onClick={handleLogout} className="btn btn-outline" style={{ padding: '8px 16px' }}>Logout</button>
-            </>
-          ) : (
-            <>
-              <Link to="/login" style={{ textDecoration: 'none', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Sign in</Link>
-              <Link to="/register" className="btn btn-primary">Join the movement</Link>
-            </>
-          )}
+
         </div>
       </nav>
+
+      {/* ── Mobile Drawer ── */}
+      <div className={`nav-drawer ${menuOpen ? "open" : ""}`}>
+
+        {user ? (
+          <>
+            <div className="drawer-user-row">
+              <div className="drawer-user-left">
+                <div className="drawer-avatar">
+                  {user?.name?.charAt(0)?.toUpperCase()}
+                </div>
+                <div>
+                  <div className="drawer-name">{user?.name}</div>
+                  <div className="drawer-role">{roleLabel}</div>
+                </div>
+              </div>
+              <button className="drawer-signout" onClick={handleLogout}>
+                Sign out
+              </button>
+            </div>
+          </>
+        ) : null}
+
+        <Link to="/about" className={`drawer-link ${isActive("/about") ? "active-link" : ""}`}>
+          <span className="drawer-link-icon">🌱</span>
+          Our Mission
+        </Link>
+        <Link to="/how-it-works" className={`drawer-link ${isActive("/how-it-works") ? "active-link" : ""}`}>
+          <span className="drawer-link-icon">⚡</span>
+          How It Works
+        </Link>
+
+        {user && (
+          <Link to={dashboardPath} className="drawer-link">
+            <span className="drawer-link-icon">📊</span>
+            Dashboard
+          </Link>
+        )}
+        {user?.role === "DONOR" && (
+          <Link to="/donate-food" className={`drawer-link ${isActive("/donate-food") ? "active-link" : ""}`}>
+            <span className="drawer-link-icon">🍱</span>
+            Donate Food
+          </Link>
+        )}
+        {user?.role === "NGO" && (
+          <Link to="/rescue-food" className={`drawer-link ${isActive("/rescue-food") ? "active-link" : ""}`}>
+            <span className="drawer-link-icon">🤝</span>
+            Rescue Food
+          </Link>
+        )}
+
+        {!user && (
+          <>
+            <div className="drawer-sep" />
+            <div className="drawer-auth">
+              <Link to="/login" className="drawer-signin-btn">
+                Sign in
+              </Link>
+              <Link to="/register" className="drawer-join-btn">
+                🌿 Join the Movement
+              </Link>
+            </div>
+          </>
+        )}
+
+      </div>
     </>
   );
 };
