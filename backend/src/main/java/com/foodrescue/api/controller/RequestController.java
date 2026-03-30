@@ -41,7 +41,7 @@ public class RequestController {
         User ngo = userRepository.findById(ngoId)
                 .orElseThrow(() -> new RuntimeException("NGO not found"));
 
-        if (!"AVAILABLE".equals(donation.getStatus())) {
+        if (!"AVAILABLE".equals(donation.getStatus()) && !"REQUESTED".equals(donation.getStatus())) {
             return ResponseEntity.badRequest().body("Donation is no longer available");
         }
 

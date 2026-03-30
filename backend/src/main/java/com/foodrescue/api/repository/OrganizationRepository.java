@@ -1,7 +1,9 @@
 package com.foodrescue.api.repository;
 
-import com.foodrescue.api.model.Organization;
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface OrganizationRepository extends JpaRepository<Organization, Long> {
+import com.foodrescue.api.model.Organization;
+
+public interface OrganizationRepository extends MongoRepository<Organization, Long> {
 }

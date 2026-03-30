@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const userString = sessionStorage.getItem("user");
+  const userString = localStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
     document.cookie = "user_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     navigate("/login");
   };
@@ -33,13 +33,13 @@ const Navbar = () => {
     ? user.role === "DONOR"
       ? "/donor/dashboard"
       : user.role === "NGO"
-      ? "/ngo/dashboard"
-      : "/admin/dashboard"
+        ? "/ngo/dashboard"
+        : "/admin/dashboard"
     : "/";
 
   const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : "⚙️ Admin";
   const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : "#7a3d9e";
-  const roleBg    = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
+  const roleBg = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
 
   return (
     <>
@@ -117,8 +117,8 @@ const Navbar = () => {
         }
 
         .nav-links a.dashboard-link {
+          color: #fff !important;
           background: #2f6027;
-          color: #fff;
           font-weight: 600;
           padding: 8px 18px;
           box-shadow: 0 3px 10px rgba(47,96,39,0.25);
