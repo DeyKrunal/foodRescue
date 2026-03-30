@@ -4,7 +4,7 @@ import { getImpactStats } from '../../../services/api';
 
 const DonorDashboard = () => {
     const [stats, setStats] = useState({ active: 0, pending: 0, collected: 0 });
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {

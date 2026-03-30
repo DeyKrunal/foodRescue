@@ -24,6 +24,7 @@ public class Request {
 
     private String status = "PENDING";
     private String message;
+    private String donorMessage;
     private LocalDateTime requestedAt = LocalDateTime.now();
     private LocalDateTime respondedAt;
 }

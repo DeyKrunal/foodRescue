@@ -5,7 +5,7 @@ import api from '../../../services/api';
 const DonorMyDonations = () => {
     const [donations, setDonations] = useState([]);
     const [loading, setLoading] = useState(true);
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {
@@ -24,9 +24,10 @@ const DonorMyDonations = () => {
 
     const getStatusColor = (status) => {
         switch (status) {
-            case 'AVAILABLE': return '#2e7d32';
-            case 'RESERVED': return '#1976d2';
-            case 'COLLECTED': return '#757575';
+            case 'AVAILABLE': return '#2e7d32'; // Green
+            case 'REQUESTED': return '#ed6c02'; // Orange/Warning
+            case 'RESERVED': return '#1976d2';  // Blue
+            case 'COLLECTED': return '#757575'; // Gray
             default: return 'var(--text-muted)';
         }
     };

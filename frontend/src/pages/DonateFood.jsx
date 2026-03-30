@@ -1,8 +1,7 @@
-                                                                                                                            import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createDonation } from '../services/api';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import DashboardLayout from '../components/layout/DashboardLayout';
 
 const DonateFood = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +14,7 @@ const DonateFood = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const userString = sessionStorage.getItem('user');
+        const userString = localStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'DONOR') {
             navigate('/login');
@@ -39,13 +38,12 @@ const DonateFood = () => {
     };
 
     return (
-        <>
-            <Navbar />
-            <div className="container" style={{ padding: '80px 0' }}>
-                <div className="auth-card" style={{ maxWidth: '600px', margin: '0 auto' }}>
-                    <h2 style={{ textAlign: 'left', marginBottom: '12px' }}>Donate Surplus Food</h2>
-                    <p style={{ marginBottom: '32px' }}>Please provide accurate details about the food you wish to share.</p>
+        <DashboardLayout role="DONOR">
+            <div className="animate-fade" style={{ maxWidth: '600px' }}>
+                <h1 style={{ textAlign: 'left', marginBottom: '12px' }}>Donate Surplus Food</h1>
+                <p style={{ marginBottom: '32px' }}>Please provide accurate details about the food you wish to share.</p>
 
+                <div className="auth-card" style={{ padding: '32px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#fff' }}>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Food Item(s)</label>
@@ -88,8 +86,7 @@ const DonateFood = () => {
                     </form>
                 </div>
             </div>
-            <Footer />
-        </>
+        </DashboardLayout>
     );
 };
 

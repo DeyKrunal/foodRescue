@@ -3,7 +3,7 @@ import DashboardLayout from '../../../components/layout/DashboardLayout';
 
 const NGODashboard = () => {
     const [requests, setRequests] = useState([]);
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {

@@ -18,8 +18,8 @@ const Login = () => {
             const res = await loginUser(formData);
             const user = res.data;
 
-            // Use sessionStorage to destroy data when tab is closed
-            sessionStorage.setItem('user', JSON.stringify(user));
+            // Use localStorage to maintain session across tabs
+            localStorage.setItem('user', JSON.stringify(user));
 
             // Set session cookie without expiry (destroyed on browser close)
             document.cookie = `user_session=${user.id}; path=/`;

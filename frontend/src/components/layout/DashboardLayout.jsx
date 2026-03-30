@@ -5,7 +5,7 @@ import Navbar from '../Navbar';
 
 const DashboardLayout = ({ children, role }) => {
     const navigate = useNavigate();
-    const userString = sessionStorage.getItem('user');
+    const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAvailableDonations, getDonationsNearMe, createRequest } from '../services/api';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import DashboardLayout from '../components/layout/DashboardLayout';
 
 const RescueFood = () => {
     const [donations, setDonations] = useState([]);
@@ -13,7 +12,7 @@ const RescueFood = () => {
     const fetchDonations = async () => {
         setLoading(true);
         try {
-            const userString = sessionStorage.getItem('user');
+            const userString = localStorage.getItem('user');
             const user = userString ? JSON.parse(userString) : null;
             // Use NGO's stored location if available for proximity matching.
             if (user?.location && user.location.length === 2) {
@@ -34,7 +33,7 @@ const RescueFood = () => {
     };
 
     useEffect(() => {
-        const userString = sessionStorage.getItem('user');
+        const userString = localStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'NGO') {
             navigate('/login');
@@ -44,7 +43,7 @@ const RescueFood = () => {
     }, [navigate]);
 
     const handleClaim = async (id) => {
-        const userString = sessionStorage.getItem('user');
+        const userString = localStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
         const message = prompt("Add a message for the donor (optional):", "We'd like to rescue this food.");
 
@@ -64,16 +63,15 @@ const RescueFood = () => {
     };
 
     return (
-        <>
-            <Navbar />
-            <div className="container" style={{ padding: '80px 0' }}>
+        <DashboardLayout role="NGO">
+            <div className="animate-fade">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px' }}>
                     <div>
                         <h1 style={{ marginBottom: '8px' }}>Available for Rescue</h1>
                         {isLocal ? (
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary-color)', fontSize: '0.95rem', fontWeight: '500' }}>
                                 <span>📍 Showing food within 30km of your area</span>
-                                <button className="btn-text" onClick={() => setIsLocal(false)} style={{ fontSize: '0.85rem' }}>(Show all)</button>
+                                <button className="btn-text" onClick={() => setIsLocal(false)} style={{ fontSize: '0.85rem', marginLeft: '8px', border: 'none', background: 'none', cursor: 'pointer', color: 'var(--primary-color)', textDecoration: 'underline' }}>(Show all)</button>
                             </div>
                         ) : (
                             <p style={{ color: 'var(--text-muted)' }}>Showing all active surplus food listings across the platform.</p>
@@ -113,8 +111,7 @@ const RescueFood = () => {
                     </div>
                 )}
             </div>
-            <Footer />
-        </>
+        </DashboardLayout>
     );
 };
 
