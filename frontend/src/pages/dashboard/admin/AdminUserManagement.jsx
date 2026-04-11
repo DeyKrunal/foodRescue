@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
 import api from '../../../services/api';
+import Swal from 'sweetalert2';
 
 const AdminUserManagement = () => {
     const [users, setUsers] = useState([]);
@@ -24,10 +25,20 @@ const AdminUserManagement = () => {
     const handleVerify = async (id) => {
         try {
             await api.post(`/admin/users/${id}/verify`);
-            alert("Organization verified successfully!");
+            Swal.fire({
+                icon: 'success',
+                title: 'Verified!',
+                text: 'Organization verified successfully!',
+                confirmButtonColor: 'var(--primary-color)'
+            });
             fetchUsers();
         } catch (err) {
-            alert("Verification failed.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed',
+                text: 'Verification failed. Please try again.',
+                confirmButtonColor: '#d33'
+            });
         }
     };
 

@@ -3,13 +3,13 @@ package com.foodrescue.api.controller;
 import com.foodrescue.api.model.*;
 import com.foodrescue.api.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/donor")
-@CrossOrigin(origins = "*")
 public class DonorController {
 
     @Autowired
@@ -18,12 +18,12 @@ public class DonorController {
     private RequestRepository requestRepository;
 
     @GetMapping("/{donorId}/donations")
-    public List<Donation> getMyDonations(@PathVariable String donorId) {
+    public List<Donation> getMyDonations(@PathVariable @NonNull String donorId) {
         return donationRepository.findByDonorId(donorId);
     }
 
     @GetMapping("/{donorId}/requests")
-    public List<Request> getRequestsForMe(@PathVariable String donorId) {
+    public List<Request> getRequestsForMe(@PathVariable @NonNull String donorId) {
         List<Donation> donorDonations = donationRepository.findByDonorId(donorId);
         List<Request> donorRequests = new ArrayList<>();
         for (Donation donation : donorDonations) {
@@ -33,7 +33,7 @@ public class DonorController {
     }
 
     @PostMapping("/requests/{requestId}/respond")
-    public Request respondToRequest(@PathVariable String requestId, @RequestParam String status,
+    public Request respondToRequest(@PathVariable @NonNull String requestId, @RequestParam String status,
             @RequestParam(required = false) String donorMessage) {
         Request request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Request not found"));
@@ -73,7 +73,7 @@ public class DonorController {
     }
 
     @PostMapping("/requests/{requestId}/collect")
-    public Request collectRequest(@PathVariable String requestId) {
+    public Request collectRequest(@PathVariable @NonNull String requestId) {
         Request request = requestRepository.findById(requestId)
                 .orElseThrow(() -> new RuntimeException("Request not found"));
 

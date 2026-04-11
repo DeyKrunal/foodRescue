@@ -21,9 +21,6 @@ const Login = () => {
             // Use localStorage to maintain session across tabs
             localStorage.setItem('user', JSON.stringify(user));
 
-            // Set session cookie without expiry (destroyed on browser close)
-            document.cookie = `user_session=${user.id}; path=/`;
-
             // Redirect based on role
             if (user.role === 'ADMIN') navigate('/admin/dashboard');
             else if (user.role === 'DONOR') navigate('/donor/dashboard');

@@ -9,8 +9,12 @@ import java.util.List;
 public interface DonationRepository extends MongoRepository<Donation, String> {
     List<Donation> findByStatus(String status);
 
+    List<Donation> findByStatusIn(List<String> statuses);
+
     List<Donation> findByDonorId(String donorId);
 
     // Proximity search: find available donations within a distance from a point
     List<Donation> findByStatusAndLocationNear(String status, Point point, Distance distance);
+
+    List<Donation> findByStatusInAndLocationNear(List<String> statuses, Point point, Distance distance);
 }
