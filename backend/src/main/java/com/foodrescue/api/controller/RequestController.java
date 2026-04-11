@@ -7,11 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/requests")
-@CrossOrigin(origins = "*")
+@SuppressWarnings("null")
 public class RequestController {
 
     @Autowired
@@ -55,6 +55,55 @@ public class RequestController {
         donationRepository.save(donation);
 
         return ResponseEntity.ok(requestRepository.save(request));
+    }
+
+    @Autowired
+    private DeliveryRepository deliveryRepository;
+
+    @PostMapping("/{id}/respond")
+    public ResponseEntity<?> respondToRequest(@PathVariable String id, @RequestBody Map<String, String> response) {
+        String status = response.get("status"); // ACCEPTED or REJECTED
+        String message = response.get("message");
+
+        return requestRepository.findById(id).map(request -> {
+            request.setStatus(status);
+            request.setDonorMessage(message);
+            request.setRespondedAt(LocalDateTime.now());
+
+            if ("ACCEPTED".equals(status) || "PARTIAL_ACCEPTED".equals(status)) {
+                Donation donation = request.getDonation();
+
+                if ("PARTIAL_ACCEPTED".equals(status)) {
+                    // Create a new donation for the remaining food
+                    String remainingQty = response.get("remainingQuantity");
+                    if (remainingQty != null && !remainingQty.isEmpty()) {
+                        Donation redonation = new Donation();
+                        redonation.setFoodItem(donation.getFoodItem() + " (Remaining)");
+                        redonation.setQuantity(remainingQty);
+                        redonation.setDescription("Redonated from partial rescue: " + donation.getDescription());
+                        redonation.setStatus("AVAILABLE");
+                        redonation.setDonor(donation.getDonor());
+                        redonation.setLocation(donation.getLocation());
+                        redonation.setPickupLocation(donation.getPickupLocation());
+                        redonation.setPickupWindow(donation.getPickupWindow());
+                        donationRepository.save(redonation);
+                    }
+                }
+
+                donation.setStatus("RESCUED");
+                donationRepository.save(donation);
+
+                // Create Delivery record
+                Delivery delivery = new Delivery();
+                delivery.setRequest(request);
+                delivery.setStatus("PENDING");
+                delivery.setPickupPoint(donation.getPickupLocation());
+                delivery.setDeliveryPoint(request.getNgo().getAddress());
+                deliveryRepository.save(delivery);
+            }
+
+            return ResponseEntity.ok(requestRepository.save(request));
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/ngo/{ngoId}")

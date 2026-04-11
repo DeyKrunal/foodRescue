@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAvailableDonations, getDonationsNearMe, createRequest } from '../services/api';
+import api from '../services/api';
 import DashboardLayout from '../components/layout/DashboardLayout';
+import FoodDetailModal from '../components/modals/FoodDetailModal';
+import Swal from 'sweetalert2';
 
 const RescueFood = () => {
     const [donations, setDonations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isLocal, setIsLocal] = useState(false);
+    const [selectedDonation, setSelectedDonation] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
 
     const fetchDonations = async () => {
@@ -45,9 +50,23 @@ const RescueFood = () => {
     const handleClaim = async (id) => {
         const userString = localStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
-        const message = prompt("Add a message for the donor (optional):", "We'd like to rescue this food.");
 
-        if (message === null) return; // Cancelled
+        const { value: message } = await Swal.fire({
+            title: 'Rescue Message',
+            input: 'textarea',
+            inputLabel: 'Add a message for the donor (optional)',
+            inputValue: "We'd like to rescue this food.",
+            showCancelButton: true,
+            confirmButtonColor: 'var(--primary-color)',
+            confirmButtonText: 'Send Request',
+            inputValidator: (value) => {
+                if (!value && value !== "") {
+                    return 'You need to write something!'
+                }
+            }
+        });
+
+        if (!message && message !== "") return;
 
         try {
             await createRequest({
@@ -55,10 +74,34 @@ const RescueFood = () => {
                 ngo: { id: user.id },
                 message: message
             });
-            alert('Request sent successfully! The donor will review it.');
+            
+            setIsModalOpen(false);
+            
+            await Swal.fire({
+                icon: 'success',
+                title: 'Sent!',
+                text: 'Request sent successfully! The donor will review it.',
+                confirmButtonColor: 'var(--primary-color)'
+            });
+            
             fetchDonations();
         } catch (err) {
-            alert(err.response?.data || 'Failed to send request.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.response?.data || 'Failed to send request.',
+                confirmButtonColor: '#D32F2F'
+            });
+        }
+    };
+
+    const openModal = async (donation) => {
+        setSelectedDonation(donation);
+        setIsModalOpen(true);
+        try {
+            await api.post(`/donations/${donation.id}/view`);
+        } catch (err) {
+            console.error("Failed to increment view count", err);
         }
     };
 
@@ -84,9 +127,15 @@ const RescueFood = () => {
                 ) : (
                     <div className="listing-grid">
                         {donations.length > 0 ? donations.map(donation => (
-                            <div key={donation.id} className="food-card animate-fade">
+                            <div 
+                                key={donation.id} 
+                                className="food-card animate-fade clickable-card"
+                                onClick={() => openModal(donation)}
+                            >
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span className="badge badge-available">Available</span>
+                                    <span className={`badge ${donation.status === 'REQUESTED' ? 'badge-requested' : 'badge-available'}`}>
+                                        {donation.status === 'REQUESTED' ? 'Requested' : 'Available'}
+                                    </span>
                                     <small style={{ color: 'var(--text-muted)' }}>{new Date(donation.createdAt).toLocaleDateString()}</small>
                                 </div>
                                 <h3>{donation.foodItem}</h3>
@@ -95,11 +144,11 @@ const RescueFood = () => {
                                 <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '20px' }}>
                                     <p style={{ fontSize: '0.85rem', marginBottom: '16px' }}><strong>Donor:</strong> {donation.donor?.name || "Anonymous Donor"}</p>
                                     <button
-                                        onClick={() => handleClaim(donation.id)}
+                                        onClick={() => openModal(donation)}
                                         className="btn btn-primary"
                                         style={{ width: '100%' }}
                                     >
-                                        Claim & Rescue
+                                        View Details
                                     </button>
                                 </div>
                             </div>
@@ -110,6 +159,13 @@ const RescueFood = () => {
                         )}
                     </div>
                 )}
+
+                <FoodDetailModal 
+                    donation={selectedDonation}
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onClaim={handleClaim}
+                />
             </div>
         </DashboardLayout>
     );

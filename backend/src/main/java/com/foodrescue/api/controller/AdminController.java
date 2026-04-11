@@ -2,13 +2,13 @@ package com.foodrescue.api.controller;
 
 import com.foodrescue.api.model.*;
 import com.foodrescue.api.repository.*;
+import org.springframework.lang.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "*")
 public class AdminController {
 
     @Autowired
@@ -48,7 +48,7 @@ public class AdminController {
     }
 
     @PostMapping("/users/{id}/verify")
-    public User verifyUser(@PathVariable String id) {
+    public User verifyUser(@PathVariable @NonNull String id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         user.setVerified(true);
         return userRepository.save(user);

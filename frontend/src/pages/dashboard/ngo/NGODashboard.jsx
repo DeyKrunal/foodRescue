@@ -16,48 +16,55 @@ const NGODashboard = () => {
 
     return (
         <DashboardLayout role="NGO">
-            <div className="animate-fade">
-                <h1 style={{ marginBottom: '32px' }}>NGO Dashboard</h1>
-
-                <div className="stats-row">
-                    <div className="stat-mini-card">
-                        <h4>My Requests</h4>
-                        <p>{requests.length}</p>
-                    </div>
-                    <div className="stat-mini-card">
-                        <h4>Food Collected</h4>
-                        <p>120 kg</p>
-                    </div>
-                    <div className="stat-mini-card">
-                        <h4>Lives Impacted</h4>
-                        <p>450</p>
-                    </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                <div>
+                    <h1>NGO Dashboard</h1>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                        Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user.id}</strong>
+                    </p>
                 </div>
+                <a href="/dashboard/ngo/volunteers" className="btn btn-primary">Manage Volunteers</a>
+            </div>
 
-                <div className="data-table-container">
-                    <h3 style={{ marginBottom: '24px' }}>Active Requests</h3>
-                    <table className="data-table">
-                        <thead>
-                            <tr>
-                                <th>Food Item</th>
-                                <th>Donor</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {requests.map(req => (
-                                <tr key={req.id}>
-                                    <td>{req.item}</td>
-                                    <td>{req.donor}</td>
-                                    <td><span className={`badge ${req.status === 'APPROVED' ? 'badge-available' : ''}`}>{req.status}</span></td>
-                                    <td><button className="btn btn-outline" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>Details</button></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+            <div className="stats-row">
+                <div className="stat-mini-card">
+                    <h4>My Requests</h4>
+                    <p>{requests.length}</p>
+                </div>
+                <div className="stat-mini-card">
+                    <h4>Food Collected</h4>
+                    <p>120 kg</p>
+                </div>
+                <div className="stat-mini-card">
+                    <h4>Lives Impacted</h4>
+                    <p>450</p>
                 </div>
             </div>
+
+            <div className="data-table-container">
+                <h3 style={{ marginBottom: '24px' }}>Active Requests</h3>
+                <table className="data-table">
+                    <thead>
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Donor</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {requests.map(req => (
+                            <tr key={req.id}>
+                                <td>{req.item}</td>
+                                <td>{req.donor}</td>
+                                <td><span className={`badge ${req.status === 'APPROVED' ? 'badge-available' : ''}`}>{req.status}</span></td>
+                                <td><button className="btn btn-outline" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>Details</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
         </DashboardLayout>
     );
 };

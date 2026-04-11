@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
+import api from '../../../services/api';
+import Swal from 'sweetalert2';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
@@ -11,6 +13,7 @@ const AdminDashboard = () => {
         pendingVerifications: 0
     });
     const [loading, setLoading] = useState(true);
+    const [testError, setTestError] = useState(0); // Demo variable requested by user
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -25,6 +28,19 @@ const AdminDashboard = () => {
         };
         fetchStats();
     }, []);
+
+    useEffect(() => {
+        if (testError === 1) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Fancy System Error',
+                text: 'This is a demonstration of the upgraded fancy error system. All systems are being monitored!',
+                confirmButtonColor: '#d33',
+                backdrop: `rgba(255,0,0,0.1)`,
+                allowOutsideClick: false
+            });
+        }
+    }, [testError]);
 
     return (
         <DashboardLayout role="ADMIN">
@@ -59,9 +75,18 @@ const AdminDashboard = () => {
                         <button className="btn btn-primary" style={{ marginTop: '24px' }} onClick={() => navigate('/admin/users')}>Verify Users</button>
                     </div>
                     <div style={{ background: '#fff', padding: '32px', borderRadius: '12px', boxShadow: 'var(--shadow-subtle)' }}>
-                        <h3>System Health</h3>
-                        <p style={{ marginTop: '16px', color: 'var(--text-muted)' }}>All systems operational. No flagged donations.</p>
-                        <button className="btn btn-outline" style={{ marginTop: '24px' }}>View Logs</button>
+                        <h3>Error System Showcase</h3>
+                        <p style={{ marginTop: '16px', color: 'var(--text-muted)' }}>
+                            Currently set to: <strong>{testError}</strong>. 
+                            Change this in <code>AdminDashboard.jsx</code> to <code>1</code> to see the fancy error.
+                        </p>
+                        <button 
+                            className="btn btn-outline" 
+                            style={{ marginTop: '24px', borderColor: testError === 1 ? '#d33' : '#ccc', color: testError === 1 ? '#d33' : 'inherit' }}
+                            onClick={() => setTestError(testError === 1 ? 0 : 1)}
+                        >
+                            {testError === 1 ? 'Reset Variable to 0' : 'Demo: Set Variable to 1'}
+                        </button>
                     </div>
                 </div>
             </div>
