@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createDonation } from '../services/api';
 import DashboardLayout from '../components/layout/DashboardLayout';
+import Swal from 'sweetalert2';
 
 const DonateFood = () => {
     const [formData, setFormData] = useState({
@@ -28,10 +29,20 @@ const DonateFood = () => {
         setLoading(true);
         try {
             await createDonation(formData);
-            alert('Donation listed successfully!');
+            Swal.fire({
+                icon: 'success',
+                title: 'Listed!',
+                text: 'Donation listed successfully!',
+                confirmButtonColor: 'var(--primary-color)'
+            });
             navigate('/');
         } catch (err) {
-            alert('Failed to list donation.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to list donation. Please try again.',
+                confirmButtonColor: '#d33'
+            });
         } finally {
             setLoading(false);
         }

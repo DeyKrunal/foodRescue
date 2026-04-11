@@ -34,6 +34,8 @@ public class User {
     private String profilePhotoUrl;
     private LocalDateTime lastLogin;
     private String accountStatus = "ACTIVE";
+    private String affiliatedNgoId;
+    private String volunteerStatus = "PENDING"; // PENDING, APPROVED, REJECTED
 
     // NGO Specific Fields
     private String ngoName;
@@ -64,6 +66,8 @@ public class User {
     private String emergencyContact;
 
     private boolean verified = false;
+    private String verificationCode;
+    private LocalDateTime verificationExpires;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }

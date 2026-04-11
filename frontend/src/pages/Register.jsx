@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { registerUser } from '../services/api';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     
@@ -38,7 +39,8 @@ const Register = () => {
         fssaiLicenseNumber: '',
         refrigerationAvailable: true,
         emergencyContact: '',
-        location: null // [longitude, latitude] for GeoSpatial
+        location: null, // [longitude, latitude] for GeoSpatial
+        affiliatedNgoId: '' // NEW: Link volunteer to NGO
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -51,7 +53,12 @@ const Register = () => {
 
     const getLocation = () => {
         if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
+            Swal.fire({
+                icon: 'error',
+                title: 'Not Supported',
+                text: 'Geolocation is not supported by your browser',
+                confirmButtonColor: 'var(--primary-color)'
+            });
             return;
         }
 
@@ -65,9 +72,22 @@ const Register = () => {
                     // Also update a human-readable display if we need one
                     geoLocation: `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`
                 }));
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Location Captured',
+                    text: 'Your precision location has been stored.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
             },
             () => {
-                alert("Please enable location access to use this feature.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Location Required',
+                    text: 'Please enable location access to help NGOs find your donations.',
+                    confirmButtonColor: 'var(--primary-color)'
+                });
             }
         );
     };
@@ -82,7 +102,7 @@ const Register = () => {
         setError('');
         try {
             await registerUser(formData);
-            navigate('/login');
+            navigate('/verify-email', { state: { email: formData.email } });
         } catch (err) {
             setError('Registration failed. Email might already exist.');
         } finally {
@@ -112,6 +132,18 @@ const Register = () => {
                     <div className="sidebar-text">
                         <h1>Food Donor</h1>
                         <p>Restaurants, hotels, and businesses — stop food waste today. Share your excess food with people who need it most.</p>
+                    </div>
+                </div>
+            );
+        } else if (formData.role === 'VOLUNTEER') {
+            return (
+                <div className="registration-sidebar-content animate-fade">
+                    <div className="sidebar-illustration">
+                        <img src="/delivery.png" alt="Volunteer Delivery" />
+                    </div>
+                    <div className="sidebar-text">
+                        <h1>Volunteer</h1>
+                        <p>Be the bridge. Help transport surplus food from donors to NGOs and make a difference in your community.</p>
                     </div>
                 </div>
             );
@@ -165,6 +197,14 @@ const Register = () => {
                             <i>🏠</i>
                             <h3>NGO</h3>
                             <p>Charity Organizations</p>
+                        </div>
+                        <div
+                            className={`role-card ${formData.role === 'VOLUNTEER' ? 'active' : ''}`}
+                            onClick={() => setFormData({ ...formData, role: 'VOLUNTEER' })}
+                        >
+                            <i>🛵</i>
+                            <h3>Volunteer</h3>
+                            <p>Individual Delivery Partner</p>
                         </div>
                     </div>
 
@@ -253,7 +293,7 @@ const Register = () => {
                                     <input type="text" name="availabilityTiming" value={formData.availabilityTiming} onChange={handleChange} placeholder="e.g. 9 AM - 9 PM" />
                                 </div>
                             </>
-                        ) : (
+                        ) : formData.role === 'DONOR' ? (
                             <>
                                 <div className="form-section-title">Restaurant Operational Info</div>
                                 <div className="form-group">
@@ -320,7 +360,25 @@ const Register = () => {
                                     </p>
                                 </div>
                             </>
-                        )}
+                        ) : formData.role === 'VOLUNTEER' ? (
+                            <>
+                                <div className="form-section-title">Volunteer Info</div>
+                                <p style={{ gridColumn: '1/-1', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                                    As a volunteer, you must link your account to an existing NGO using their unique NGO ID. 
+                                    Your account will be pending until they approve your application.
+                                </p>
+                                <div className="form-group full-width">
+                                    <label>Affiliated NGO ID</label>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter the NGO ID provided by your organization"
+                                        value={formData.affiliatedNgoId}
+                                        onChange={(e) => setFormData({ ...formData, affiliatedNgoId: e.target.value })}
+                                        required
+                                    />
+                                </div>
+                            </>
+                        ) : null}
 
                         <div className="form-group full-width" style={{ marginTop: '32px' }}>
                             <button type="submit" className="btn btn-primary" style={{ width: '100%', height: '54px' }} disabled={loading}>

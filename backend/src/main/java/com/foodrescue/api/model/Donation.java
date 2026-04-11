@@ -33,5 +33,7 @@ public class Donation {
     @DBRef
     private User donor;
 
+    private int viewCount = 0;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 }

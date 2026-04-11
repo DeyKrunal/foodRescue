@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
 import api from '../../../services/api';
+import Swal from 'sweetalert2';
 
 const DonorRequests = () => {
     const [requests, setRequests] = useState([]);
@@ -26,26 +27,55 @@ const DonorRequests = () => {
     const handleRespond = async (id, status) => {
         let qs = `?status=${status}`;
         if (status === 'REJECTED') {
-            const reason = window.prompt("Enter a reason for rejection (optional):");
-            if (reason === null) return;
-            if (reason.trim() !== '') qs += `&donorMessage=${encodeURIComponent(reason)}`;
+            const { value: reason } = await Swal.fire({
+                title: 'Rejection Reason',
+                input: 'textarea',
+                inputLabel: 'Enter a reason for rejection (optional)',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Confirm Rejection'
+            });
+            
+            if (reason === undefined) return; // Cancelled
+            if (reason && reason.trim() !== '') qs += `&donorMessage=${encodeURIComponent(reason)}`;
         }
         try {
             await api.post(`/donor/requests/${id}/respond${qs}`);
-            alert(`Request ${status === 'APPROVED' ? 'Approved' : 'Rejected'}`);
+            Swal.fire({
+                icon: 'success',
+                title: status === 'APPROVED' ? 'Approved' : 'Rejected',
+                text: `Request updated successfully!`,
+                confirmButtonColor: 'var(--primary-color)'
+            });
             fetchRequests();
         } catch (err) {
-            alert("Action failed.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Action Failed',
+                text: err.response?.data || "Could not complete the action.",
+                confirmButtonColor: '#d33'
+            });
         }
     };
 
     const handleCollect = async (id) => {
         try {
             await api.post(`/donor/requests/${id}/collect`);
-            alert("Marked as collected!");
+            Swal.fire({
+                icon: 'success',
+                title: 'Collected!',
+                text: "Donation marked as collected.",
+                timer: 2000,
+                showConfirmButton: false
+            });
             fetchRequests();
         } catch (err) {
-            alert("Failed to update status.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Failed to update status.",
+                confirmButtonColor: '#d33'
+            });
         }
     };
 

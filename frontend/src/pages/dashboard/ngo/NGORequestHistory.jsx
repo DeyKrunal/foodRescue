@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
 import api from '../../../services/api';
+import Swal from 'sweetalert2';
 
 const NGORequestHistory = () => {
     const [requests, setRequests] = useState([]);
@@ -23,20 +24,38 @@ const NGORequestHistory = () => {
     }, [user?.id]);
 
     const handleReRequest = async (donationId) => {
-        const message = window.prompt("Enter your new message to the donor:");
-        if (message === null) return;
+        const { value: message } = await Swal.fire({
+            title: 'New Request Message',
+            input: 'textarea',
+            inputLabel: 'Enter your new message to the donor:',
+            showCancelButton: true,
+            confirmButtonColor: 'var(--primary-color)'
+        });
+
+        if (message === undefined) return;
+
         try {
             await api.post(`/requests/create`, {
                 donation: { id: donationId },
                 ngo: { id: user.id },
                 message: message
             });
-            alert("New request sent!");
+            Swal.fire({
+                icon: 'success',
+                title: 'Sent!',
+                text: 'New request sent successfully!',
+                confirmButtonColor: 'var(--primary-color)'
+            });
             // Refresh
             const res = await api.get(`/requests/ngo/${user.id}`);
             setRequests(res.data);
         } catch (err) {
-            alert(err.response?.data || "Failed to send another request.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.response?.data || "Failed to send another request.",
+                confirmButtonColor: '#d33'
+            });
         }
     };
 
