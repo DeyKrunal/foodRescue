@@ -31,10 +31,25 @@ public class AuthController {
     @Autowired
     private EmailService emailService;
 
+    private String generateNgoId() {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder sb = new StringBuilder("NGO-");
+        Random rnd = new Random();
+        for (int i = 0; i < 8; i++) {
+            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        }
+        return sb.toString();
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("Email already exists");
+        }
+
+        // Generate NGO ID if user is an NGO
+        if ("NGO".equals(user.getRole())) {
+            user.setNgoId(generateNgoId());
         }
 
         // Generate random 6-digit OTP

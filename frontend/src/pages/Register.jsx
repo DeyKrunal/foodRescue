@@ -4,7 +4,7 @@ import { registerUser } from '../services/api';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    
+
     const [searchParams] = useSearchParams();
     const initialRole = searchParams.get('role') || 'DONOR';
 
@@ -72,7 +72,7 @@ const Register = () => {
                     // Also update a human-readable display if we need one
                     geoLocation: `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`
                 }));
-                
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Location Captured',
@@ -139,7 +139,7 @@ const Register = () => {
             return (
                 <div className="registration-sidebar-content animate-fade">
                     <div className="sidebar-illustration">
-                        <img src="/delivery.png" alt="Volunteer Delivery" />
+                        <img src="/volunter.png" alt="Volunteer Delivery" />
                     </div>
                     <div className="sidebar-text">
                         <h1>Volunteer</h1>
@@ -160,8 +160,8 @@ const Register = () => {
         }
     };
 
-    return (   
-        
+    return (
+
         <div className="registration-container">
             <div className="registration-sidebar" style={{
                 backgroundColor: formData.role === 'NGO' ? '#274B59' : '#2D5A27'
@@ -267,7 +267,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Service Radius (in km) *</label>
-                                    <input type="number" name="serviceRadius" required value={formData.serviceRadius} onChange={handleChange} />
+                                    <input type="number" name="serviceRadius" required min="0" value={formData.serviceRadius} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Available? *</label>
@@ -278,7 +278,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Number of Volunteers</label>
-                                    <input type="number" name="numberOfVolunteers" value={formData.numberOfVolunteers} onChange={handleChange} />
+                                    <input type="number" name="numberOfVolunteers" min="0" value={formData.numberOfVolunteers} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Type (if any)</label>
@@ -364,7 +364,7 @@ const Register = () => {
                             <>
                                 <div className="form-section-title">Volunteer Info</div>
                                 <p style={{ gridColumn: '1/-1', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    As a volunteer, you must link your account to an existing NGO using their unique NGO ID. 
+                                    As a volunteer, you must link your account to an existing NGO using their unique NGO ID.
                                     Your account will be pending until they approve your application.
                                 </p>
                                 <div className="form-group full-width">

@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import api from "../services/api";
+import { Bell } from "lucide-react";
+import axios from "axios";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +24,37 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      const fetchUnread = async () => {
+        try {
+          const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}/unread-count`);
+          setUnreadCount(res.data);
+        } catch (err) {
+          console.error("Failed to fetch unread count", err);
+        }
+      };
+      fetchUnread();
+      const interval = setInterval(fetchUnread, 30000); // Polling every 30s
+      return () => clearInterval(interval);
+    }
+  }, [user]);
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}`);
+      setNotifications(res.data);
+      setShowNotifications(!showNotifications);
+      // Mark all as read when opening
+      if (!showNotifications) {
+          await axios.post(`http://localhost:8080/api/notifications/user/${user.id}/read-all`);
+          setUnreadCount(0);
+      }
+    } catch (err) {
+      console.error("Failed to fetch notifications", err);
+    }
+  };
 
   useEffect(() => {
     setMenuOpen(false);
@@ -439,6 +475,90 @@ const Navbar = () => {
           box-shadow: 0 6px 22px rgba(212,148,74,0.42);
         }
 
+
+        .nav-notification-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .nav-bell-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #3d5438;
+          padding: 8px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: background 0.2s;
+        }
+
+        .nav-bell-btn:hover {
+          background: #edf6e8;
+        }
+
+        .nav-badge {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          background: #e67e22;
+          color: #fff;
+          font-size: 10px;
+          font-weight: 700;
+          min-width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid #fff;
+        }
+
+        .nav-notification-dropdown {
+          position: absolute;
+          top: 48px;
+          right: 0;
+          width: 320px;
+          background: #fff;
+          border: 1px solid #e6efe2;
+          border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          z-index: 1001;
+          overflow: hidden;
+        }
+
+        .notif-header {
+          padding: 16px 20px;
+          border-bottom: 1px solid #e6efe2;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #fdfdfd;
+        }
+
+        .notif-header h4 { margin: 0; font-size: 14px; }
+        .notif-header button { background: none; border: none; cursor: pointer; color: #7a9070; }
+
+        .notif-list {
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .notif-item {
+          padding: 16px 20px;
+          border-bottom: 1px solid #f3f9ef;
+          transition: background 0.2s;
+        }
+
+        .notif-item:hover { background: #f9fdf7; }
+        .notif-item.unread { background: #f3f9ef; }
+        .notif-item p { margin: 0 0 6px; font-size: 13.5px; color: #2a4025; line-height: 1.4; }
+        .notif-item span { font-size: 11px; color: #7a9070; }
+        .no-notif { padding: 32px; text-align: center; color: #7a9070; font-size: 14px; }
+
         @media (max-width: 900px) {
           .nav-links, .nav-auth, .nav-sep { display: none; }
           .nav-hamburger { display: flex; }
@@ -500,6 +620,32 @@ const Navbar = () => {
                 >
                   {roleLabel}
                 </span>
+                
+                {/* Notification Bell */}
+                <div className="nav-notification-container">
+                  <button className="nav-bell-btn" onClick={fetchNotifications}>
+                    <Bell size={20} />
+                    {unreadCount > 0 && <span className="nav-badge">{unreadCount}</span>}
+                  </button>
+
+                  {showNotifications && (
+                    <div className="nav-notification-dropdown animate-fade">
+                      <div className="notif-header">
+                        <h4>Notifications</h4>
+                        <button onClick={() => setShowNotifications(false)}>✕</button>
+                      </div>
+                      <div className="notif-list">
+                        {notifications.length > 0 ? notifications.map(n => (
+                          <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>
+                            <p>{n.message}</p>
+                            <span>{new Date(n.createdAt).toLocaleString()}</span>
+                          </div>
+                        )) : <p className="no-notif">No notifications yet</p>}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 <div className="nav-sep" />
                 <div className="nav-user-chip">
                   <div className="nav-avatar">

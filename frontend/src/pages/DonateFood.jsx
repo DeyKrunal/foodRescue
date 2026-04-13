@@ -67,10 +67,11 @@ const DonateFood = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Estimated Quantity</label>
+                            <label>Estimated Quantity (in kg/units)</label>
                             <input
-                                placeholder="e.g. 15kg or 50 portions"
-                                type="text"
+                                placeholder="e.g. 15 or 50"
+                                type="number"
+                                min="0"
                                 required
                                 value={formData.quantity}
                                 onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}

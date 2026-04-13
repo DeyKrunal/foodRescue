@@ -2,6 +2,7 @@ package com.foodrescue.api.controller;
 
 import com.foodrescue.api.model.*;
 import com.foodrescue.api.repository.*;
+import com.foodrescue.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,12 @@ import java.util.*;
 @RequestMapping("/api/requests")
 @SuppressWarnings("null")
 public class RequestController {
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Autowired
     private RequestRepository requestRepository;
@@ -54,7 +61,26 @@ public class RequestController {
         donation.setStatus("REQUESTED");
         donationRepository.save(donation);
 
-        return ResponseEntity.ok(requestRepository.save(request));
+        Request savedRequest = requestRepository.save(request);
+
+        // Notify Donor (App + Email)
+        Notification notification = new Notification();
+        notification.setRecipient(donation.getDonor());
+        notification.setMessage("New rescue request for: " + donation.getFoodItem() + " from " + ngo.getName());
+        notification.setType("REQUEST");
+        notificationRepository.save(notification);
+
+        try {
+            emailService.sendNotification(
+                    donation.getDonor().getEmail(),
+                    "Rescue Request Received",
+                    "Hello, " + ngo.getName() + " has expressed interest in rescuing your food item: "
+                            + donation.getFoodItem());
+        } catch (Exception e) {
+            System.err.println("Email failed: " + e.getMessage());
+        }
+
+        return ResponseEntity.ok(savedRequest);
     }
 
     @Autowired
@@ -102,7 +128,27 @@ public class RequestController {
                 deliveryRepository.save(delivery);
             }
 
-            return ResponseEntity.ok(requestRepository.save(request));
+            Request savedRequest = requestRepository.save(request);
+
+            // Notify NGO (App + Email)
+            Notification notification = new Notification();
+            notification.setRecipient(request.getNgo());
+            notification.setMessage(
+                    "Your rescue request for " + request.getDonation().getFoodItem() + " was " + status.toLowerCase());
+            notification.setType(status.equals("ACCEPTED") ? "SUCCESS" : "ALERT");
+            notificationRepository.save(notification);
+
+            try {
+                emailService.sendNotification(
+                        request.getNgo().getEmail(),
+                        "Rescue Request Outcome: " + status,
+                        "Your request for '" + request.getDonation().getFoodItem() + "' was " + status.toLowerCase()
+                                + ". " + (message != null ? "\nDonor Message: " + message : ""));
+            } catch (Exception e) {
+                System.err.println("Email failed: " + e.getMessage());
+            }
+
+            return ResponseEntity.ok(savedRequest);
         }).orElse(ResponseEntity.notFound().build());
     }
 

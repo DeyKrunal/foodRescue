@@ -65,6 +65,9 @@ public class User {
     private String restaurantLogoUrl;
     private String emergencyContact;
 
+    // NGO Specific ID for volunteer affiliation
+    private String ngoId;
+
     private boolean verified = false;
     private String verificationCode;
     private LocalDateTime verificationExpires;

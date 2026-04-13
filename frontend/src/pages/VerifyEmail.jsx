@@ -41,7 +41,7 @@ const VerifyEmail = () => {
     };
 
     return (
-        <div className="auth-container animate-fade">
+        <div className="auth-page animate-fade">
             <div className="auth-card">
                 <div className="auth-header">
                     <h1>Verify Your Email</h1>
