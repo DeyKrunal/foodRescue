@@ -20,7 +20,7 @@ const NGODashboard = () => {
                 <div>
                     <h1>NGO Dashboard</h1>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                        Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user.id}</strong>
+                        Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user.ngoId || user.id}</strong>
                     </p>
                 </div>
                 <a href="/dashboard/ngo/volunteers" className="btn btn-primary">Manage Volunteers</a>

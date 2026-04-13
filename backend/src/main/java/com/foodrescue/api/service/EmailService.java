@@ -19,12 +19,21 @@ public class EmailService {
         mailSender.send(message);
     }
 
-    public void sendRescueNotification(String to, String ngoName, String foodItem) {
+    public void sendNotification(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
-        message.setSubject("Food Rescue Update: Item Rescued");
-        message.setText("Great news! The food item '" + foodItem + "' has been successfully rescued by " + ngoName
-                + ".\n\nThank you for being part of the community.");
+        message.setSubject(subject);
+        message.setText(body);
         mailSender.send(message);
+    }
+
+    public void sendRescueNotification(String to, String ngoName, String foodItem) {
+        sendNotification(to, "Food Rescue Update: Item Rescued", 
+            "Great news! The food item '" + foodItem + "' has been successfully rescued by " + ngoName + ".");
+    }
+
+    public void sendDeliveryUpdate(String to, String foodItem, String status) {
+        sendNotification(to, "Delivery Update: " + foodItem, 
+            "The delivery for your food item '" + foodItem + "' is now " + status + ".");
     }
 }
