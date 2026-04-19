@@ -279,6 +279,7 @@ const Login = () => {
                                 type="email"
                                 placeholder="you@example.com"
                                 required
+                                maxLength="100"
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
@@ -289,6 +290,8 @@ const Login = () => {
                                 type="password"
                                 placeholder="••••••••"
                                 required
+                                minLength="8"
+                                maxLength="100"
                                 value={formData.password}
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             />
