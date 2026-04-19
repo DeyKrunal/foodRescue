@@ -62,6 +62,7 @@ const DonateFood = () => {
                                 placeholder="e.g. 50 Meals of Cooked Rice and Daal"
                                 type="text"
                                 required
+                                maxLength="100"
                                 value={formData.foodItem}
                                 onChange={(e) => setFormData({ ...formData, foodItem: e.target.value })}
                             />
@@ -72,6 +73,7 @@ const DonateFood = () => {
                                 placeholder="e.g. 15 or 50"
                                 type="number"
                                 min="0"
+                                max="10000"
                                 required
                                 value={formData.quantity}
                                 onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
@@ -82,6 +84,7 @@ const DonateFood = () => {
                             <textarea
                                 placeholder="List any allergens or pickup instructions..."
                                 rows="4"
+                                maxLength="500"
                                 value={formData.description}
                                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid rgba(0,0,0,0.1)' }}

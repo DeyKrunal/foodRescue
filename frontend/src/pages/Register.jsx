@@ -213,7 +213,7 @@ const Register = () => {
 
                         <div className="form-group">
                             <label>Contact Person/Full Name *</label>
-                            <input type="text" name="name" required value={formData.name} onChange={handleChange} placeholder="e.g. John Doe" />
+                            <input type="text" name="name" required maxLength="100" value={formData.name} onChange={handleChange} placeholder="e.g. John Doe" />
                         </div>
                         <div className="form-group">
                             <label>Official Email Address *</label>
@@ -221,15 +221,15 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Mobile Number *</label>
-                            <input type="tel" name="mobileNumber" required value={formData.mobileNumber} onChange={handleChange} placeholder="+91 XXXXX XXXXX" />
+                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" minLength="10" maxLength="10" title="Please enter exactly 10 digits" value={formData.mobileNumber} onChange={handleChange} placeholder="e.g. 9876543210" />
                         </div>
                         <div className="form-group">
                             <label>Password *</label>
-                            <input type="password" name="password" required value={formData.password} onChange={handleChange} placeholder="••••••••" />
+                            <input type="password" name="password" required minLength="8" value={formData.password} onChange={handleChange} placeholder="Min 8 characters" />
                         </div>
                         <div className="form-group">
                             <label>Confirm Password *</label>
-                            <input type="password" name="confirmPassword" required value={formData.confirmPassword} onChange={handleChange} placeholder="••••••••" />
+                            <input type="password" name="confirmPassword" required minLength="8" value={formData.confirmPassword} onChange={handleChange} placeholder="Min 8 characters" />
                         </div>
 
                         <div className="form-section-title">Location Details</div>
@@ -247,7 +247,7 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Pincode *</label>
-                            <input type="text" name="pincode" required value={formData.pincode} onChange={handleChange} />
+                            <input type="text" name="pincode" required pattern="[0-9]{6}" minLength="6" maxLength="6" title="Please enter a valid 6-digit Pincode" value={formData.pincode} onChange={handleChange} />
                         </div>
 
                         {formData.role === 'NGO' ? (
