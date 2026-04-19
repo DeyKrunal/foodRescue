@@ -62,6 +62,9 @@ const VerifyEmail = () => {
                                 value={code}
                                 onChange={(e) => setCode(e.target.value)}
                                 maxLength="6"
+                                minLength="6"
+                                pattern="[0-9]{6}"
+                                title="Please enter exactly 6 digits"
                                 required
                                 style={{ textAlign: 'center', fontSize: '1.5rem', letterSpacing: '8px' }}
                             />
