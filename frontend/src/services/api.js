@@ -46,4 +46,8 @@ export const getNgoVolunteers = (ngoId) => api.get(`/volunteers/ngo/${ngoId}`);
 export const approveVolunteer = (id) => api.post(`/volunteers/${id}/approve`);
 export const rejectVolunteer = (id) => api.post(`/volunteers/${id}/reject`);
 
+// Admin
+export const getAllUsers = () => api.get('/admin/users');
+export const verifyPartner = (id) => api.post(`/admin/users/${id}/verify`);
+
 export default api;
