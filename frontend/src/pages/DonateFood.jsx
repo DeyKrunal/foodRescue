@@ -8,7 +8,12 @@ const DonateFood = () => {
     const [formData, setFormData] = useState({
         foodItem: '',
         quantity: '',
+        foodType: 'VEG',
         description: '',
+        cookingTime: '',
+        expiryTime: '',
+        pickupLocation: '',
+        pickupWindow: '',
         donor: null // Will be set from localStorage
     });
     const [loading, setLoading] = useState(false);
@@ -24,11 +29,21 @@ const DonateFood = () => {
         }
     }, [navigate]);
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            await createDonation(formData);
+            // Ensure donor is nested correctly for backend
+            const submissionData = {
+                ...formData,
+                donor: formData.donor
+            };
+            await createDonation(submissionData);
             Swal.fire({
                 icon: 'success',
                 title: 'Listed!',
@@ -57,36 +72,94 @@ const DonateFood = () => {
                 <div className="auth-card" style={{ padding: '32px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#fff' }}>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label>Food Item(s)</label>
+                            <label>Food Item(s) *</label>
                             <input
+                                name="foodItem"
                                 placeholder="e.g. 50 Meals of Cooked Rice and Daal"
                                 type="text"
                                 required
                                 maxLength="100"
                                 value={formData.foodItem}
-                                onChange={(e) => setFormData({ ...formData, foodItem: e.target.value })}
+                                onChange={handleChange}
                             />
                         </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                            <div className="form-group">
+                                <label>Estimated Quantity *</label>
+                                <input
+                                    name="quantity"
+                                    placeholder="e.g. 15kg or 50 pcs"
+                                    type="text"
+                                    required
+                                    value={formData.quantity}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Food Type *</label>
+                                <select name="foodType" value={formData.foodType} onChange={handleChange}>
+                                    <option value="VEG">Veg</option>
+                                    <option value="NON-VEG">Non-Veg</option>
+                                    <option value="BOTH">Both</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                            <div className="form-group">
+                                <label>Cooking Time *</label>
+                                <input
+                                    name="cookingTime"
+                                    type="datetime-local"
+                                    required
+                                    value={formData.cookingTime}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Expiry Time *</label>
+                                <input
+                                    name="expiryTime"
+                                    type="datetime-local"
+                                    required
+                                    value={formData.expiryTime}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+
                         <div className="form-group">
-                            <label>Estimated Quantity (in kg/units)</label>
+                            <label>Pickup Location *</label>
                             <input
-                                placeholder="e.g. 15 or 50"
-                                type="number"
-                                min="0"
-                                max="10000"
+                                name="pickupLocation"
+                                placeholder="e.g. Back Gate, Kitchen Area"
+                                type="text"
                                 required
-                                value={formData.quantity}
-                                onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                                value={formData.pickupLocation}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Pickup Window *</label>
+                            <input
+                                name="pickupWindow"
+                                placeholder="e.g. 9 PM - 10 PM tonight"
+                                type="text"
+                                required
+                                value={formData.pickupWindow}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="form-group">
                             <label>Specific Details / Allergens</label>
                             <textarea
-                                placeholder="List any allergens or pickup instructions..."
-                                rows="4"
+                                name="description"
+                                placeholder="List any allergens or specific storage instructions..."
+                                rows="3"
                                 maxLength="500"
                                 value={formData.description}
-                                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                onChange={handleChange}
                                 style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid rgba(0,0,0,0.1)' }}
                             />
                         </div>

@@ -12,9 +12,14 @@ const FoodDetailModal = ({ donation, isOpen, onClose, onClaim }) => {
                 </button>
                 
                 <div className="modal-header">
-                    <span className={`badge ${donation.status === 'REQUESTED' ? 'badge-requested' : 'badge-available'}`}>
-                        {donation.status === 'REQUESTED' ? 'Interest Expressed' : 'Available Food'}
-                    </span>
+                    <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                        <span className={`badge ${donation.status === 'REQUESTED' ? 'badge-requested' : 'badge-available'}`}>
+                            {donation.status === 'REQUESTED' ? 'Interest Expressed' : 'Available Food'}
+                        </span>
+                        <span className="badge" style={{ background: '#f0f0f0', color: '#666' }}>
+                            {donation.foodType}
+                        </span>
+                    </div>
                     <h2>{donation.foodItem}</h2>
                     <p className="quantity">Quantity: {donation.quantity}</p>
                 </div>

@@ -33,7 +33,7 @@ const Register = () => {
         restaurantName: '',
         ownerManagerName: '',
         geoLocation: '',
-        foodType: 'Both',
+        foodType: 'BOTH',
         pickupTimeWindow: '',
         averageDonationCapacity: '',
         fssaiLicenseNumber: '',
@@ -221,7 +221,7 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Mobile Number *</label>
-                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" minLength="10" maxLength="10" title="Please enter exactly 10 digits" value={formData.mobileNumber} onChange={handleChange} placeholder="e.g. 9876543210" />
+                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" minLength="10" maxLength="10" title="Please enter exactly 10 digits" inputMode="numeric" value={formData.mobileNumber} onChange={handleChange} placeholder="e.g. 9876543210" />
                         </div>
                         <div className="form-group">
                             <label>Password *</label>
@@ -247,7 +247,7 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Pincode *</label>
-                            <input type="text" name="pincode" required pattern="[0-9]{6}" minLength="6" maxLength="6" title="Please enter a valid 6-digit Pincode" value={formData.pincode} onChange={handleChange} />
+                            <input type="text" name="pincode" required pattern="[0-9]{6}" minLength="6" maxLength="6" title="Please enter a valid 6-digit Pincode" inputMode="numeric" value={formData.pincode} onChange={handleChange} />
                         </div>
 
                         {formData.role === 'NGO' ? (
@@ -267,7 +267,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Service Radius (in km) *</label>
-                                    <input type="number" name="serviceRadius" required min="0" value={formData.serviceRadius} onChange={handleChange} />
+                                    <input type="number" name="serviceRadius" required min="0" inputMode="numeric" value={formData.serviceRadius} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Available? *</label>
@@ -278,7 +278,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Number of Volunteers</label>
-                                    <input type="number" name="numberOfVolunteers" min="0" value={formData.numberOfVolunteers} onChange={handleChange} />
+                                    <input type="number" name="numberOfVolunteers" min="0" inputMode="numeric" value={formData.numberOfVolunteers} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Type (if any)</label>
@@ -311,14 +311,14 @@ const Register = () => {
                                 <div className="form-group">
                                     <label>Food Type *</label>
                                     <select name="foodType" value={formData.foodType} onChange={handleChange}>
-                                        <option value="Veg">Pure Veg</option>
-                                        <option value="Non-Veg">Non-Veg</option>
-                                        <option value="Both">Both</option>
+                                        <option value="VEG">Pure Veg</option>
+                                        <option value="NON-VEG">Non-Veg</option>
+                                        <option value="BOTH">Both</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
                                     <label>Average Donation Capacity (kg/day)</label>
-                                    <input type="text" name="averageDonationCapacity" value={formData.averageDonationCapacity} onChange={handleChange} />
+                                    <input type="number" name="averageDonationCapacity" min="0" inputMode="numeric" value={formData.averageDonationCapacity} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Refrigeration Available? *</label>
@@ -333,7 +333,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Emergency Contact Number</label>
-                                    <input type="tel" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} />
+                                    <input type="tel" name="emergencyContact" inputMode="numeric" value={formData.emergencyContact} onChange={handleChange} />
                                 </div>
                                 <div className="form-group full-width" style={{ marginTop: '16px' }}>
                                     <label>Precision Location (GPS) *</label>

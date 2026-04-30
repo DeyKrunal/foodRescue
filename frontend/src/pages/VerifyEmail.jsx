@@ -61,6 +61,7 @@ const VerifyEmail = () => {
                                 maxLength="6"
                                 minLength="6"
                                 pattern="[0-9]{6}"
+                                inputMode="numeric"
                                 title="Please enter exactly 6 digits"
                                 required
                                 style={{ textAlign: 'center', fontSize: '1.5rem', letterSpacing: '8px' }}
