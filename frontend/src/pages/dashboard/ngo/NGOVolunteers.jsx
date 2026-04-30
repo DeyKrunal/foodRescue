@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
-import api from '../../../services/api';
-import { UserCheck, UserX, Clock } from 'lucide-react';
+import { getNgoVolunteers, approveVolunteer, rejectVolunteer } from '../../../services/api';
+import { UserCheck, UserX } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const NGOVolunteers = () => {
@@ -11,7 +11,7 @@ const NGOVolunteers = () => {
 
     const fetchVolunteers = async () => {
         try {
-            const res = await api.get(`/volunteers/ngo/${user.id}`);
+            const res = await getNgoVolunteers(user.id);
             setVolunteers(res.data);
         } catch (err) {
             console.error("Failed to fetch volunteers", err);
@@ -26,7 +26,8 @@ const NGOVolunteers = () => {
 
     const handleAction = async (id, action) => {
         try {
-            await api.post(`/volunteers/${id}/${action}`);
+            if (action === 'approve') await approveVolunteer(id);
+            else await rejectVolunteer(id);
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',

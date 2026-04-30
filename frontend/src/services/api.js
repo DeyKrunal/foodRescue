@@ -35,4 +35,15 @@ export const claimDonation = (id) => api.post(`/donations/${id}/claim`);
 export const createRequest = (requestData) => api.post('/requests/create', requestData);
 export const getNgoRequests = (ngoId) => api.get(`/requests/ngo/${ngoId}`);
 
+// Volunteers & Deliveries
+export const getAvailableDeliveries = () => api.get('/deliveries/available');
+export const getMyTasks = (volunteerId) => api.get(`/deliveries/my-tasks/${volunteerId}`);
+export const assignDelivery = (id, volunteerId) => api.post(`/deliveries/${id}/assign`, { volunteerId });
+export const trackDelivery = (id, coordinates) => api.post(`/deliveries/${id}/track`, coordinates);
+export const completeDelivery = (id) => api.post(`/deliveries/${id}/complete`);
+
+export const getNgoVolunteers = (ngoId) => api.get(`/volunteers/ngo/${ngoId}`);
+export const approveVolunteer = (id) => api.post(`/volunteers/${id}/approve`);
+export const rejectVolunteer = (id) => api.post(`/volunteers/${id}/reject`);
+
 export default api;

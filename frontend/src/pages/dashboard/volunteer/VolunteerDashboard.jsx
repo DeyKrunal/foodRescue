@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../../services/api';
+import api, { getAvailableDeliveries, getMyTasks, assignDelivery, trackDelivery, completeDelivery } from '../../../services/api';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
-import { Package, MapPin, Navigation, CheckCircle } from 'lucide-react';
+import { Package, MapPin, Navigation, CheckCircle, Clock } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const VolunteerDashboard = () => {
@@ -13,8 +13,8 @@ const VolunteerDashboard = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const availableRes = await api.get('/deliveries/available');
-            const myTasksRes = await api.get(`/deliveries/my-tasks/${user.id}`);
+            const availableRes = await getAvailableDeliveries();
+            const myTasksRes = await getMyTasks(user.id);
             setDeliveries(availableRes.data);
             setMyTasks(myTasksRes.data);
         } catch (err) {
@@ -30,9 +30,7 @@ const VolunteerDashboard = () => {
 
     const handleAccept = async (deliveryId) => {
         try {
-            await api.post(`/deliveries/${deliveryId}/assign`, {
-                volunteerId: user.id
-            });
+            await assignDelivery(deliveryId, user.id);
             Swal.fire({
                 icon: 'success',
                 title: 'Task accepted!',
@@ -57,7 +55,7 @@ const VolunteerDashboard = () => {
             navigator.geolocation.getCurrentPosition(async (position) => {
                 const { latitude, longitude } = position.coords;
                 try {
-                    await api.post(`/deliveries/${deliveryId}/track`, [longitude, latitude]);
+                    await trackDelivery(deliveryId, [longitude, latitude]);
                     
                     const newStatus = (myTasks.find(d => d.id === deliveryId).status === 'ASSIGNED' ? 'Picked Up' : 'In Transit');
                     
@@ -84,7 +82,7 @@ const VolunteerDashboard = () => {
 
     const handleComplete = async (deliveryId) => {
         try {
-            await api.post(`/deliveries/${deliveryId}/complete`);
+            await completeDelivery(deliveryId);
             Swal.fire({
                 icon: 'success',
                 title: 'Delivered!',
