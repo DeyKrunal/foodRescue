@@ -42,6 +42,13 @@ const RescueFood = () => {
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'NGO') {
             navigate('/login');
+        } else if (!user.verified) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Approval Pending',
+                text: 'Your NGO account is pending admin approval. You cannot rescue food yet.',
+                confirmButtonColor: 'var(--primary-color)'
+            }).then(() => navigate('/ngo/dashboard'));
         } else {
             fetchDonations();
         }

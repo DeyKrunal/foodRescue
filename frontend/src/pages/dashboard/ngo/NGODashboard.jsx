@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
 
+import { useNavigate } from 'react-router-dom';
+
 const NGODashboard = () => {
+    const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
     const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
@@ -23,8 +26,21 @@ const NGODashboard = () => {
                         Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user.ngoId || user.id}</strong>
                     </p>
                 </div>
-                <a href="/dashboard/ngo/volunteers" className="btn btn-primary">Manage Volunteers</a>
+                <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                    {!user.verified && (
+                        <span className="badge" style={{ background: '#FFF3E0', color: '#E65100', padding: '8px 16px' }}>
+                            ⚠️ Account Pending Admin Approval
+                        </span>
+                    )}
+                    <button onClick={() => navigate('/dashboard/ngo/volunteers')} className="btn btn-primary">Manage Volunteers</button>
+                </div>
             </div>
+
+            {!user.verified && (
+                <div style={{ background: '#FFF9C4', padding: '16px', borderRadius: '8px', marginBottom: '32px', fontSize: '0.9rem', border: '1px solid #FBC02D' }}>
+                    <strong>Notice:</strong> Your email is verified, but your NGO account is pending administrator review. You will be able to rescue food once approved.
+                </div>
+            )}
 
             <div className="stats-row">
                 <div className="stat-mini-card">

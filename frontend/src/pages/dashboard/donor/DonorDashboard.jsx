@@ -15,7 +15,20 @@ const DonorDashboard = () => {
     return (
         <DashboardLayout role="DONOR">
             <div className="animate-fade">
-                <h1 style={{ marginBottom: '32px' }}>Welcome, {user.name}</h1>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                    <h1>Welcome, {user.name}</h1>
+                    {!user.verified && (
+                        <span className="badge" style={{ background: '#FFF3E0', color: '#E65100', padding: '8px 16px' }}>
+                            ⚠️ Account Pending Admin Approval
+                        </span>
+                    )}
+                </div>
+
+                {!user.verified && (
+                    <div style={{ background: '#FFF9C4', padding: '16px', borderRadius: '8px', marginBottom: '32px', fontSize: '0.9rem', border: '1px solid #FBC02D' }}>
+                        <strong>Action Required:</strong> Your email is verified, but your restaurant account is pending administrator review. You will be able to list food once approved.
+                    </div>
+                )}
 
                 <div className="stats-row">
                     <div className="stat-mini-card">
@@ -35,8 +48,15 @@ const DonorDashboard = () => {
                 <div style={{ background: '#fff', padding: '32px', borderRadius: '12px', boxShadow: 'var(--shadow-subtle)' }}>
                     <h3 style={{ marginBottom: '24px' }}>Quick Actions</h3>
                     <div style={{ display: 'flex', gap: '16px' }}>
-                        <a href="/donate-food" className="btn btn-primary">Add New Donation</a>
-                        <a href="/donor/requests" className="btn btn-outline">View Requests</a>
+                        <button
+                            onClick={() => navigate('/donate-food')}
+                            className="btn btn-primary"
+                            disabled={!user.verified}
+                            title={!user.verified ? "Approval Pending" : ""}
+                        >
+                            Add New Donation
+                        </button>
+                        <button onClick={() => navigate('/donor/requests')} className="btn btn-outline">View Requests</button>
                     </div>
                 </div>
             </div>

@@ -24,6 +24,13 @@ const DonateFood = () => {
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'DONOR') {
             navigate('/login');
+        } else if (!user.verified) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Approval Pending',
+                text: 'Your account is pending admin approval. You cannot list donations yet.',
+                confirmButtonColor: 'var(--primary-color)'
+            }).then(() => navigate('/donor/dashboard'));
         } else {
             setFormData(prev => ({ ...prev, donor: { id: user.id } }));
         }

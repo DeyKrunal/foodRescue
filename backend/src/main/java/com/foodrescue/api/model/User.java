@@ -68,6 +68,7 @@ public class User {
     // NGO Specific ID for volunteer affiliation
     private String ngoId;
 
+    private boolean emailVerified = false;
     private boolean verified = false;
     private String verificationCode;
     private LocalDateTime verificationExpires;

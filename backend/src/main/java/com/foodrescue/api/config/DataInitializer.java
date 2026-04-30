@@ -26,6 +26,7 @@ public class DataInitializer {
                 admin.setEmail("admin@foodrescue.com");
                 admin.setPassword("admin");
                 admin.setRole("ADMIN");
+                admin.setEmailVerified(true);
                 admin.setVerified(true);
                 admin.setMobileNumber("+91 99999 88888");
                 userRepository.save(admin);
@@ -39,6 +40,7 @@ public class DataInitializer {
                 donor.setEmail("donor@test.com");
                 donor.setPassword("password");
                 donor.setRole("DONOR");
+                donor.setEmailVerified(true);
                 donor.setVerified(true);
                 donor.setRestaurantName("The Green Bistro");
                 donor.setOwnerManagerName("John Baker");
@@ -63,6 +65,7 @@ public class DataInitializer {
                 ngo.setEmail("ngo@test.com");
                 ngo.setPassword("password");
                 ngo.setRole("NGO");
+                ngo.setEmailVerified(true);
                 ngo.setVerified(false);
                 ngo.setNgoName("Helping Hearts Foundation");
                 ngo.setAuthorizedPersonName("Sarah Help");

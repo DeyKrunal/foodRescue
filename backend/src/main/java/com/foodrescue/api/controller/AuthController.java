@@ -56,6 +56,7 @@ public class AuthController {
         String otp = String.format("%06d", new Random().nextInt(999999));
         user.setVerificationCode(otp);
         user.setVerificationExpires(LocalDateTime.now().plusMinutes(15));
+        user.setEmailVerified(false);
         user.setVerified(false);
 
         User savedUser = userRepository.save(user);
@@ -80,8 +81,8 @@ public class AuthController {
         }
 
         User user = userOpt.get();
-        if (user.isVerified()) {
-            return ResponseEntity.ok("User already verified");
+        if (user.isEmailVerified()) {
+            return ResponseEntity.ok("Email already verified");
         }
 
         if (user.getVerificationExpires().isBefore(LocalDateTime.now())) {
@@ -89,7 +90,7 @@ public class AuthController {
         }
 
         if (user.getVerificationCode().equals(code)) {
-            user.setVerified(true);
+            user.setEmailVerified(true);
             user.setVerificationCode(null);
             userRepository.save(user);
             return ResponseEntity.ok("Email verified successfully");

@@ -56,10 +56,10 @@ const AdminUserManagement = () => {
                             <tr>
                                 <th>Partner Name</th>
                                 <th>Contact Person</th>
-                                <th>Email</th>
+                                <th>Email Status</th>
                                 <th>Type</th>
                                 <th>Location</th>
-                                <th>Status</th>
+                                <th>Admin Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -73,14 +73,21 @@ const AdminUserManagement = () => {
                                         }
                                     </td>
                                     <td>{u.name}</td>
-                                    <td>{u.email}</td>
+                                    <td>
+                                        <div style={{ fontSize: '0.85rem' }}>{u.email}</div>
+                                        {u.emailVerified ? (
+                                            <span style={{ fontSize: '0.7rem', color: '#2e7d32', fontWeight: '600' }}>✓ Verified</span>
+                                        ) : (
+                                            <span style={{ fontSize: '0.7rem', color: '#d32f2f', fontWeight: '600' }}>✗ Unverified</span>
+                                        )}
+                                    </td>
                                     <td><span className="badge" style={{ background: '#f0f0f0' }}>{u.role}</span></td>
                                     <td>{u.city ? `${u.city}, ${u.state}` : 'N/A'}</td>
                                     <td>
                                         {u.verified ? (
-                                            <span className="badge badge-available">Verified</span>
+                                            <span className="badge badge-available">Approved</span>
                                         ) : (
-                                            <span className="badge" style={{ background: '#FFF3E0', color: '#E65100' }}>Pending</span>
+                                            <span className="badge" style={{ background: '#FFF3E0', color: '#E65100' }}>Pending Approval</span>
                                         )}
                                     </td>
                                     <td>
@@ -96,7 +103,9 @@ const AdminUserManagement = () => {
                                                 <button
                                                     onClick={() => handleVerify(u.id)}
                                                     className="btn btn-primary"
-                                                    style={{ padding: '6px 12px', fontSize: '0.8rem' }}
+                                                    disabled={!u.emailVerified}
+                                                    title={!u.emailVerified ? "Email must be verified first" : ""}
+                                                    style={{ padding: '6px 12px', fontSize: '0.8rem', opacity: u.emailVerified ? 1 : 0.5 }}
                                                 >
                                                     <ShieldCheck size={14} style={{ marginRight: '4px' }} /> Verify
                                                 </button>
