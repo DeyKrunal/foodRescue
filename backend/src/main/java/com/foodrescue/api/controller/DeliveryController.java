@@ -5,6 +5,8 @@ import com.foodrescue.api.model.Notification;
 import com.foodrescue.api.repository.DeliveryRepository;
 import com.foodrescue.api.repository.NotificationRepository;
 import com.foodrescue.api.service.EmailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -17,6 +19,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/deliveries")
 public class DeliveryController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DeliveryController.class);
 
     @Autowired
     private DeliveryRepository deliveryRepository;
@@ -78,7 +82,9 @@ public class DeliveryController {
                 try {
                     emailService.sendDeliveryUpdate(delivery.getRequest().getNgo().getEmail(), delivery.getRequest().getDonation().getFoodItem(), "PICKED UP");
                     emailService.sendDeliveryUpdate(delivery.getRequest().getDonation().getDonor().getEmail(), delivery.getRequest().getDonation().getFoodItem(), "PICKED UP");
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    logger.error("Failed to send pickup email notification", e);
+                }
             }
             return ResponseEntity.ok(deliveryRepository.save(delivery));
         }).orElse(ResponseEntity.notFound().build());
@@ -111,7 +117,9 @@ public class DeliveryController {
             try {
                 emailService.sendDeliveryUpdate(delivery.getRequest().getNgo().getEmail(), delivery.getRequest().getDonation().getFoodItem(), "DELIVERED");
                 emailService.sendDeliveryUpdate(delivery.getRequest().getDonation().getDonor().getEmail(), delivery.getRequest().getDonation().getFoodItem(), "DELIVERED");
-            } catch (Exception e) {}
+            } catch (Exception e) {
+                logger.error("Failed to send delivery completion email notification", e);
+            }
 
             return ResponseEntity.ok(saved);
         }).orElse(ResponseEntity.notFound().build());

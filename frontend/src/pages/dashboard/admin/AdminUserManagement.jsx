@@ -45,13 +45,13 @@ const AdminUserManagement = () => {
     return (
         <DashboardLayout role="ADMIN">
             <div className="animate-fade">
-                <h1 style={{ marginBottom: '32px' }}>Organization Management</h1>
+                <h1 style={{ marginBottom: '32px' }}>Partner Management</h1>
 
                 <div className="data-table-container">
                     <table className="data-table">
                         <thead>
                             <tr>
-                                <th>Organization</th>
+                                <th>Partner Name</th>
                                 <th>Contact Person</th>
                                 <th>Email</th>
                                 <th>Type</th>

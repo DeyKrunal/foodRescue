@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import api from "../services/api";
+import api, { getUnreadCount, getNotifications, markAllNotificationsAsRead } from "../services/api";
 import { Bell } from "lucide-react";
-import axios from "axios";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +28,7 @@ const Navbar = () => {
     if (user) {
       const fetchUnread = async () => {
         try {
-          const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}/unread-count`);
+          const res = await getUnreadCount(user.id);
           setUnreadCount(res.data);
         } catch (err) {
           console.error("Failed to fetch unread count", err);
@@ -43,12 +42,12 @@ const Navbar = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}`);
+      const res = await getNotifications(user.id);
       setNotifications(res.data);
       setShowNotifications(!showNotifications);
       // Mark all as read when opening
       if (!showNotifications) {
-          await axios.post(`http://localhost:8080/api/notifications/user/${user.id}/read-all`);
+          await markAllNotificationsAsRead(user.id);
           setUnreadCount(0);
       }
     } catch (err) {

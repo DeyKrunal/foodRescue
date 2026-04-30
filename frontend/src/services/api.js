@@ -18,6 +18,12 @@ export const getImpactStats = () => api.get('/public/impact-stats');
 export const getTestimonials = () => api.get('/public/testimonials');
 export const registerUser = (userData) => api.post('/auth/register', userData);
 export const loginUser = (credentials) => api.post('/auth/login', credentials);
+export const verifyEmail = (email, code) => api.post('/auth/verify', { email, code });
+
+// Notifications
+export const getNotifications = (userId) => api.get(`/notifications/user/${userId}`);
+export const getUnreadCount = (userId) => api.get(`/notifications/user/${userId}/unread-count`);
+export const markAllNotificationsAsRead = (userId) => api.post(`/notifications/user/${userId}/read-all`);
 
 // Donations
 export const getAvailableDonations = () => api.get('/donations/available');

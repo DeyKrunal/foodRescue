@@ -20,6 +20,7 @@ import NGOVolunteers from './pages/dashboard/ngo/NGOVolunteers';
 
 import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
 import AdminUserManagement from './pages/dashboard/admin/AdminUserManagement';
+import AdminDonations from './pages/dashboard/admin/AdminDonations';
 import VolunteerDashboard from './pages/dashboard/volunteer/VolunteerDashboard';
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
           {/* Admin Dashboard */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUserManagement />} />
-          <Route path="/admin/donations" element={<AdminDashboard />} /> {/* Placeholder */}
+          <Route path="/admin/donations" element={<AdminDonations />} />
           
           {/* Volunteer Dashboard */}
           <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
