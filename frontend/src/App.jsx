@@ -22,6 +22,7 @@ import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
 import AdminUserManagement from './pages/dashboard/admin/AdminUserManagement';
 import AdminDonations from './pages/dashboard/admin/AdminDonations';
 import VolunteerDashboard from './pages/dashboard/volunteer/VolunteerDashboard';
+import DeliveryDetails from './pages/dashboard/DeliveryDetails';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           
           {/* Volunteer Dashboard */}
           <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
+          <Route path="/delivery/:id" element={<DeliveryDetails />} />
         </Routes>
       </div>
     </Router>

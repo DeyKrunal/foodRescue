@@ -22,7 +22,11 @@ public class Delivery {
     @DBRef
     private User volunteer;
 
-    private String status = "PENDING"; // PENDING, ASSIGNED, PICKED_UP, IN_TRANSIT, DELIVERED
+    private String status = "PENDING"; // PENDING, ASSIGNED, OTP_VERIFIED, IN_TRANSIT, DELIVERED
+
+    private String pickupOtp;
+
+    private boolean ngoVerified = false;
 
     private double[] currentCoordinates; // [longitude, latitude] for Porter-like tracking
     

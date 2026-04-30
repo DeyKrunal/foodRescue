@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
+import { verifyPickupOtp, getDonorDeliveries } from '../../../services/api';
 import api from '../../../services/api';
 import Swal from 'sweetalert2';
 
 const DonorRequests = () => {
     const [requests, setRequests] = useState([]);
+    const [activeDeliveries, setActiveDeliveries] = useState([]);
     const [loading, setLoading] = useState(true);
     const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
@@ -13,6 +15,10 @@ const DonorRequests = () => {
         try {
             const res = await api.get(`/donor/${user.id}/requests`);
             setRequests(res.data);
+
+            // Fetch deliveries for OTP verification
+            const delRes = await getDonorDeliveries(user.id);
+            setActiveDeliveries(delRes.data);
         } catch (err) {
             console.error("Error fetching requests", err);
         } finally {
@@ -58,6 +64,41 @@ const DonorRequests = () => {
         }
     };
 
+    const handleVerifyOtp = async (deliveryId) => {
+        const { value: otp } = await Swal.fire({
+            title: 'Verify Volunteer OTP',
+            input: 'text',
+            inputLabel: 'Ask the volunteer for their 6-digit Pickup OTP',
+            inputPlaceholder: 'Enter OTP here',
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value || value.length !== 6) {
+                    return 'Please enter a valid 6-digit OTP'
+                }
+            }
+        });
+
+        if (otp) {
+            try {
+                await verifyPickupOtp(deliveryId, otp);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'OTP Verified!',
+                    text: 'Pickup authorized. The NGO will now confirm items.',
+                    confirmButtonColor: 'var(--primary-color)'
+                });
+                fetchRequests();
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid OTP',
+                    text: 'The code provided does not match. Please try again.',
+                    confirmButtonColor: '#d33'
+                });
+            }
+        }
+    };
+
     const handleCollect = async (id) => {
         try {
             await api.post(`/donor/requests/${id}/collect`);
@@ -90,6 +131,31 @@ const DonorRequests = () => {
         <DashboardLayout role="DONOR">
             <div className="animate-fade">
                 <h1 style={{ marginBottom: '32px' }}>NGO Requests</h1>
+
+                {/* Active Deliveries for OTP Verification */}
+                {activeDeliveries.some(d => d.status === 'ASSIGNED') && (
+                    <div style={{ marginBottom: '40px' }}>
+                        <h3>🚀 Pending Pickups (OTP Required)</h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px', marginTop: '16px' }}>
+                            {activeDeliveries.filter(d => d.status === 'ASSIGNED').map(delivery => (
+                                <div key={delivery.id} className="stat-mini-card" style={{ borderLeft: '4px solid #007bff' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                        <h4 style={{ margin: 0 }}>{delivery.request.donation.foodItem}</h4>
+                                        <Link to={`/delivery/${delivery.id}`} style={{ fontSize: '0.75rem', color: 'var(--primary-color)' }}>Track →</Link>
+                                    </div>
+                                    <p style={{ fontSize: '0.85rem', color: '#666' }}>Volunteer: <strong>{delivery.volunteer.name}</strong></p>
+                                    <button
+                                        className="btn btn-primary"
+                                        style={{ marginTop: '16px', width: '100%' }}
+                                        onClick={() => handleVerifyOtp(delivery.id)}
+                                    >
+                                        Verify Pickup OTP
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {Object.values(groupedRequests).length > 0 ? Object.values(groupedRequests).map(group => (
                     <div key={group.donation?.id} style={{ background: '#fff', padding: '24px', borderRadius: '12px', marginBottom: '24px', border: '1px solid var(--border-color)' }}>

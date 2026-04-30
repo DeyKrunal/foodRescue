@@ -37,8 +37,13 @@ export const getNgoRequests = (ngoId) => api.get(`/requests/ngo/${ngoId}`);
 
 // Volunteers & Deliveries
 export const getAvailableDeliveries = () => api.get('/deliveries/available');
+export const getDonorDeliveries = (donorId) => api.get(`/deliveries/donor/${donorId}`);
+export const getNgoDeliveries = (ngoId) => api.get(`/deliveries/ngo/${ngoId}`);
 export const getMyTasks = (volunteerId) => api.get(`/deliveries/my-tasks/${volunteerId}`);
+export const getDeliveryDetails = (id) => api.get(`/deliveries/${id}`);
 export const assignDelivery = (id, volunteerId) => api.post(`/deliveries/${id}/assign`, { volunteerId });
+export const verifyPickupOtp = (id, otp) => api.post(`/deliveries/${id}/verify-otp`, { otp });
+export const ngoVerifyDelivery = (id) => api.post(`/deliveries/${id}/ngo-verify`);
 export const trackDelivery = (id, coordinates) => api.post(`/deliveries/${id}/track`, coordinates);
 export const completeDelivery = (id) => api.post(`/deliveries/${id}/complete`);
 

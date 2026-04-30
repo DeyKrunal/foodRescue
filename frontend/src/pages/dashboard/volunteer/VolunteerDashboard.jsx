@@ -182,15 +182,28 @@ const VolunteerDashboard = () => {
                             {myTasks.filter(t => t.status !== 'DELIVERED').map(task => (
                                 <div key={task.id} className="stat-mini-card" style={{ borderLeft: '4px solid var(--accent-color)' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-                                        <span style={{ fontWeight: '600', color: 'var(--accent-color)' }}>{task.status}</span>
+                                        <span style={{ fontWeight: '600', color: 'var(--accent-color)' }}>{task.status.replace('_', ' ')}</span>
                                         <button className="btn-text" onClick={() => handleTrack(task.id)}>📍 Update GPS</button>
+                                    </div>
+                                    <div style={{ marginBottom: '12px' }}>
+                                        <Link to={`/delivery/${task.id}`} style={{ fontSize: '0.8rem', color: 'var(--primary-color)', textDecoration: 'none' }}>View Tracking Page →</Link>
                                     </div>
                                     <h4>{task.request?.donation.foodItem}</h4>
                                     <p style={{ fontSize: '0.85rem', marginTop: '8px' }}>Tracking: {task.currentCoordinates ? `${task.currentCoordinates[1].toFixed(4)}, ${task.currentCoordinates[0].toFixed(4)}` : 'Wait for update'}</p>
                                     
+                                    {task.status === 'ASSIGNED' && (
+                                        <div style={{ marginTop: '16px', background: '#f0f7ff', padding: '12px', borderRadius: '8px', border: '1px dashed #007bff' }}>
+                                            <p style={{ fontSize: '0.75rem', color: '#0056b3', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px' }}>Pickup OTP</p>
+                                            <p style={{ fontSize: '1.5rem', fontWeight: '800', letterSpacing: '4px', color: '#0056b3' }}>{task.pickupOtp}</p>
+                                            <p style={{ fontSize: '0.7rem', color: '#666', marginTop: '4px' }}>Provide this OTP to the Donor upon arrival.</p>
+                                        </div>
+                                    )}
+
                                     <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
                                         {task.status === 'ASSIGNED' ? (
-                                            <button className="btn btn-outline" style={{ flex: 1 }} onClick={() => handleTrack(task.id)}>Pick Up</button>
+                                            <div style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', padding: '8px' }}>Waiting for Donor to verify OTP...</div>
+                                        ) : task.status === 'OTP_VERIFIED' ? (
+                                            <div style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', padding: '8px' }}>Waiting for NGO to confirm food items...</div>
                                         ) : (
                                             <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => handleComplete(task.id)}>
                                                 <CheckCircle size={16} style={{ marginRight: '8px' }} /> Mark Delivered

@@ -1,21 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
-
-import { useNavigate } from 'react-router-dom';
+import { ngoVerifyDelivery, getNgoDeliveries } from '../../../services/api';
+import { useNavigate, Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const NGODashboard = () => {
     const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
+    const [activeDeliveries, setActiveDeliveries] = useState([]);
     const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
+    const fetchData = async () => {
+        try {
+            const delRes = await getNgoDeliveries(user.id);
+            setActiveDeliveries(delRes.data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     useEffect(() => {
+        fetchData();
         // Fetch specific NGO requests here
         setRequests([
             { id: 1, item: '50 Meals - Veg', status: 'PENDING', donor: 'Biryani Palace' },
             { id: 2, item: '10kg Rice', status: 'APPROVED', donor: 'Taj Hotel' }
         ]);
     }, []);
+
+    const handleNgoVerify = async (deliveryId) => {
+        try {
+            await ngoVerifyDelivery(deliveryId);
+            Swal.fire({
+                icon: 'success',
+                title: 'Pickup Confirmed!',
+                text: 'Food items verified. The volunteer is now in transit.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            fetchData();
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Verification Failed',
+                text: 'Could not verify pickup. Please try again.'
+            });
+        }
+    };
 
     return (
         <DashboardLayout role="NGO">
@@ -39,6 +71,36 @@ const NGODashboard = () => {
             {!user.verified && (
                 <div style={{ background: '#FFF9C4', padding: '16px', borderRadius: '8px', marginBottom: '32px', fontSize: '0.9rem', border: '1px solid #FBC02D' }}>
                     <strong>Notice:</strong> Your email is verified, but your NGO account is pending administrator review. You will be able to rescue food once approved.
+                </div>
+            )}
+
+            {/* Active Deliveries Needing NGO Confirmation */}
+            {activeDeliveries.some(d => d.status === 'OTP_VERIFIED') && (
+                <div style={{ marginBottom: '40px' }}>
+                    <h3 style={{ color: 'var(--accent-color)', marginBottom: '16px' }}>🚀 Action Required: Confirm Pickups</h3>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
+                        {activeDeliveries.filter(d => d.status === 'OTP_VERIFIED').map(delivery => (
+                            <div key={delivery.id} className="stat-mini-card" style={{ borderLeft: '4px solid var(--accent-color)', background: '#fff' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                    <div>
+                                        <h4 style={{ marginBottom: '4px' }}>{delivery.request.donation.foodItem}</h4>
+                                        <p style={{ fontSize: '0.8rem', color: '#666' }}>Volunteer <strong>{delivery.volunteer.name}</strong> is at the Donor location.</p>
+                                    </div>
+                                    <Link to={`/delivery/${delivery.id}`} style={{ fontSize: '0.75rem', color: 'var(--primary-color)' }}>Track →</Link>
+                                </div>
+                                <div style={{ marginTop: '20px', padding: '12px', background: '#fcf8f3', borderRadius: '8px', border: '1px solid #faebcc', fontSize: '0.85rem' }}>
+                                    <strong>Items to Verify:</strong> {delivery.request.donation.quantity} of {delivery.request.donation.foodItem}
+                                </div>
+                                <button
+                                    className="btn btn-primary"
+                                    style={{ marginTop: '16px', width: '100%', background: 'var(--accent-color)' }}
+                                    onClick={() => handleNgoVerify(delivery.id)}
+                                >
+                                    Confirm Items & Start Delivery
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
 

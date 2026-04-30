@@ -25,7 +25,7 @@ public class AdminController {
 
         long donors = allUsers.stream().filter(u -> "DONOR".equals(u.getRole())).count();
         long ngos = allUsers.stream().filter(u -> "NGO".equals(u.getRole())).count();
-        long pending = allUsers.stream().filter(u -> !u.isVerified() && !"ADMIN".equals(u.getRole())).count();
+        long pending = allUsers.stream().filter(u -> !u.isVerified() && u.isEmailVerified() && !"ADMIN".equals(u.getRole())).count();
 
         stats.put("totalUsers", allUsers.size());
         stats.put("totalDonors", donors);
