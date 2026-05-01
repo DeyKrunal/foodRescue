@@ -19,12 +19,14 @@ const DashboardLayout = ({ children, role }) => {
     if (!user) return null;
 
     return (
-        <div className="dashboard-layout">
+        <div className="dashboard-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             <Navbar />
-            <div className="dashboard-container">
+            <div className="dashboard-container" style={{ flex: 1, display: 'flex', background: '#f8fafc' }}>
                 <Sidebar role={user.role} />
-                <main className="dashboard-content">
-                    {children}
+                <main className="dashboard-content" style={{ flex: 1, padding: '40px', overflowY: 'auto' }}>
+                    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                        {children}
+                    </div>
                 </main>
             </div>
         </div>

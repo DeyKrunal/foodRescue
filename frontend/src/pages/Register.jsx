@@ -221,7 +221,19 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Mobile Number *</label>
-                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" minLength="10" maxLength="10" title="Please enter exactly 10 digits" inputMode="numeric" value={formData.mobileNumber} onChange={handleChange} placeholder="e.g. 9876543210" />
+                            <input
+                                type="tel"
+                                name="mobileNumber"
+                                required
+                                pattern="[0-9]{10}"
+                                minLength="10"
+                                maxLength="10"
+                                title="Please enter exactly 10 digits"
+                                inputMode="numeric"
+                                value={formData.mobileNumber}
+                                onChange={handleChange}
+                                placeholder="9876543210"
+                            />
                         </div>
                         <div className="form-group">
                             <label>Password *</label>
@@ -247,7 +259,19 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Pincode *</label>
-                            <input type="text" name="pincode" required pattern="[0-9]{6}" minLength="6" maxLength="6" title="Please enter a valid 6-digit Pincode" inputMode="numeric" value={formData.pincode} onChange={handleChange} />
+                            <input
+                                type="text"
+                                name="pincode"
+                                required
+                                pattern="[0-9]{6}"
+                                minLength="6"
+                                maxLength="6"
+                                title="Please enter a valid 6-digit Pincode"
+                                inputMode="numeric"
+                                value={formData.pincode}
+                                onChange={handleChange}
+                                placeholder="380001"
+                            />
                         </div>
 
                         {formData.role === 'NGO' ? (

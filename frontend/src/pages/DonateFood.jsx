@@ -88,6 +88,7 @@ const DonateFood = () => {
                                 maxLength="100"
                                 value={formData.foodItem}
                                 onChange={handleChange}
+                                className={formData.foodItem ? 'input-valid' : ''}
                             />
                         </div>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
