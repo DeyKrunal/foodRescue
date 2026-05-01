@@ -17,6 +17,8 @@ public class AdminController {
     private DonationRepository donationRepository;
     @Autowired
     private RequestRepository requestRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @GetMapping("/stats")
     public Map<String, Object> getGlobalStats() {
@@ -51,6 +53,14 @@ public class AdminController {
     public User verifyUser(@PathVariable @NonNull String id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         user.setVerified(true);
+
+        // Notify user about verification
+        Notification n = new Notification();
+        n.setRecipient(user);
+        n.setMessage("Your account has been verified by the Administrator. You now have full access to the platform.");
+        n.setType("SUCCESS");
+        notificationRepository.save(n);
+
         return userRepository.save(user);
     }
 }

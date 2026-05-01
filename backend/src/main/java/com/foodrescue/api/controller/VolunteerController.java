@@ -1,6 +1,8 @@
 package com.foodrescue.api.controller;
 
+import com.foodrescue.api.model.Notification;
 import com.foodrescue.api.model.User;
+import com.foodrescue.api.repository.NotificationRepository;
 import com.foodrescue.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ public class VolunteerController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @GetMapping("/ngo/{ngoId}")
     public List<User> getNgoVolunteers(@PathVariable String ngoId) {
@@ -28,6 +32,14 @@ public class VolunteerController {
                 .orElseThrow(() -> new RuntimeException("Volunteer not found"));
         volunteer.setVolunteerStatus("APPROVED");
         userRepository.save(volunteer);
+
+        // Notify volunteer
+        Notification n = new Notification();
+        n.setRecipient(volunteer);
+        n.setMessage("Your volunteer application has been approved. You can now start accepting delivery tasks.");
+        n.setType("SUCCESS");
+        notificationRepository.save(n);
+
         return ResponseEntity.ok("Volunteer approved successfully");
     }
 
@@ -37,6 +49,14 @@ public class VolunteerController {
                 .orElseThrow(() -> new RuntimeException("Volunteer not found"));
         volunteer.setVolunteerStatus("REJECTED");
         userRepository.save(volunteer);
+
+        // Notify volunteer
+        Notification n = new Notification();
+        n.setRecipient(volunteer);
+        n.setMessage("Your volunteer application was not approved at this time.");
+        n.setType("ALERT");
+        notificationRepository.save(n);
+
         return ResponseEntity.ok("Volunteer rejected successfully");
     }
 }

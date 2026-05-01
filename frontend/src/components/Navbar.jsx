@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import api, { getUnreadCount, getNotifications, markAllNotificationsAsRead } from "../services/api";
-import { Bell } from "lucide-react";
+import { Bell, Info, CheckCircle, AlertTriangle, MessageSquare, Clock } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -554,8 +554,11 @@ const Navbar = () => {
 
         .notif-item:hover { background: #f9fdf7; }
         .notif-item.unread { background: #f3f9ef; }
-        .notif-item p { margin: 0 0 6px; font-size: 13.5px; color: #2a4025; line-height: 1.4; }
-        .notif-item span { font-size: 11px; color: #7a9070; }
+        .notif-item-content { display: flex; gap: 12px; }
+        .notif-icon-wrapper { flex-shrink: 0; margin-top: 2px; }
+        .notif-text-wrapper { flex: 1; }
+        .notif-item p { margin: 0 0 4px; font-size: 13.5px; color: #2a4025; line-height: 1.4; }
+        .notif-time { font-size: 11px; color: #7a9070; display: flex; align-items: center; gap: 4px; }
         .no-notif { padding: 32px; text-align: center; color: #7a9070; font-size: 14px; }
 
         @media (max-width: 900px) {
@@ -634,12 +637,31 @@ const Navbar = () => {
                         <button onClick={() => setShowNotifications(false)}>✕</button>
                       </div>
                       <div className="notif-list">
-                        {notifications.length > 0 ? notifications.map(n => (
-                          <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>
-                            <p>{n.message}</p>
-                            <span>{new Date(n.createdAt).toLocaleString()}</span>
-                          </div>
-                        )) : <p className="no-notif">No notifications yet</p>}
+                        {notifications.length > 0 ? notifications.map(n => {
+                          const Icon = n.type === 'SUCCESS' ? CheckCircle :
+                                      n.type === 'ALERT' ? AlertTriangle :
+                                      n.type === 'REQUEST' ? MessageSquare : Info;
+                          const iconColor = n.type === 'SUCCESS' ? '#27ae60' :
+                                           n.type === 'ALERT' ? '#e74c3c' :
+                                           n.type === 'REQUEST' ? '#3498db' : '#7f8c8d';
+
+                          return (
+                            <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>
+                              <div className="notif-item-content">
+                                <div className="notif-icon-wrapper">
+                                  <Icon size={18} color={iconColor} />
+                                </div>
+                                <div className="notif-text-wrapper">
+                                  <p>{n.message}</p>
+                                  <span className="notif-time">
+                                    <Clock size={10} />
+                                    {new Date(n.createdAt).toLocaleString()}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        }) : <p className="no-notif">No notifications yet</p>}
                       </div>
                     </div>
                   )}

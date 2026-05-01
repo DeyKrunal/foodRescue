@@ -1,7 +1,9 @@
 package com.foodrescue.api.controller;
 
 import com.foodrescue.api.model.Donation;
+import com.foodrescue.api.model.Notification;
 import com.foodrescue.api.repository.DonationRepository;
+import com.foodrescue.api.repository.NotificationRepository;
 import com.foodrescue.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
@@ -21,6 +23,8 @@ public class DonationController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @GetMapping("/available")
     public List<Donation> getAvailableDonations() {
@@ -53,7 +57,20 @@ public class DonationController {
         
         donation.setStatus("AVAILABLE");
         donation.setCreatedAt(java.time.LocalDateTime.now());
-        return donationRepository.save(donation);
+        Donation saved = donationRepository.save(donation);
+
+        // Notify Admin of new donation
+        userRepository.findAll().stream()
+            .filter(u -> "ADMIN".equals(u.getRole()))
+            .forEach(admin -> {
+                Notification n = new Notification();
+                n.setRecipient(admin);
+                n.setMessage("New food donation listing: '" + saved.getFoodItem() + "' by " + (saved.getDonor() != null ? saved.getDonor().getName() : "Unknown"));
+                n.setType("INFO");
+                notificationRepository.save(n);
+            });
+
+        return saved;
     }
 
     @PostMapping("/{id}/view")
