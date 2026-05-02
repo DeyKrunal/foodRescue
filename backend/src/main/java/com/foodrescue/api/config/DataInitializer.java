@@ -90,6 +90,21 @@ public class DataInitializer {
                 userRepository.save(ngo);
             }
 
+            // Create Volunteer
+            if (!userRepository.findByEmail("volunteer@test.com").isPresent()) {
+                User vol = new User();
+                vol.setName("Jack Volunteer");
+                vol.setEmail("volunteer@test.com");
+                vol.setPassword("password");
+                vol.setRole("VOLUNTEER");
+                vol.setEmailVerified(true);
+                vol.setVerified(true);
+                vol.setVolunteerStatus("APPROVED");
+                vol.setAffiliatedNgoId(ngo.getNgoId() != null ? ngo.getNgoId() : ngo.getId());
+                vol.setMobileNumber("+91 99887 76655");
+                userRepository.save(vol);
+            }
+
             if (donationRepository.count() == 0) {
                 // Create some donations
                 Donation d1 = new Donation();
