@@ -3,6 +3,7 @@ package com.foodrescue.api.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,16 @@ public class EmailService {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
+    @Value("${spring.mail.username:your-email@gmail.com}")
+    private String fromEmail;
+
     @Autowired
     private JavaMailSender mailSender;
 
     public void sendVerificationEmail(String to, String code) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
             message.setTo(to);
             message.setSubject("FoodRescue - Email Verification");
             message.setText("Your verification code is: " + code + "\n\nThis code will expire in 15 minutes.");
@@ -32,6 +37,7 @@ public class EmailService {
     public void sendNotification(String to, String subject, String body) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
             message.setTo(to);
             message.setSubject(subject);
             message.setText(body);
