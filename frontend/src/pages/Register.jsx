@@ -9,6 +9,8 @@ const Register = () => {
     const initialRole = searchParams.get('role') || 'DONOR';
 
     const [formData, setFormData] = useState({
+        startTime: '',
+        endTime: '',
         name: '',
         email: '',
         password: '',
@@ -164,7 +166,12 @@ const Register = () => {
 
         <div className="registration-container">
             <div className="registration-sidebar" style={{
-                backgroundColor: formData.role === 'NGO' ? '#274B59' : '#2D5A27'
+                backgroundColor: 
+                formData.role === 'NGO'
+                ? '#274B59'      // Blue for NGO
+                : formData.role === 'DONOR'
+                ? '#6f591b'      // Yellowish for Donor
+                : '#2E7D32'      // Green for Volunteer
             }}>
                 {renderSidebarContent()}
             </div>
@@ -289,9 +296,28 @@ const Register = () => {
                                     <input type="text" name="storageCapacity" value={formData.storageCapacity} onChange={handleChange} placeholder="e.g. 100kg" />
                                 </div>
                                 <div className="form-group full-width">
-                                    <label>Availability Timing</label>
-                                    <input type="text" name="availabilityTiming" value={formData.availabilityTiming} onChange={handleChange} placeholder="e.g. 9 AM - 9 PM" />
-                                </div>
+    <label>Availability Timing</label>
+
+    <div style={{ display: "flex", gap: "10px" }}>
+        <input
+            type="time"
+            value={formData.availabilityStart || ""}
+            onChange={(e) =>
+                setFormData({ ...formData, availabilityStart: e.target.value })
+            }
+        />
+
+        <span style={{ alignSelf: "center" }}>to</span>
+
+        <input
+            type="time"
+            value={formData.availabilityEnd || ""}
+            onChange={(e) =>
+                setFormData({ ...formData, availabilityEnd: e.target.value })
+            }
+        />
+    </div>
+</div>
                             </>
                         ) : formData.role === 'DONOR' ? (
                             <>
@@ -328,9 +354,28 @@ const Register = () => {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Pickup Time Window</label>
-                                    <input type="text" name="pickupTimeWindow" value={formData.pickupTimeWindow} onChange={handleChange} placeholder="e.g. 10 PM - 11 PM" />
-                                </div>
+    <label>Pickup Time Window</label>
+
+    <div style={{ display: "flex", gap: "10px" }}>
+        <input
+            type="time"
+            value={formData.startTime || ""}
+            onChange={(e) =>
+                setFormData({ ...formData, startTime: e.target.value })
+            }
+        />
+
+        <span style={{ alignSelf: "center" }}>to</span>
+
+        <input
+            type="time"
+            value={formData.endTime || ""}
+            onChange={(e) =>
+                setFormData({ ...formData, endTime: e.target.value })
+            }
+        />
+    </div>
+</div>
                                 <div className="form-group">
                                     <label>Emergency Contact Number</label>
                                     <input type="tel" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} />

@@ -21,7 +21,7 @@ const DashboardLayout = ({ children, role }) => {
     return (
         <div className="dashboard-layout">
             <Navbar />
-            <div className="dashboard-container">
+            <div className="dashboard-container with-navbar" style={{ marginTop: "68px" }}>
                 <Sidebar role={user.role} />
                 <main className="dashboard-content">
                     {children}
