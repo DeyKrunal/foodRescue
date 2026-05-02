@@ -14,6 +14,10 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
         setError('');
+
+        // Clear stale session
+        localStorage.removeItem('user');
+
         try {
             const res = await loginUser(formData);
             const user = res.data;
