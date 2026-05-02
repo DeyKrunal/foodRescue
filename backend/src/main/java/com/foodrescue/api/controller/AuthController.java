@@ -103,12 +103,18 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody Map<String, String> credentials, HttpServletRequest request) {
         String email = credentials.get("email");
         String password = credentials.get("password");
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> userOpt = userRepository.findByEmail(email);
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
+        if (userOpt.isPresent() && userOpt.get().getPassword().equals(password)) {
+            User user = userOpt.get();
+            // Ensure login works for verified users (except Admin who is auto-verified)
+            if (!user.isEmailVerified()) {
+                 return ResponseEntity.status(403).body("Please verify your email first");
+            }
+
             // Set session attribute
-            request.getSession().setAttribute("user", user.get());
-            return ResponseEntity.ok(user.get());
+            request.getSession().setAttribute("user", user);
+            return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(401).body("Invalid credentials");
     }

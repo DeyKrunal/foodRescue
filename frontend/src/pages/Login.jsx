@@ -25,6 +25,7 @@ const Login = () => {
             if (user.role === 'ADMIN') navigate('/admin/dashboard');
             else if (user.role === 'DONOR') navigate('/donor/dashboard');
             else if (user.role === 'NGO') navigate('/ngo/dashboard');
+            else if (user.role === 'VOLUNTEER') navigate('/volunteer/dashboard');
             else navigate('/');
         } catch (err) {
             setError('Invalid email or password');

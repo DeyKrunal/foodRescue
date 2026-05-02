@@ -21,8 +21,12 @@ public class VolunteerController {
 
     @GetMapping("/ngo/{ngoId}")
     public List<User> getNgoVolunteers(@PathVariable String ngoId) {
+        User ngo = userRepository.findById(ngoId).orElse(null);
+        String filterId = (ngo != null && ngo.getNgoId() != null) ? ngo.getNgoId() : ngoId;
+
         return userRepository.findAll().stream()
-                .filter(u -> "VOLUNTEER".equals(u.getRole()) && ngoId.equals(u.getAffiliatedNgoId()))
+                .filter(u -> "VOLUNTEER".equals(u.getRole()) &&
+                        (filterId.equals(u.getAffiliatedNgoId()) || ngoId.equals(u.getAffiliatedNgoId())))
                 .collect(Collectors.toList());
     }
 
