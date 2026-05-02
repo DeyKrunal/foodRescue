@@ -12,18 +12,27 @@ const Sidebar = ({ role }) => {
     ];
 
     const ngoLinks = [
-        { name: 'Browse Food', path: '/rescue-food' },
-        { name: 'My Requests', path: '/ngo/dashboard' },
-        { name: 'History', path: '/ngo/history' },
+        { name: 'Dashboard', path: '/ngo/dashboard' },
+        { name: 'Rescue Food', path: '/rescue-food' },
+        { name: 'Request History', path: '/ngo/history' },
+        { name: 'Manage Volunteers', path: '/dashboard/ngo/volunteers' },
+    ];
+
+    const volunteerLinks = [
+        { name: 'Overview', path: '/volunteer/dashboard' },
+        { name: 'Active Deliveries', path: '/volunteer/dashboard' },
     ];
 
     const adminLinks = [
-        { name: 'System Overview', path: '/admin/dashboard' },
-        { name: 'Manage Users', path: '/admin/users' },
-        { name: 'All Donations', path: '/admin/donations' },
+        { name: 'System Stats', path: '/admin/dashboard' },
+        { name: 'Partner Verification', path: '/admin/users' },
+        { name: 'Donation Audit', path: '/admin/donations' },
     ];
 
-    const links = role === 'DONOR' ? donorLinks : role === 'NGO' ? ngoLinks : adminLinks;
+    const links = role === 'DONOR' ? donorLinks :
+                  role === 'NGO' ? ngoLinks :
+                  role === 'VOLUNTEER' ? volunteerLinks :
+                  adminLinks;
 
     return (
         <aside className="sidebar">

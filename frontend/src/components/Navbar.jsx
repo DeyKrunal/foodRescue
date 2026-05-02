@@ -74,12 +74,23 @@ const Navbar = () => {
       ? "/donor/dashboard"
       : user.role === "NGO"
         ? "/ngo/dashboard"
-        : "/admin/dashboard"
+        : user.role === "VOLUNTEER"
+          ? "/volunteer/dashboard"
+          : "/admin/dashboard"
     : "/";
 
-  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : "⚙️ Admin";
-  const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : "#7a3d9e";
-  const roleBg = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
+  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" :
+                    user?.role === "NGO" ? "🤝 NGO" :
+                    user?.role === "VOLUNTEER" ? "🛵 Volunteer" :
+                    "⚙️ Admin";
+  const roleColor = user?.role === "DONOR" ? "#1a4d6e" :
+                    user?.role === "NGO" ? "#2d6a4f" :
+                    user?.role === "VOLUNTEER" ? "#e67e22" :
+                    "#7a3d9e";
+  const roleBg = user?.role === "DONOR" ? "#e8f4fb" :
+                 user?.role === "NGO" ? "#e8f5ee" :
+                 user?.role === "VOLUNTEER" ? "#fdf2e9" :
+                 "#f3e8fb";
 
   return (
     <>
@@ -596,6 +607,13 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+        {user?.role === "VOLUNTEER" && (
+          <li>
+            <Link to="/volunteer/dashboard" className={isActive("/volunteer/dashboard") ? "active-link" : ""}>
+              Missions
+            </Link>
+          </li>
+        )}
             {user?.role === "DONOR" && (
               <li>
                 <Link to="/donate-food" className={isActive("/donate-food") ? "active-link" : ""}>
@@ -753,6 +771,12 @@ const Navbar = () => {
           <Link to="/rescue-food" className={`drawer-link ${isActive("/rescue-food") ? "active-link" : ""}`}>
             <span className="drawer-link-icon">🤝</span>
             Rescue Food
+          </Link>
+        )}
+        {user?.role === "VOLUNTEER" && (
+          <Link to="/volunteer/dashboard" className={`drawer-link ${isActive("/volunteer/dashboard") ? "active-link" : ""}`}>
+            <span className="drawer-link-icon">🛵</span>
+            Delivery Missions
           </Link>
         )}
 
