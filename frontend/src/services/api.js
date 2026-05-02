@@ -55,4 +55,7 @@ export const rejectVolunteer = (id) => api.post(`/volunteers/${id}/reject`);
 export const getAllUsers = () => api.get('/admin/users');
 export const verifyPartner = (id) => api.post(`/admin/users/${id}/verify`);
 
+// User / Profile
+export const updateUserProfile = (id, userData) => api.put(`/users/${id}`, userData);
+
 export default api;
