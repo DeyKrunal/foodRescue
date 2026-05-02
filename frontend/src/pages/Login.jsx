@@ -28,7 +28,7 @@ const Login = () => {
             else if (user.role === 'VOLUNTEER') navigate('/volunteer/dashboard');
             else navigate('/');
         } catch (err) {
-            setError('Invalid email or password');
+            setError(err.response?.data || 'Invalid email or password');
         } finally {
             setLoading(false);
         }

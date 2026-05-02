@@ -16,19 +16,22 @@ public class DataInitializer {
             DonationRepository donationRepository,
             RequestRepository requestRepository) {
         return args -> {
-            if (userRepository.count() > 0)
-                return;
-
             // Create Admin
             if (!userRepository.findByEmail("admin@foodrescue.com").isPresent()) {
                 User admin = new User();
                 admin.setName("System Administrator");
                 admin.setEmail("admin@foodrescue.com");
-                admin.setPassword("admin");
+                admin.setPassword("admin123");
                 admin.setRole("ADMIN");
                 admin.setEmailVerified(true);
                 admin.setVerified(true);
                 admin.setMobileNumber("+91 99999 88888");
+                userRepository.save(admin);
+            } else {
+                User admin = userRepository.findByEmail("admin@foodrescue.com").get();
+                admin.setPassword("admin123");
+                admin.setEmailVerified(true);
+                admin.setVerified(true);
                 userRepository.save(admin);
             }
 
@@ -55,6 +58,9 @@ public class DataInitializer {
                 donor = userRepository.save(donor);
             } else {
                 donor = userRepository.findByEmail("donor@test.com").get();
+                donor.setEmailVerified(true);
+                donor.setVerified(true);
+                userRepository.save(donor);
             }
 
             // Create NGO
@@ -80,6 +86,8 @@ public class DataInitializer {
                 ngo = userRepository.save(ngo);
             } else {
                 ngo = userRepository.findByEmail("ngo@test.com").get();
+                ngo.setEmailVerified(true);
+                userRepository.save(ngo);
             }
 
             if (donationRepository.count() == 0) {

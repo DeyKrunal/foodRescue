@@ -47,8 +47,8 @@ const Navbar = () => {
       setShowNotifications(!showNotifications);
       // Mark all as read when opening
       if (!showNotifications) {
-          await markAllNotificationsAsRead(user.id);
-          setUnreadCount(0);
+        await markAllNotificationsAsRead(user.id);
+        setUnreadCount(0);
       }
     } catch (err) {
       console.error("Failed to fetch notifications", err);
@@ -74,12 +74,14 @@ const Navbar = () => {
       ? "/donor/dashboard"
       : user.role === "NGO"
         ? "/ngo/dashboard"
-        : "/admin/dashboard"
+        : user.role === "VOLUNTEER"
+          ? "/volunteer/dashboard"
+          : "/admin/dashboard"
     : "/";
 
-  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : "⚙️ Admin";
-  const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : "#7a3d9e";
-  const roleBg = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
+  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : user?.role === "VOLUNTEER" ? "💁‍♂️ VOLUNTEER" : "⚙️ Admin";
+  const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : user?.role === "VOLUNTEER" ? "#623f2d" : "#7a3d9e";
+  const roleBg = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : user?.role === "VOLUNTEER" ? "#f5ede9" : "#f3e8fb";
 
   return (
     <>
@@ -622,7 +624,7 @@ const Navbar = () => {
                 >
                   {roleLabel}
                 </span>
-                
+
                 {/* Notification Bell */}
                 <div className="nav-notification-container">
                   <button className="nav-bell-btn" onClick={fetchNotifications}>
@@ -639,11 +641,11 @@ const Navbar = () => {
                       <div className="notif-list">
                         {notifications.length > 0 ? notifications.map(n => {
                           const Icon = n.type === 'SUCCESS' ? CheckCircle :
-                                      n.type === 'ALERT' ? AlertTriangle :
-                                      n.type === 'REQUEST' ? MessageSquare : Info;
+                            n.type === 'ALERT' ? AlertTriangle :
+                              n.type === 'REQUEST' ? MessageSquare : Info;
                           const iconColor = n.type === 'SUCCESS' ? '#27ae60' :
-                                           n.type === 'ALERT' ? '#e74c3c' :
-                                           n.type === 'REQUEST' ? '#3498db' : '#7f8c8d';
+                            n.type === 'ALERT' ? '#e74c3c' :
+                              n.type === 'REQUEST' ? '#3498db' : '#7f8c8d';
 
                           return (
                             <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>

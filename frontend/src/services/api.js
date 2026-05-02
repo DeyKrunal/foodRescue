@@ -19,6 +19,8 @@ export const getTestimonials = () => api.get('/public/testimonials');
 export const registerUser = (userData) => api.post('/auth/register', userData);
 export const loginUser = (credentials) => api.post('/auth/login', credentials);
 export const verifyEmail = (email, code) => api.post('/auth/verify', { email, code });
+export const getCurrentUser = () => api.get('/auth/me');
+export const logoutUser = () => api.post('/auth/logout');
 
 // Notifications
 export const getNotifications = (userId) => api.get(`/notifications/user/${userId}`);

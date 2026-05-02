@@ -113,27 +113,25 @@ const DonateFood = () => {
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                            <div className="form-group">
-                                <label>Cooking Time *</label>
-                                <input
-                                    name="cookingTime"
-                                    type="datetime-local"
-                                    required
-                                    value={formData.cookingTime}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Expiry Time *</label>
-                                <input
-                                    name="expiryTime"
-                                    type="datetime-local"
-                                    required
-                                    value={formData.expiryTime}
-                                    onChange={handleChange}
-                                />
-                            </div>
+                        <div className="form-group">
+                            <label>Cooking Time *</label>
+                            <input
+                                name="cookingTime"
+                                type="datetime-local"
+                                required
+                                value={formData.cookingTime}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Expiry Time *</label>
+                            <input
+                                name="expiryTime"
+                                type="datetime-local"
+                                required
+                                value={formData.expiryTime}
+                                onChange={handleChange}
+                            />
                         </div>
 
                         <div className="form-group">
