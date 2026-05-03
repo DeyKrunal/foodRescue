@@ -21,6 +21,8 @@ export const loginUser = (credentials) => api.post('/auth/login', credentials);
 export const verifyEmail = (email, code) => api.post('/auth/verify', { email, code });
 export const resendCode = (email) => api.post('/auth/resend-code', { email });
 export const checkSession = () => api.get('/auth/me');
+export const getCurrentUser = () => api.get('/auth/me');
+export const logoutUser = () => api.post('/auth/logout');
 
 // Notifications
 export const getNotifications = (userId) => api.get(`/notifications/user/${userId}`);

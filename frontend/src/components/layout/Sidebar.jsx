@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
     LayoutDashboard,
     PlusCircle,
@@ -10,12 +10,26 @@ import {
     List,
     UserCircle,
     ShieldCheck,
-    FileText
+    FileText,
+    LogOut
 } from 'lucide-react';
+import { logoutUser } from '../../services/api';
 
 const Sidebar = ({ role }) => {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logoutUser();
+            sessionStorage.removeItem('user');
+            navigate('/login');
+        } catch (error) {
+            console.error('Logout failed:', error);
+            sessionStorage.removeItem('user');
+            navigate('/login');
+        }
+    };
 
     const donorLinks = [
         { name: 'Overview', path: '/donor/dashboard', icon: LayoutDashboard },
