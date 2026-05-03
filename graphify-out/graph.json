@@ -1,0 +1,4584 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "FoodRescueApplication.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_foodrescueapplication_java",
+      "community": 13,
+      "norm_label": "foodrescueapplication.java"
+    },
+    {
+      "label": "FoodRescueApplication",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java",
+      "source_location": "L7",
+      "id": "api_foodrescueapplication_foodrescueapplication",
+      "community": 13,
+      "norm_label": "foodrescueapplication"
+    },
+    {
+      "label": ".main()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java",
+      "source_location": "L9",
+      "id": "api_foodrescueapplication_foodrescueapplication_main",
+      "community": 13,
+      "norm_label": ".main()"
+    },
+    {
+      "label": "DataInitializer.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_config_datainitializer_java",
+      "community": 4,
+      "norm_label": "datainitializer.java"
+    },
+    {
+      "label": "DataInitializer",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L11",
+      "id": "config_datainitializer_datainitializer",
+      "community": 4,
+      "norm_label": "datainitializer"
+    },
+    {
+      "label": ".initDatabase()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L14",
+      "id": "config_datainitializer_datainitializer_initdatabase",
+      "community": 4,
+      "norm_label": ".initdatabase()"
+    },
+    {
+      "label": "WebConfig.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_config_webconfig_java",
+      "community": 11,
+      "norm_label": "webconfig.java"
+    },
+    {
+      "label": "WebConfig",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L7",
+      "id": "config_webconfig_webconfig",
+      "community": 11,
+      "norm_label": "webconfig"
+    },
+    {
+      "label": "WebMvcConfigurer",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "webmvcconfigurer",
+      "community": 11,
+      "norm_label": "webmvcconfigurer"
+    },
+    {
+      "label": ".addCorsMappings()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L10",
+      "id": "config_webconfig_webconfig_addcorsmappings",
+      "community": 11,
+      "norm_label": ".addcorsmappings()"
+    },
+    {
+      "label": "AdminController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_admincontroller_java",
+      "community": 8,
+      "norm_label": "admincontroller.java"
+    },
+    {
+      "label": "AdminController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L10",
+      "id": "controller_admincontroller_admincontroller",
+      "community": 8,
+      "norm_label": "admincontroller"
+    },
+    {
+      "label": ".getGlobalStats()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L23",
+      "id": "controller_admincontroller_admincontroller_getglobalstats",
+      "community": 8,
+      "norm_label": ".getglobalstats()"
+    },
+    {
+      "label": ".getAllUsers()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L42",
+      "id": "controller_admincontroller_admincontroller_getallusers",
+      "community": 8,
+      "norm_label": ".getallusers()"
+    },
+    {
+      "label": ".getAllDonations()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L47",
+      "id": "controller_admincontroller_admincontroller_getalldonations",
+      "community": 8,
+      "norm_label": ".getalldonations()"
+    },
+    {
+      "label": ".verifyUser()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L52",
+      "id": "controller_admincontroller_admincontroller_verifyuser",
+      "community": 8,
+      "norm_label": ".verifyuser()"
+    },
+    {
+      "label": "AuthController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_authcontroller_java",
+      "community": 4,
+      "norm_label": "authcontroller.java"
+    },
+    {
+      "label": "AuthController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L24",
+      "id": "controller_authcontroller_authcontroller",
+      "community": 4,
+      "norm_label": "authcontroller"
+    },
+    {
+      "label": ".generateNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L34",
+      "id": "controller_authcontroller_authcontroller_generatengoid",
+      "community": 4,
+      "norm_label": ".generatengoid()"
+    },
+    {
+      "label": ".register()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L44",
+      "id": "controller_authcontroller_authcontroller_register",
+      "community": 4,
+      "norm_label": ".register()"
+    },
+    {
+      "label": ".verify()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L77",
+      "id": "controller_authcontroller_authcontroller_verify",
+      "community": 4,
+      "norm_label": ".verify()"
+    },
+    {
+      "label": ".resendCode()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L106",
+      "id": "controller_authcontroller_authcontroller_resendcode",
+      "community": 4,
+      "norm_label": ".resendcode()"
+    },
+    {
+      "label": ".login()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L134",
+      "id": "controller_authcontroller_authcontroller_login",
+      "community": 4,
+      "norm_label": ".login()"
+    },
+    {
+      "label": ".logout()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L154",
+      "id": "controller_authcontroller_authcontroller_logout",
+      "community": 4,
+      "norm_label": ".logout()"
+    },
+    {
+      "label": ".getCurrentUser()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L160",
+      "id": "controller_authcontroller_authcontroller_getcurrentuser",
+      "community": 4,
+      "norm_label": ".getcurrentuser()"
+    },
+    {
+      "label": "DeliveryController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_deliverycontroller_java",
+      "community": 1,
+      "norm_label": "deliverycontroller.java"
+    },
+    {
+      "label": "DeliveryController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L23",
+      "id": "controller_deliverycontroller_deliverycontroller",
+      "community": 1,
+      "norm_label": "deliverycontroller"
+    },
+    {
+      "label": ".getAvailableDeliveries()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L38",
+      "id": "controller_deliverycontroller_deliverycontroller_getavailabledeliveries",
+      "community": 1,
+      "norm_label": ".getavailabledeliveries()"
+    },
+    {
+      "label": ".getDonorDeliveries()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L61",
+      "id": "controller_deliverycontroller_deliverycontroller_getdonordeliveries",
+      "community": 1,
+      "norm_label": ".getdonordeliveries()"
+    },
+    {
+      "label": ".getNgoDeliveries()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L66",
+      "id": "controller_deliverycontroller_deliverycontroller_getngodeliveries",
+      "community": 1,
+      "norm_label": ".getngodeliveries()"
+    },
+    {
+      "label": ".getMyTasks()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L71",
+      "id": "controller_deliverycontroller_deliverycontroller_getmytasks",
+      "community": 1,
+      "norm_label": ".getmytasks()"
+    },
+    {
+      "label": ".getDelivery()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L76",
+      "id": "controller_deliverycontroller_deliverycontroller_getdelivery",
+      "community": 1,
+      "norm_label": ".getdelivery()"
+    },
+    {
+      "label": ".assignDelivery()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L86",
+      "id": "controller_deliverycontroller_deliverycontroller_assigndelivery",
+      "community": 1,
+      "norm_label": ".assigndelivery()"
+    },
+    {
+      "label": ".verifyOtp()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L121",
+      "id": "controller_deliverycontroller_deliverycontroller_verifyotp",
+      "community": 1,
+      "norm_label": ".verifyotp()"
+    },
+    {
+      "label": ".ngoVerify()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L148",
+      "id": "controller_deliverycontroller_deliverycontroller_ngoverify",
+      "community": 1,
+      "norm_label": ".ngoverify()"
+    },
+    {
+      "label": ".updateLocation()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L199",
+      "id": "controller_deliverycontroller_deliverycontroller_updatelocation",
+      "community": 1,
+      "norm_label": ".updatelocation()"
+    },
+    {
+      "label": ".completeDelivery()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L211",
+      "id": "controller_deliverycontroller_deliverycontroller_completedelivery",
+      "community": 1,
+      "norm_label": ".completedelivery()"
+    },
+    {
+      "label": "DonationController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_donationcontroller_java",
+      "community": 5,
+      "norm_label": "donationcontroller.java"
+    },
+    {
+      "label": "DonationController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L16",
+      "id": "controller_donationcontroller_donationcontroller",
+      "community": 5,
+      "norm_label": "donationcontroller"
+    },
+    {
+      "label": ".getAvailableDonations()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L29",
+      "id": "controller_donationcontroller_donationcontroller_getavailabledonations",
+      "community": 5,
+      "norm_label": ".getavailabledonations()"
+    },
+    {
+      "label": ".getNearDonations()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L34",
+      "id": "controller_donationcontroller_donationcontroller_getneardonations",
+      "community": 5,
+      "norm_label": ".getneardonations()"
+    },
+    {
+      "label": ".createDonation()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L45",
+      "id": "controller_donationcontroller_donationcontroller_createdonation",
+      "community": 5,
+      "norm_label": ".createdonation()"
+    },
+    {
+      "label": ".viewDonation()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L76",
+      "id": "controller_donationcontroller_donationcontroller_viewdonation",
+      "community": 5,
+      "norm_label": ".viewdonation()"
+    },
+    {
+      "label": "DonorController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_donorcontroller_java",
+      "community": 2,
+      "norm_label": "donorcontroller.java"
+    },
+    {
+      "label": "DonorController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L11",
+      "id": "controller_donorcontroller_donorcontroller",
+      "community": 2,
+      "norm_label": "donorcontroller"
+    },
+    {
+      "label": ".getMyDonations()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L26",
+      "id": "controller_donorcontroller_donorcontroller_getmydonations",
+      "community": 2,
+      "norm_label": ".getmydonations()"
+    },
+    {
+      "label": ".getRequestsForMe()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L31",
+      "id": "controller_donorcontroller_donorcontroller_getrequestsforme",
+      "community": 2,
+      "norm_label": ".getrequestsforme()"
+    },
+    {
+      "label": ".respondToRequest()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L41",
+      "id": "controller_donorcontroller_donorcontroller_respondtorequest",
+      "community": 2,
+      "norm_label": ".respondtorequest()"
+    },
+    {
+      "label": ".collectRequest()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L124",
+      "id": "controller_donorcontroller_donorcontroller_collectrequest",
+      "community": 2,
+      "norm_label": ".collectrequest()"
+    },
+    {
+      "label": "NotificationController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_notificationcontroller_java",
+      "community": 6,
+      "norm_label": "notificationcontroller.java"
+    },
+    {
+      "label": "NotificationController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L11",
+      "id": "controller_notificationcontroller_notificationcontroller",
+      "community": 6,
+      "norm_label": "notificationcontroller"
+    },
+    {
+      "label": ".getUserNotifications()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L18",
+      "id": "controller_notificationcontroller_notificationcontroller_getusernotifications",
+      "community": 6,
+      "norm_label": ".getusernotifications()"
+    },
+    {
+      "label": ".getUnreadCount()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L23",
+      "id": "controller_notificationcontroller_notificationcontroller_getunreadcount",
+      "community": 6,
+      "norm_label": ".getunreadcount()"
+    },
+    {
+      "label": ".markAsRead()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L28",
+      "id": "controller_notificationcontroller_notificationcontroller_markasread",
+      "community": 6,
+      "norm_label": ".markasread()"
+    },
+    {
+      "label": ".markAllAsRead()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L37",
+      "id": "controller_notificationcontroller_notificationcontroller_markallasread",
+      "community": 6,
+      "norm_label": ".markallasread()"
+    },
+    {
+      "label": "PublicController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_publiccontroller_java",
+      "community": 12,
+      "norm_label": "publiccontroller.java"
+    },
+    {
+      "label": "PublicController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L13",
+      "id": "controller_publiccontroller_publiccontroller",
+      "community": 12,
+      "norm_label": "publiccontroller"
+    },
+    {
+      "label": ".getImpactStats()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L23",
+      "id": "controller_publiccontroller_publiccontroller_getimpactstats",
+      "community": 12,
+      "norm_label": ".getimpactstats()"
+    },
+    {
+      "label": ".getTestimonials()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L37",
+      "id": "controller_publiccontroller_publiccontroller_gettestimonials",
+      "community": 12,
+      "norm_label": ".gettestimonials()"
+    },
+    {
+      "label": "RequestController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_requestcontroller_java",
+      "community": 2,
+      "norm_label": "requestcontroller.java"
+    },
+    {
+      "label": "RequestController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L14",
+      "id": "controller_requestcontroller_requestcontroller",
+      "community": 2,
+      "norm_label": "requestcontroller"
+    },
+    {
+      "label": ".createRequest()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L34",
+      "id": "controller_requestcontroller_requestcontroller_createrequest",
+      "community": 2,
+      "norm_label": ".createrequest()"
+    },
+    {
+      "label": ".respondToRequest()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L90",
+      "id": "controller_requestcontroller_requestcontroller_respondtorequest",
+      "community": 2,
+      "norm_label": ".respondtorequest()"
+    },
+    {
+      "label": ".getNgoRequests()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L175",
+      "id": "controller_requestcontroller_requestcontroller_getngorequests",
+      "community": 2,
+      "norm_label": ".getngorequests()"
+    },
+    {
+      "label": "UserController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_usercontroller_java",
+      "community": 14,
+      "norm_label": "usercontroller.java"
+    },
+    {
+      "label": "UserController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java",
+      "source_location": "L9",
+      "id": "controller_usercontroller_usercontroller",
+      "community": 14,
+      "norm_label": "usercontroller"
+    },
+    {
+      "label": ".updateUser()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java",
+      "source_location": "L16",
+      "id": "controller_usercontroller_usercontroller_updateuser",
+      "community": 14,
+      "norm_label": ".updateuser()"
+    },
+    {
+      "label": "VolunteerController.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_controller_volunteercontroller_java",
+      "community": 10,
+      "norm_label": "volunteercontroller.java"
+    },
+    {
+      "label": "VolunteerController",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L13",
+      "id": "controller_volunteercontroller_volunteercontroller",
+      "community": 10,
+      "norm_label": "volunteercontroller"
+    },
+    {
+      "label": ".getNgoVolunteers()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L22",
+      "id": "controller_volunteercontroller_volunteercontroller_getngovolunteers",
+      "community": 10,
+      "norm_label": ".getngovolunteers()"
+    },
+    {
+      "label": ".approveVolunteer()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L33",
+      "id": "controller_volunteercontroller_volunteercontroller_approvevolunteer",
+      "community": 10,
+      "norm_label": ".approvevolunteer()"
+    },
+    {
+      "label": ".rejectVolunteer()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L59",
+      "id": "controller_volunteercontroller_volunteercontroller_rejectvolunteer",
+      "community": 10,
+      "norm_label": ".rejectvolunteer()"
+    },
+    {
+      "label": "Delivery.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Delivery.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_model_delivery_java",
+      "community": 19,
+      "norm_label": "delivery.java"
+    },
+    {
+      "label": "Delivery",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Delivery.java",
+      "source_location": "L11",
+      "id": "model_delivery_delivery",
+      "community": 19,
+      "norm_label": "delivery"
+    },
+    {
+      "label": "Donation.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Donation.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_model_donation_java",
+      "community": 20,
+      "norm_label": "donation.java"
+    },
+    {
+      "label": "Donation",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Donation.java",
+      "source_location": "L11",
+      "id": "model_donation_donation",
+      "community": 20,
+      "norm_label": "donation"
+    },
+    {
+      "label": "Notification.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Notification.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_model_notification_java",
+      "community": 21,
+      "norm_label": "notification.java"
+    },
+    {
+      "label": "Notification",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Notification.java",
+      "source_location": "L11",
+      "id": "model_notification_notification",
+      "community": 21,
+      "norm_label": "notification"
+    },
+    {
+      "label": "Request.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Request.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_model_request_java",
+      "community": 22,
+      "norm_label": "request.java"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Request.java",
+      "source_location": "L11",
+      "id": "model_request_request",
+      "community": 22,
+      "norm_label": "request"
+    },
+    {
+      "label": "User.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\User.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_model_user_java",
+      "community": 23,
+      "norm_label": "user.java"
+    },
+    {
+      "label": "User",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\User.java",
+      "source_location": "L12",
+      "id": "model_user_user",
+      "community": 23,
+      "norm_label": "user"
+    },
+    {
+      "label": "DeliveryRepository.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_repository_deliveryrepository_java",
+      "community": 1,
+      "norm_label": "deliveryrepository.java"
+    },
+    {
+      "label": "DeliveryRepository",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L8",
+      "id": "repository_deliveryrepository_deliveryrepository",
+      "community": 1,
+      "norm_label": "deliveryrepository"
+    },
+    {
+      "label": ".findByVolunteerId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L9",
+      "id": "repository_deliveryrepository_deliveryrepository_findbyvolunteerid",
+      "community": 1,
+      "norm_label": ".findbyvolunteerid()"
+    },
+    {
+      "label": ".findByStatus()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L10",
+      "id": "repository_deliveryrepository_deliveryrepository_findbystatus",
+      "community": 1,
+      "norm_label": ".findbystatus()"
+    },
+    {
+      "label": ".findByRequestId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L11",
+      "id": "repository_deliveryrepository_deliveryrepository_findbyrequestid",
+      "community": 1,
+      "norm_label": ".findbyrequestid()"
+    },
+    {
+      "label": ".findByRequestDonationDonorId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L12",
+      "id": "repository_deliveryrepository_deliveryrepository_findbyrequestdonationdonorid",
+      "community": 1,
+      "norm_label": ".findbyrequestdonationdonorid()"
+    },
+    {
+      "label": ".findByRequestNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L13",
+      "id": "repository_deliveryrepository_deliveryrepository_findbyrequestngoid",
+      "community": 1,
+      "norm_label": ".findbyrequestngoid()"
+    },
+    {
+      "label": ".findByStatusAndRequestNgoNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L14",
+      "id": "repository_deliveryrepository_deliveryrepository_findbystatusandrequestngongoid",
+      "community": 1,
+      "norm_label": ".findbystatusandrequestngongoid()"
+    },
+    {
+      "label": ".findByStatusAndRequestNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L15",
+      "id": "repository_deliveryrepository_deliveryrepository_findbystatusandrequestngoid",
+      "community": 1,
+      "norm_label": ".findbystatusandrequestngoid()"
+    },
+    {
+      "label": "DonationRepository.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_repository_donationrepository_java",
+      "community": 5,
+      "norm_label": "donationrepository.java"
+    },
+    {
+      "label": "DonationRepository",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L9",
+      "id": "repository_donationrepository_donationrepository",
+      "community": 5,
+      "norm_label": "donationrepository"
+    },
+    {
+      "label": ".findByStatus()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L10",
+      "id": "repository_donationrepository_donationrepository_findbystatus",
+      "community": 5,
+      "norm_label": ".findbystatus()"
+    },
+    {
+      "label": ".findByStatusIn()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L12",
+      "id": "repository_donationrepository_donationrepository_findbystatusin",
+      "community": 5,
+      "norm_label": ".findbystatusin()"
+    },
+    {
+      "label": ".findByDonorId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L14",
+      "id": "repository_donationrepository_donationrepository_findbydonorid",
+      "community": 2,
+      "norm_label": ".findbydonorid()"
+    },
+    {
+      "label": ".findByStatusAndLocationNear()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L17",
+      "id": "repository_donationrepository_donationrepository_findbystatusandlocationnear",
+      "community": 5,
+      "norm_label": ".findbystatusandlocationnear()"
+    },
+    {
+      "label": ".findByStatusInAndLocationNear()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L19",
+      "id": "repository_donationrepository_donationrepository_findbystatusinandlocationnear",
+      "community": 5,
+      "norm_label": ".findbystatusinandlocationnear()"
+    },
+    {
+      "label": "NotificationRepository.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_repository_notificationrepository_java",
+      "community": 6,
+      "norm_label": "notificationrepository.java"
+    },
+    {
+      "label": "NotificationRepository",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L7",
+      "id": "repository_notificationrepository_notificationrepository",
+      "community": 6,
+      "norm_label": "notificationrepository"
+    },
+    {
+      "label": ".findByRecipientIdOrderByCreatedAtDesc()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L8",
+      "id": "repository_notificationrepository_notificationrepository_findbyrecipientidorderbycreatedatdesc",
+      "community": 6,
+      "norm_label": ".findbyrecipientidorderbycreatedatdesc()"
+    },
+    {
+      "label": ".countByRecipientIdAndReadFalse()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L9",
+      "id": "repository_notificationrepository_notificationrepository_countbyrecipientidandreadfalse",
+      "community": 6,
+      "norm_label": ".countbyrecipientidandreadfalse()"
+    },
+    {
+      "label": "RequestRepository.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_repository_requestrepository_java",
+      "community": 2,
+      "norm_label": "requestrepository.java"
+    },
+    {
+      "label": "RequestRepository",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L7",
+      "id": "repository_requestrepository_requestrepository",
+      "community": 2,
+      "norm_label": "requestrepository"
+    },
+    {
+      "label": ".findByNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L8",
+      "id": "repository_requestrepository_requestrepository_findbyngoid",
+      "community": 2,
+      "norm_label": ".findbyngoid()"
+    },
+    {
+      "label": ".findByDonationDonorId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L10",
+      "id": "repository_requestrepository_requestrepository_findbydonationdonorid",
+      "community": 2,
+      "norm_label": ".findbydonationdonorid()"
+    },
+    {
+      "label": ".findByDonationId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L12",
+      "id": "repository_requestrepository_requestrepository_findbydonationid",
+      "community": 2,
+      "norm_label": ".findbydonationid()"
+    },
+    {
+      "label": "UserRepository.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_repository_userrepository_java",
+      "community": 2,
+      "norm_label": "userrepository.java"
+    },
+    {
+      "label": "UserRepository",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L7",
+      "id": "repository_userrepository_userrepository",
+      "community": 2,
+      "norm_label": "userrepository"
+    },
+    {
+      "label": ".findByEmail()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L8",
+      "id": "repository_userrepository_userrepository_findbyemail",
+      "community": 4,
+      "norm_label": ".findbyemail()"
+    },
+    {
+      "label": ".findByNgoId()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L9",
+      "id": "repository_userrepository_userrepository_findbyngoid",
+      "community": 2,
+      "norm_label": ".findbyngoid()"
+    },
+    {
+      "label": ".findByAffiliatedNgoIdAndRoleAndVolunteerStatus()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L10",
+      "id": "repository_userrepository_userrepository_findbyaffiliatedngoidandroleandvolunteerstatus",
+      "community": 2,
+      "norm_label": ".findbyaffiliatedngoidandroleandvolunteerstatus()"
+    },
+    {
+      "label": ".findByAffiliatedNgoIdAndRole()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L11",
+      "id": "repository_userrepository_userrepository_findbyaffiliatedngoidandrole",
+      "community": 2,
+      "norm_label": ".findbyaffiliatedngoidandrole()"
+    },
+    {
+      "label": "EmailService.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L1",
+      "id": "backend_src_main_java_com_foodrescue_api_service_emailservice_java",
+      "community": 1,
+      "norm_label": "emailservice.java"
+    },
+    {
+      "label": "EmailService",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L11",
+      "id": "service_emailservice_emailservice",
+      "community": 1,
+      "norm_label": "emailservice"
+    },
+    {
+      "label": ".sendVerificationEmail()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L22",
+      "id": "service_emailservice_emailservice_sendverificationemail",
+      "community": 4,
+      "norm_label": ".sendverificationemail()"
+    },
+    {
+      "label": ".sendNotification()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L37",
+      "id": "service_emailservice_emailservice_sendnotification",
+      "community": 1,
+      "norm_label": ".sendnotification()"
+    },
+    {
+      "label": ".sendRescueNotification()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L51",
+      "id": "service_emailservice_emailservice_sendrescuenotification",
+      "community": 1,
+      "norm_label": ".sendrescuenotification()"
+    },
+    {
+      "label": ".sendDeliveryUpdate()",
+      "file_type": "code",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L56",
+      "id": "service_emailservice_emailservice_senddeliveryupdate",
+      "community": 1,
+      "norm_label": ".senddeliveryupdate()"
+    },
+    {
+      "label": "FoodRescueApplicationTests.java",
+      "file_type": "code",
+      "source_file": "backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java",
+      "source_location": "L1",
+      "id": "backend_src_test_java_com_foodrescue_api_foodrescueapplicationtests_java",
+      "community": 15,
+      "norm_label": "foodrescueapplicationtests.java"
+    },
+    {
+      "label": "FoodRescueApplicationTests",
+      "file_type": "code",
+      "source_file": "backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java",
+      "source_location": "L6",
+      "id": "api_foodrescueapplicationtests_foodrescueapplicationtests",
+      "community": 15,
+      "norm_label": "foodrescueapplicationtests"
+    },
+    {
+      "label": ".contextLoads()",
+      "file_type": "code",
+      "source_file": "backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java",
+      "source_location": "L9",
+      "id": "api_foodrescueapplicationtests_foodrescueapplicationtests_contextloads",
+      "community": 15,
+      "norm_label": ".contextloads()"
+    },
+    {
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "frontend\\eslint.config.js",
+      "source_location": "L1",
+      "id": "frontend_eslint_config_js",
+      "community": 37,
+      "norm_label": "eslint.config.js"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "frontend\\vite.config.js",
+      "source_location": "L1",
+      "id": "frontend_vite_config_js",
+      "community": 38,
+      "norm_label": "vite.config.js"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_jsx",
+      "community": 24,
+      "norm_label": "app.jsx"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L33",
+      "id": "src_app_app",
+      "community": 24,
+      "norm_label": "app()"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\main.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_main_jsx",
+      "community": 39,
+      "norm_label": "main.jsx"
+    },
+    {
+      "label": "Footer.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Footer.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_footer_jsx",
+      "community": 25,
+      "norm_label": "footer.jsx"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Footer.jsx",
+      "source_location": "L3",
+      "id": "components_footer_footer",
+      "community": 25,
+      "norm_label": "footer()"
+    },
+    {
+      "label": "GetStarted.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\GetStarted.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_getstarted_jsx",
+      "community": 26,
+      "norm_label": "getstarted.jsx"
+    },
+    {
+      "label": "GetStarted()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\GetStarted.jsx",
+      "source_location": "L2",
+      "id": "components_getstarted_getstarted",
+      "community": 26,
+      "norm_label": "getstarted()"
+    },
+    {
+      "label": "HeroSection.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\HeroSection.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_herosection_jsx",
+      "community": 27,
+      "norm_label": "herosection.jsx"
+    },
+    {
+      "label": "HeroSection()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\HeroSection.jsx",
+      "source_location": "L4",
+      "id": "components_herosection_herosection",
+      "community": 27,
+      "norm_label": "herosection()"
+    },
+    {
+      "label": "HowItWorks.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\HowItWorks.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_howitworks_jsx",
+      "community": 16,
+      "norm_label": "howitworks.jsx"
+    },
+    {
+      "label": "StepCard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\HowItWorks.jsx",
+      "source_location": "L54",
+      "id": "components_howitworks_stepcard",
+      "community": 16,
+      "norm_label": "stepcard()"
+    },
+    {
+      "label": "HowItWorks()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\HowItWorks.jsx",
+      "source_location": "L102",
+      "id": "components_howitworks_howitworks",
+      "community": 16,
+      "norm_label": "howitworks()"
+    },
+    {
+      "label": "ImpactStats.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_impactstats_jsx",
+      "community": 7,
+      "norm_label": "impactstats.jsx"
+    },
+    {
+      "label": "useCountUp()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L5",
+      "id": "components_impactstats_usecountup",
+      "community": 7,
+      "norm_label": "usecountup()"
+    },
+    {
+      "label": "StatCard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L25",
+      "id": "components_impactstats_statcard",
+      "community": 7,
+      "norm_label": "statcard()"
+    },
+    {
+      "label": "ImpactStats()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L58",
+      "id": "components_impactstats_impactstats",
+      "community": 7,
+      "norm_label": "impactstats()"
+    },
+    {
+      "label": "Navbar.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_navbar_jsx",
+      "community": 0,
+      "norm_label": "navbar.jsx"
+    },
+    {
+      "label": "Navbar()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L6",
+      "id": "components_navbar_navbar",
+      "community": 0,
+      "norm_label": "navbar()"
+    },
+    {
+      "label": "Testimonials.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Testimonials.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_testimonials_jsx",
+      "community": 17,
+      "norm_label": "testimonials.jsx"
+    },
+    {
+      "label": "Testimonials()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\Testimonials.jsx",
+      "source_location": "L4",
+      "id": "components_testimonials_testimonials",
+      "community": 17,
+      "norm_label": "testimonials()"
+    },
+    {
+      "label": "DashboardLayout.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\layout\\DashboardLayout.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_layout_dashboardlayout_jsx",
+      "community": 0,
+      "norm_label": "dashboardlayout.jsx"
+    },
+    {
+      "label": "DashboardLayout()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\layout\\DashboardLayout.jsx",
+      "source_location": "L7",
+      "id": "layout_dashboardlayout_dashboardlayout",
+      "community": 0,
+      "norm_label": "dashboardlayout()"
+    },
+    {
+      "label": "Sidebar.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_layout_sidebar_jsx",
+      "community": 28,
+      "norm_label": "sidebar.jsx"
+    },
+    {
+      "label": "Sidebar()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L16",
+      "id": "layout_sidebar_sidebar",
+      "community": 28,
+      "norm_label": "sidebar()"
+    },
+    {
+      "label": "FoodDetailModal.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\modals\\FoodDetailModal.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_modals_fooddetailmodal_jsx",
+      "community": 29,
+      "norm_label": "fooddetailmodal.jsx"
+    },
+    {
+      "label": "FoodDetailModal()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\components\\modals\\FoodDetailModal.jsx",
+      "source_location": "L4",
+      "id": "modals_fooddetailmodal_fooddetailmodal",
+      "community": 29,
+      "norm_label": "fooddetailmodal()"
+    },
+    {
+      "label": "About.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\About.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_about_jsx",
+      "community": 30,
+      "norm_label": "about.jsx"
+    },
+    {
+      "label": "About()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\About.jsx",
+      "source_location": "L5",
+      "id": "pages_about_about",
+      "community": 30,
+      "norm_label": "about()"
+    },
+    {
+      "label": "DonateFood.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\DonateFood.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_donatefood_jsx",
+      "community": 0,
+      "norm_label": "donatefood.jsx"
+    },
+    {
+      "label": "DonateFood()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\DonateFood.jsx",
+      "source_location": "L7",
+      "id": "pages_donatefood_donatefood",
+      "community": 0,
+      "norm_label": "donatefood()"
+    },
+    {
+      "label": "Home.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Home.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_home_jsx",
+      "community": 31,
+      "norm_label": "home.jsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Home.jsx",
+      "source_location": "L9",
+      "id": "pages_home_home",
+      "community": 31,
+      "norm_label": "home()"
+    },
+    {
+      "label": "HowItWorksPage.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\HowItWorksPage.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_howitworkspage_jsx",
+      "community": 32,
+      "norm_label": "howitworkspage.jsx"
+    },
+    {
+      "label": "HowItWorksPage()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\HowItWorksPage.jsx",
+      "source_location": "L6",
+      "id": "pages_howitworkspage_howitworkspage",
+      "community": 32,
+      "norm_label": "howitworkspage()"
+    },
+    {
+      "label": "Login.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Login.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_login_jsx",
+      "community": 0,
+      "norm_label": "login.jsx"
+    },
+    {
+      "label": "Login()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Login.jsx",
+      "source_location": "L8",
+      "id": "pages_login_login",
+      "community": 0,
+      "norm_label": "login()"
+    },
+    {
+      "label": "Register.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Register.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_register_jsx",
+      "community": 18,
+      "norm_label": "register.jsx"
+    },
+    {
+      "label": "Register()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\Register.jsx",
+      "source_location": "L6",
+      "id": "pages_register_register",
+      "community": 18,
+      "norm_label": "register()"
+    },
+    {
+      "label": "RescueFood.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_rescuefood_jsx",
+      "community": 0,
+      "norm_label": "rescuefood.jsx"
+    },
+    {
+      "label": "RescueFood()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L9",
+      "id": "pages_rescuefood_rescuefood",
+      "community": 0,
+      "norm_label": "rescuefood()"
+    },
+    {
+      "label": "VerifyEmail.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\VerifyEmail.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_verifyemail_jsx",
+      "community": 0,
+      "norm_label": "verifyemail.jsx"
+    },
+    {
+      "label": "VerifyEmail()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\VerifyEmail.jsx",
+      "source_location": "L6",
+      "id": "pages_verifyemail_verifyemail",
+      "community": 0,
+      "norm_label": "verifyemail()"
+    },
+    {
+      "label": "DeliveryDetails.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\DeliveryDetails.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_deliverydetails_jsx",
+      "community": 0,
+      "norm_label": "deliverydetails.jsx"
+    },
+    {
+      "label": "DeliveryDetails()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\DeliveryDetails.jsx",
+      "source_location": "L8",
+      "id": "dashboard_deliverydetails_deliverydetails",
+      "community": 0,
+      "norm_label": "deliverydetails()"
+    },
+    {
+      "label": "Profile.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\Profile.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_profile_jsx",
+      "community": 0,
+      "norm_label": "profile.jsx"
+    },
+    {
+      "label": "Profile()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\Profile.jsx",
+      "source_location": "L7",
+      "id": "dashboard_profile_profile",
+      "community": 0,
+      "norm_label": "profile()"
+    },
+    {
+      "label": "AdminDashboard.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDashboard.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_admin_admindashboard_jsx",
+      "community": 33,
+      "norm_label": "admindashboard.jsx"
+    },
+    {
+      "label": "AdminDashboard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDashboard.jsx",
+      "source_location": "L7",
+      "id": "admin_admindashboard_admindashboard",
+      "community": 33,
+      "norm_label": "admindashboard()"
+    },
+    {
+      "label": "AdminDonations.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDonations.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_admin_admindonations_jsx",
+      "community": 34,
+      "norm_label": "admindonations.jsx"
+    },
+    {
+      "label": "AdminDonations()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDonations.jsx",
+      "source_location": "L5",
+      "id": "admin_admindonations_admindonations",
+      "community": 34,
+      "norm_label": "admindonations()"
+    },
+    {
+      "label": "AdminUserManagement.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_admin_adminusermanagement_jsx",
+      "community": 0,
+      "norm_label": "adminusermanagement.jsx"
+    },
+    {
+      "label": "AdminUserManagement()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx",
+      "source_location": "L7",
+      "id": "admin_adminusermanagement_adminusermanagement",
+      "community": 0,
+      "norm_label": "adminusermanagement()"
+    },
+    {
+      "label": "DonorDashboard.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDashboard.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_donor_donordashboard_jsx",
+      "community": 7,
+      "norm_label": "donordashboard.jsx"
+    },
+    {
+      "label": "DonorDashboard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDashboard.jsx",
+      "source_location": "L5",
+      "id": "donor_donordashboard_donordashboard",
+      "community": 7,
+      "norm_label": "donordashboard()"
+    },
+    {
+      "label": "DonorDeliveryTracking.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_donor_donordeliverytracking_jsx",
+      "community": 3,
+      "norm_label": "donordeliverytracking.jsx"
+    },
+    {
+      "label": "DonorDeliveryTracking()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx",
+      "source_location": "L8",
+      "id": "donor_donordeliverytracking_donordeliverytracking",
+      "community": 3,
+      "norm_label": "donordeliverytracking()"
+    },
+    {
+      "label": "DonorMyDonations.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorMyDonations.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_donor_donormydonations_jsx",
+      "community": 35,
+      "norm_label": "donormydonations.jsx"
+    },
+    {
+      "label": "DonorMyDonations()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorMyDonations.jsx",
+      "source_location": "L5",
+      "id": "donor_donormydonations_donormydonations",
+      "community": 35,
+      "norm_label": "donormydonations()"
+    },
+    {
+      "label": "DonorRequests.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_donor_donorrequests_jsx",
+      "community": 3,
+      "norm_label": "donorrequests.jsx"
+    },
+    {
+      "label": "DonorRequests()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx",
+      "source_location": "L8",
+      "id": "donor_donorrequests_donorrequests",
+      "community": 3,
+      "norm_label": "donorrequests()"
+    },
+    {
+      "label": "NGOActiveDeliveries.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_ngo_ngoactivedeliveries_jsx",
+      "community": 9,
+      "norm_label": "ngoactivedeliveries.jsx"
+    },
+    {
+      "label": "NGOActiveDeliveries()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx",
+      "source_location": "L8",
+      "id": "ngo_ngoactivedeliveries_ngoactivedeliveries",
+      "community": 9,
+      "norm_label": "ngoactivedeliveries()"
+    },
+    {
+      "label": "NGODashboard.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_ngo_ngodashboard_jsx",
+      "community": 9,
+      "norm_label": "ngodashboard.jsx"
+    },
+    {
+      "label": "NGODashboard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx",
+      "source_location": "L7",
+      "id": "ngo_ngodashboard_ngodashboard",
+      "community": 9,
+      "norm_label": "ngodashboard()"
+    },
+    {
+      "label": "NGORequestHistory.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGORequestHistory.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_ngo_ngorequesthistory_jsx",
+      "community": 36,
+      "norm_label": "ngorequesthistory.jsx"
+    },
+    {
+      "label": "NGORequestHistory()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGORequestHistory.jsx",
+      "source_location": "L6",
+      "id": "ngo_ngorequesthistory_ngorequesthistory",
+      "community": 36,
+      "norm_label": "ngorequesthistory()"
+    },
+    {
+      "label": "NGOVolunteers.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_ngo_ngovolunteers_jsx",
+      "community": 0,
+      "norm_label": "ngovolunteers.jsx"
+    },
+    {
+      "label": "NGOVolunteers()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L7",
+      "id": "ngo_ngovolunteers_ngovolunteers",
+      "community": 0,
+      "norm_label": "ngovolunteers()"
+    },
+    {
+      "label": "AvailableMissions.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_volunteer_availablemissions_jsx",
+      "community": 3,
+      "norm_label": "availablemissions.jsx"
+    },
+    {
+      "label": "AvailableMissions()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx",
+      "source_location": "L7",
+      "id": "volunteer_availablemissions_availablemissions",
+      "community": 3,
+      "norm_label": "availablemissions()"
+    },
+    {
+      "label": "MyDeliveries.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "community": 3,
+      "norm_label": "mydeliveries.jsx"
+    },
+    {
+      "label": "MyDeliveries()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L8",
+      "id": "volunteer_mydeliveries_mydeliveries",
+      "community": 3,
+      "norm_label": "mydeliveries()"
+    },
+    {
+      "label": "VolunteerDashboard.jsx",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L1",
+      "id": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "community": 3,
+      "norm_label": "volunteerdashboard.jsx"
+    },
+    {
+      "label": "VolunteerDashboard()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L8",
+      "id": "volunteer_volunteerdashboard_volunteerdashboard",
+      "community": 3,
+      "norm_label": "volunteerdashboard()"
+    },
+    {
+      "label": "api.js",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L1",
+      "id": "frontend_src_services_api_js",
+      "community": 0,
+      "norm_label": "api.js"
+    },
+    {
+      "label": "getImpactStats()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L17",
+      "id": "services_api_getimpactstats",
+      "community": 7,
+      "norm_label": "getimpactstats()"
+    },
+    {
+      "label": "getTestimonials()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L18",
+      "id": "services_api_gettestimonials",
+      "community": 17,
+      "norm_label": "gettestimonials()"
+    },
+    {
+      "label": "registerUser()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L19",
+      "id": "services_api_registeruser",
+      "community": 18,
+      "norm_label": "registeruser()"
+    },
+    {
+      "label": "loginUser()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L20",
+      "id": "services_api_loginuser",
+      "community": 0,
+      "norm_label": "loginuser()"
+    },
+    {
+      "label": "verifyEmail()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L21",
+      "id": "services_api_verifyemail",
+      "community": 0,
+      "norm_label": "verifyemail()"
+    },
+    {
+      "label": "resendCode()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L22",
+      "id": "services_api_resendcode",
+      "community": 0,
+      "norm_label": "resendcode()"
+    },
+    {
+      "label": "checkSession()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L23",
+      "id": "services_api_checksession",
+      "community": 0,
+      "norm_label": "checksession()"
+    },
+    {
+      "label": "getNotifications()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L26",
+      "id": "services_api_getnotifications",
+      "community": 0,
+      "norm_label": "getnotifications()"
+    },
+    {
+      "label": "getUnreadCount()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L27",
+      "id": "services_api_getunreadcount",
+      "community": 0,
+      "norm_label": "getunreadcount()"
+    },
+    {
+      "label": "markAllNotificationsAsRead()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L28",
+      "id": "services_api_markallnotificationsasread",
+      "community": 0,
+      "norm_label": "markallnotificationsasread()"
+    },
+    {
+      "label": "getAvailableDonations()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L31",
+      "id": "services_api_getavailabledonations",
+      "community": 0,
+      "norm_label": "getavailabledonations()"
+    },
+    {
+      "label": "getDonationsNearMe()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L32",
+      "id": "services_api_getdonationsnearme",
+      "community": 0,
+      "norm_label": "getdonationsnearme()"
+    },
+    {
+      "label": "createDonation()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L33",
+      "id": "services_api_createdonation",
+      "community": 0,
+      "norm_label": "createdonation()"
+    },
+    {
+      "label": "claimDonation()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L34",
+      "id": "services_api_claimdonation",
+      "community": 0,
+      "norm_label": "claimdonation()"
+    },
+    {
+      "label": "createRequest()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L37",
+      "id": "services_api_createrequest",
+      "community": 0,
+      "norm_label": "createrequest()"
+    },
+    {
+      "label": "getNgoRequests()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L38",
+      "id": "services_api_getngorequests",
+      "community": 0,
+      "norm_label": "getngorequests()"
+    },
+    {
+      "label": "getAvailableDeliveries()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L41",
+      "id": "services_api_getavailabledeliveries",
+      "community": 3,
+      "norm_label": "getavailabledeliveries()"
+    },
+    {
+      "label": "getDonorDeliveries()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L42",
+      "id": "services_api_getdonordeliveries",
+      "community": 3,
+      "norm_label": "getdonordeliveries()"
+    },
+    {
+      "label": "getNgoDeliveries()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L43",
+      "id": "services_api_getngodeliveries",
+      "community": 9,
+      "norm_label": "getngodeliveries()"
+    },
+    {
+      "label": "getMyTasks()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L44",
+      "id": "services_api_getmytasks",
+      "community": 3,
+      "norm_label": "getmytasks()"
+    },
+    {
+      "label": "getDeliveryDetails()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L45",
+      "id": "services_api_getdeliverydetails",
+      "community": 0,
+      "norm_label": "getdeliverydetails()"
+    },
+    {
+      "label": "assignDelivery()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L46",
+      "id": "services_api_assigndelivery",
+      "community": 3,
+      "norm_label": "assigndelivery()"
+    },
+    {
+      "label": "verifyPickupOtp()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L47",
+      "id": "services_api_verifypickupotp",
+      "community": 3,
+      "norm_label": "verifypickupotp()"
+    },
+    {
+      "label": "ngoVerifyDelivery()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L48",
+      "id": "services_api_ngoverifydelivery",
+      "community": 9,
+      "norm_label": "ngoverifydelivery()"
+    },
+    {
+      "label": "trackDelivery()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L49",
+      "id": "services_api_trackdelivery",
+      "community": 3,
+      "norm_label": "trackdelivery()"
+    },
+    {
+      "label": "completeDelivery()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L50",
+      "id": "services_api_completedelivery",
+      "community": 3,
+      "norm_label": "completedelivery()"
+    },
+    {
+      "label": "getNgoVolunteers()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L52",
+      "id": "services_api_getngovolunteers",
+      "community": 0,
+      "norm_label": "getngovolunteers()"
+    },
+    {
+      "label": "approveVolunteer()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L53",
+      "id": "services_api_approvevolunteer",
+      "community": 0,
+      "norm_label": "approvevolunteer()"
+    },
+    {
+      "label": "rejectVolunteer()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L54",
+      "id": "services_api_rejectvolunteer",
+      "community": 0,
+      "norm_label": "rejectvolunteer()"
+    },
+    {
+      "label": "getAllUsers()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L57",
+      "id": "services_api_getallusers",
+      "community": 0,
+      "norm_label": "getallusers()"
+    },
+    {
+      "label": "verifyPartner()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L58",
+      "id": "services_api_verifypartner",
+      "community": 0,
+      "norm_label": "verifypartner()"
+    },
+    {
+      "label": "updateUserProfile()",
+      "file_type": "code",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L61",
+      "id": "services_api_updateuserprofile",
+      "community": 0,
+      "norm_label": "updateuserprofile()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_foodrescueapplication_java",
+      "target": "api_foodrescueapplication_foodrescueapplication",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "api_foodrescueapplication_foodrescueapplication",
+      "target": "api_foodrescueapplication_foodrescueapplication_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_config_datainitializer_java",
+      "target": "config_datainitializer_datainitializer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "config_datainitializer_datainitializer",
+      "target": "config_datainitializer_datainitializer_initdatabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "config_datainitializer_datainitializer_initdatabase",
+      "target": "repository_userrepository_userrepository_findbyemail"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_config_webconfig_java",
+      "target": "webmvcconfigurer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_config_webconfig_java",
+      "target": "config_webconfig_webconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "config_webconfig_webconfig",
+      "target": "webmvcconfigurer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "config_webconfig_webconfig",
+      "target": "config_webconfig_webconfig_addcorsmappings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_admincontroller_java",
+      "target": "controller_admincontroller_admincontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_getglobalstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_getallusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_getalldonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "controller_admincontroller_admincontroller",
+      "target": "controller_admincontroller_admincontroller_verifyuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_authcontroller_java",
+      "target": "controller_authcontroller_authcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_generatengoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_register",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_verify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_resendcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_logout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller",
+      "target": "controller_authcontroller_authcontroller_getcurrentuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_register",
+      "target": "controller_authcontroller_authcontroller_generatengoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_register",
+      "target": "repository_userrepository_userrepository_findbyemail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_register",
+      "target": "service_emailservice_emailservice_sendverificationemail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_verify",
+      "target": "repository_userrepository_userrepository_findbyemail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_resendcode",
+      "target": "repository_userrepository_userrepository_findbyemail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_resendcode",
+      "target": "service_emailservice_emailservice_sendverificationemail"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "controller_authcontroller_authcontroller_login",
+      "target": "repository_userrepository_userrepository_findbyemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_deliverycontroller_java",
+      "target": "controller_deliverycontroller_deliverycontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_getavailabledeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_getdonordeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_getngodeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_getmytasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_getdelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_assigndelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_verifyotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_ngoverify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_updatelocation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller",
+      "target": "controller_deliverycontroller_deliverycontroller_completedelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_getdonordeliveries",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyrequestdonationdonorid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_getngodeliveries",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyrequestngoid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_getmytasks",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyvolunteerid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_assigndelivery",
+      "target": "service_emailservice_emailservice_sendnotification"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_verifyotp",
+      "target": "service_emailservice_emailservice_sendnotification"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_ngoverify",
+      "target": "service_emailservice_emailservice_sendnotification"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_ngoverify",
+      "target": "service_emailservice_emailservice_senddeliveryupdate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java",
+      "source_location": "L236",
+      "weight": 1.0,
+      "source": "controller_deliverycontroller_deliverycontroller_completedelivery",
+      "target": "service_emailservice_emailservice_senddeliveryupdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_donationcontroller_java",
+      "target": "controller_donationcontroller_donationcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller",
+      "target": "controller_donationcontroller_donationcontroller_getavailabledonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller",
+      "target": "controller_donationcontroller_donationcontroller_getneardonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller",
+      "target": "controller_donationcontroller_donationcontroller_createdonation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller",
+      "target": "controller_donationcontroller_donationcontroller_viewdonation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller_getavailabledonations",
+      "target": "repository_donationrepository_donationrepository_findbystatusin"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "controller_donationcontroller_donationcontroller_getneardonations",
+      "target": "repository_donationrepository_donationrepository_findbystatusinandlocationnear"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_donorcontroller_java",
+      "target": "controller_donorcontroller_donorcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller",
+      "target": "controller_donorcontroller_donorcontroller_getmydonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller",
+      "target": "controller_donorcontroller_donorcontroller_getrequestsforme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller",
+      "target": "controller_donorcontroller_donorcontroller_respondtorequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller",
+      "target": "controller_donorcontroller_donorcontroller_collectrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller_getmydonations",
+      "target": "repository_donationrepository_donationrepository_findbydonorid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller_getrequestsforme",
+      "target": "repository_donationrepository_donationrepository_findbydonorid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller_getrequestsforme",
+      "target": "repository_requestrepository_requestrepository_findbydonationid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller_respondtorequest",
+      "target": "repository_userrepository_userrepository_findbyaffiliatedngoidandroleandvolunteerstatus"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "controller_donorcontroller_donorcontroller_respondtorequest",
+      "target": "repository_requestrepository_requestrepository_findbydonationid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_notificationcontroller_java",
+      "target": "controller_notificationcontroller_notificationcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller",
+      "target": "controller_notificationcontroller_notificationcontroller_getusernotifications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller",
+      "target": "controller_notificationcontroller_notificationcontroller_getunreadcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller",
+      "target": "controller_notificationcontroller_notificationcontroller_markasread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller",
+      "target": "controller_notificationcontroller_notificationcontroller_markallasread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller_getusernotifications",
+      "target": "repository_notificationrepository_notificationrepository_findbyrecipientidorderbycreatedatdesc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller_getunreadcount",
+      "target": "repository_notificationrepository_notificationrepository_countbyrecipientidandreadfalse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "controller_notificationcontroller_notificationcontroller_markallasread",
+      "target": "repository_notificationrepository_notificationrepository_findbyrecipientidorderbycreatedatdesc"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_publiccontroller_java",
+      "target": "controller_publiccontroller_publiccontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "controller_publiccontroller_publiccontroller",
+      "target": "controller_publiccontroller_publiccontroller_getimpactstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "controller_publiccontroller_publiccontroller",
+      "target": "controller_publiccontroller_publiccontroller_gettestimonials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_requestcontroller_java",
+      "target": "controller_requestcontroller_requestcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller",
+      "target": "controller_requestcontroller_requestcontroller_createrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller",
+      "target": "controller_requestcontroller_requestcontroller_respondtorequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L175",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller",
+      "target": "controller_requestcontroller_requestcontroller_getngorequests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller_createrequest",
+      "target": "service_emailservice_emailservice_sendnotification"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller_respondtorequest",
+      "target": "repository_userrepository_userrepository_findbyaffiliatedngoidandroleandvolunteerstatus"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "controller_requestcontroller_requestcontroller_respondtorequest",
+      "target": "service_emailservice_emailservice_sendnotification"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_usercontroller_java",
+      "target": "controller_usercontroller_usercontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "controller_usercontroller_usercontroller",
+      "target": "controller_usercontroller_usercontroller_updateuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_controller_volunteercontroller_java",
+      "target": "controller_volunteercontroller_volunteercontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "controller_volunteercontroller_volunteercontroller",
+      "target": "controller_volunteercontroller_volunteercontroller_getngovolunteers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "controller_volunteercontroller_volunteercontroller",
+      "target": "controller_volunteercontroller_volunteercontroller_approvevolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "controller_volunteercontroller_volunteercontroller",
+      "target": "controller_volunteercontroller_volunteercontroller_rejectvolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Delivery.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_model_delivery_java",
+      "target": "model_delivery_delivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Donation.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_model_donation_java",
+      "target": "model_donation_donation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Notification.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_model_notification_java",
+      "target": "model_notification_notification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Request.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_model_request_java",
+      "target": "model_request_request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\model\\User.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_model_user_java",
+      "target": "model_user_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_repository_deliveryrepository_java",
+      "target": "repository_deliveryrepository_deliveryrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyvolunteerid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbystatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyrequestid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyrequestdonationdonorid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbyrequestngoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbystatusandrequestngongoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "repository_deliveryrepository_deliveryrepository",
+      "target": "repository_deliveryrepository_deliveryrepository_findbystatusandrequestngoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_repository_donationrepository_java",
+      "target": "repository_donationrepository_donationrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "repository_donationrepository_donationrepository",
+      "target": "repository_donationrepository_donationrepository_findbystatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "repository_donationrepository_donationrepository",
+      "target": "repository_donationrepository_donationrepository_findbystatusin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "repository_donationrepository_donationrepository",
+      "target": "repository_donationrepository_donationrepository_findbydonorid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "repository_donationrepository_donationrepository",
+      "target": "repository_donationrepository_donationrepository_findbystatusandlocationnear",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "repository_donationrepository_donationrepository",
+      "target": "repository_donationrepository_donationrepository_findbystatusinandlocationnear",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_repository_notificationrepository_java",
+      "target": "repository_notificationrepository_notificationrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "repository_notificationrepository_notificationrepository",
+      "target": "repository_notificationrepository_notificationrepository_findbyrecipientidorderbycreatedatdesc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "repository_notificationrepository_notificationrepository",
+      "target": "repository_notificationrepository_notificationrepository_countbyrecipientidandreadfalse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_repository_requestrepository_java",
+      "target": "repository_requestrepository_requestrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "repository_requestrepository_requestrepository",
+      "target": "repository_requestrepository_requestrepository_findbyngoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "repository_requestrepository_requestrepository",
+      "target": "repository_requestrepository_requestrepository_findbydonationdonorid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "repository_requestrepository_requestrepository",
+      "target": "repository_requestrepository_requestrepository_findbydonationid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_repository_userrepository_java",
+      "target": "repository_userrepository_userrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "repository_userrepository_userrepository",
+      "target": "repository_userrepository_userrepository_findbyemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "repository_userrepository_userrepository",
+      "target": "repository_userrepository_userrepository_findbyngoid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "repository_userrepository_userrepository",
+      "target": "repository_userrepository_userrepository_findbyaffiliatedngoidandroleandvolunteerstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "repository_userrepository_userrepository",
+      "target": "repository_userrepository_userrepository_findbyaffiliatedngoidandrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_src_main_java_com_foodrescue_api_service_emailservice_java",
+      "target": "service_emailservice_emailservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice",
+      "target": "service_emailservice_emailservice_sendverificationemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice",
+      "target": "service_emailservice_emailservice_sendnotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice",
+      "target": "service_emailservice_emailservice_sendrescuenotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice",
+      "target": "service_emailservice_emailservice_senddeliveryupdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice_sendrescuenotification",
+      "target": "service_emailservice_emailservice_sendnotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "service_emailservice_emailservice_senddeliveryupdate",
+      "target": "service_emailservice_emailservice_sendnotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "backend_src_test_java_com_foodrescue_api_foodrescueapplicationtests_java",
+      "target": "api_foodrescueapplicationtests_foodrescueapplicationtests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "api_foodrescueapplicationtests_foodrescueapplicationtests",
+      "target": "api_foodrescueapplicationtests_foodrescueapplicationtests_contextloads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\App.jsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "frontend_src_app_jsx",
+      "target": "src_app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Footer.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_components_footer_jsx",
+      "target": "components_footer_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\GetStarted.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_src_components_getstarted_jsx",
+      "target": "components_getstarted_getstarted",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\HeroSection.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_components_herosection_jsx",
+      "target": "components_herosection_herosection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\HowItWorks.jsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "frontend_src_components_howitworks_jsx",
+      "target": "components_howitworks_stepcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\HowItWorks.jsx",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "frontend_src_components_howitworks_jsx",
+      "target": "components_howitworks_howitworks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_src_components_impactstats_jsx",
+      "target": "services_api_getimpactstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_components_impactstats_jsx",
+      "target": "components_impactstats_usecountup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "frontend_src_components_impactstats_jsx",
+      "target": "components_impactstats_statcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "frontend_src_components_impactstats_jsx",
+      "target": "components_impactstats_impactstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\ImpactStats.jsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "components_impactstats_statcard",
+      "target": "components_impactstats_usecountup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_components_navbar_jsx",
+      "target": "services_api_getunreadcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_components_navbar_jsx",
+      "target": "services_api_getnotifications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_components_navbar_jsx",
+      "target": "services_api_markallnotificationsasread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Navbar.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_components_navbar_jsx",
+      "target": "components_navbar_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Testimonials.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_src_components_testimonials_jsx",
+      "target": "services_api_gettestimonials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\Testimonials.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_components_testimonials_jsx",
+      "target": "components_testimonials_testimonials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\layout\\DashboardLayout.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_components_layout_dashboardlayout_jsx",
+      "target": "services_api_checksession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\layout\\DashboardLayout.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_components_layout_dashboardlayout_jsx",
+      "target": "layout_dashboardlayout_dashboardlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "frontend_src_components_layout_sidebar_jsx",
+      "target": "layout_sidebar_sidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\components\\modals\\FoodDetailModal.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_components_modals_fooddetailmodal_jsx",
+      "target": "modals_fooddetailmodal_fooddetailmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\About.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_pages_about_jsx",
+      "target": "pages_about_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\DonateFood.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_donatefood_jsx",
+      "target": "services_api_createdonation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\DonateFood.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_donatefood_jsx",
+      "target": "pages_donatefood_donatefood",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\Home.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_src_pages_home_jsx",
+      "target": "pages_home_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\HowItWorksPage.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_pages_howitworkspage_jsx",
+      "target": "pages_howitworkspage_howitworkspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\Login.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_login_jsx",
+      "target": "services_api_loginuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\Login.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_login_jsx",
+      "target": "pages_login_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\Register.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_register_jsx",
+      "target": "services_api_registeruser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\Register.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_pages_register_jsx",
+      "target": "pages_register_register",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_rescuefood_jsx",
+      "target": "services_api_getavailabledonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_rescuefood_jsx",
+      "target": "services_api_getdonationsnearme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_rescuefood_jsx",
+      "target": "services_api_createrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\RescueFood.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_src_pages_rescuefood_jsx",
+      "target": "pages_rescuefood_rescuefood",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\VerifyEmail.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_verifyemail_jsx",
+      "target": "services_api_verifyemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\VerifyEmail.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_verifyemail_jsx",
+      "target": "services_api_resendcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\VerifyEmail.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_pages_verifyemail_jsx",
+      "target": "pages_verifyemail_verifyemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\DeliveryDetails.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_deliverydetails_jsx",
+      "target": "services_api_getdeliverydetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\DeliveryDetails.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_deliverydetails_jsx",
+      "target": "dashboard_deliverydetails_deliverydetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\Profile.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_profile_jsx",
+      "target": "services_api_updateuserprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\Profile.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_profile_jsx",
+      "target": "dashboard_profile_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDashboard.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_admin_admindashboard_jsx",
+      "target": "admin_admindashboard_admindashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminDonations.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_admin_admindonations_jsx",
+      "target": "admin_admindonations_admindonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_admin_adminusermanagement_jsx",
+      "target": "services_api_getallusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_admin_adminusermanagement_jsx",
+      "target": "services_api_verifypartner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_admin_adminusermanagement_jsx",
+      "target": "admin_adminusermanagement_adminusermanagement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donordashboard_jsx",
+      "target": "services_api_getimpactstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDashboard.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donordashboard_jsx",
+      "target": "donor_donordashboard_donordashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donordeliverytracking_jsx",
+      "target": "services_api_getdonordeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donordeliverytracking_jsx",
+      "target": "services_api_verifypickupotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donordeliverytracking_jsx",
+      "target": "donor_donordeliverytracking_donordeliverytracking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorMyDonations.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donormydonations_jsx",
+      "target": "donor_donormydonations_donormydonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donorrequests_jsx",
+      "target": "services_api_verifypickupotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donorrequests_jsx",
+      "target": "services_api_getdonordeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_donor_donorrequests_jsx",
+      "target": "donor_donorrequests_donorrequests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngoactivedeliveries_jsx",
+      "target": "services_api_ngoverifydelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngoactivedeliveries_jsx",
+      "target": "services_api_getngodeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngoactivedeliveries_jsx",
+      "target": "ngo_ngoactivedeliveries_ngoactivedeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngodashboard_jsx",
+      "target": "services_api_ngoverifydelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngodashboard_jsx",
+      "target": "services_api_getngodeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngodashboard_jsx",
+      "target": "ngo_ngodashboard_ngodashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGORequestHistory.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngorequesthistory_jsx",
+      "target": "ngo_ngorequesthistory_ngorequesthistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngovolunteers_jsx",
+      "target": "services_api_getngovolunteers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngovolunteers_jsx",
+      "target": "services_api_approvevolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngovolunteers_jsx",
+      "target": "services_api_rejectvolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_ngo_ngovolunteers_jsx",
+      "target": "ngo_ngovolunteers_ngovolunteers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_availablemissions_jsx",
+      "target": "services_api_getavailabledeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_availablemissions_jsx",
+      "target": "services_api_assigndelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_availablemissions_jsx",
+      "target": "volunteer_availablemissions_availablemissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "target": "services_api_getmytasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "target": "services_api_trackdelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "target": "services_api_completedelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "target": "services_api_verifypickupotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_mydeliveries_jsx",
+      "target": "volunteer_mydeliveries_mydeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_getavailabledeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_getmytasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_assigndelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_trackdelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_completedelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "services_api_verifypickupotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_pages_dashboard_volunteer_volunteerdashboard_jsx",
+      "target": "volunteer_volunteerdashboard_volunteerdashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getimpactstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_gettestimonials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_registeruser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_loginuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_verifyemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_resendcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_checksession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getnotifications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getunreadcount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_markallnotificationsasread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getavailabledonations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getdonationsnearme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_createdonation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_claimdonation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_createrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getngorequests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getavailabledeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getdonordeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getngodeliveries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getmytasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getdeliverydetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_assigndelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_verifypickupotp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_ngoverifydelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_trackdelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_completedelivery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getngovolunteers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_approvevolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_rejectvolunteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_getallusers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_verifypartner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\src\\services\\api.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "frontend_src_services_api_js",
+      "target": "services_api_updateuserprofile",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}

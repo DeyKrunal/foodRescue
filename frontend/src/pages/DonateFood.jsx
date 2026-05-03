@@ -14,13 +14,13 @@ const DonateFood = () => {
         expiryTime: '',
         pickupLocation: '',
         pickupWindow: '',
-        donor: null // Will be set from localStorage
+        donor: null // Will be set from sessionStorage
     });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const userString = localStorage.getItem('user');
+        const userString = sessionStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'DONOR') {
             navigate('/login');
@@ -113,27 +113,25 @@ const DonateFood = () => {
                             </div>
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                            <div className="form-group">
-                                <label>Cooking Time *</label>
-                                <input
-                                    name="cookingTime"
-                                    type="datetime-local"
-                                    required
-                                    value={formData.cookingTime}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Expiry Time *</label>
-                                <input
-                                    name="expiryTime"
-                                    type="datetime-local"
-                                    required
-                                    value={formData.expiryTime}
-                                    onChange={handleChange}
-                                />
-                            </div>
+                        <div className="form-group">
+                            <label>Cooking Time *</label>
+                            <input
+                                name="cookingTime"
+                                type="datetime-local"
+                                required
+                                value={formData.cookingTime}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Expiry Time *</label>
+                            <input
+                                name="expiryTime"
+                                type="datetime-local"
+                                required
+                                value={formData.expiryTime}
+                                onChange={handleChange}
+                            />
                         </div>
 
                         <div className="form-group">
@@ -150,14 +148,14 @@ const DonateFood = () => {
 
                         <div className="form-group">
                             <label>Pickup Window *</label>
-                            <input
-                                name="pickupWindow"
-                                placeholder="e.g. 9 PM - 10 PM tonight"
-                                type="text"
-                                required
-                                value={formData.pickupWindow}
-                                onChange={handleChange}
-                            />
+                            <select name="pickupWindow" required value={formData.pickupWindow} onChange={handleChange}>
+                                <option value="">Select Pickup Window</option>
+                                <option value="IMMEDIATE">Immediate (Within 1 Hour)</option>
+                                <option value="9PM-10PM">Tonight (9 PM - 10 PM)</option>
+                                <option value="10PM-11PM">Tonight (10 PM - 11 PM)</option>
+                                <option value="11PM-12AM">Tonight (11 PM - 12 AM)</option>
+                                <option value="MORNING_AFTER">Tomorrow Morning (8 AM - 10 AM)</option>
+                            </select>
                         </div>
                         <div className="form-group">
                             <label>Specific Details / Allergens</label>

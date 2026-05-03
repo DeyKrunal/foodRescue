@@ -21,6 +21,7 @@ const Sidebar = ({ role }) => {
         { name: 'My Donations', path: '/donor/donations', icon: List },
         { name: 'Add Donation', path: '/donate-food', icon: PlusCircle },
         { name: 'NGO Requests', path: '/donor/requests', icon: FileText },
+        { name: 'Track Pickups', path: '/donor/tracking', icon: Truck },
         { name: 'My Profile', path: '/profile', icon: UserCircle },
     ];
 
@@ -28,13 +29,15 @@ const Sidebar = ({ role }) => {
         { name: 'Dashboard', path: '/ngo/dashboard', icon: LayoutDashboard },
         { name: 'Rescue Food', path: '/rescue-food', icon: Search },
         { name: 'Request History', path: '/ngo/history', icon: History },
+        { name: 'Active Rescues', path: '/ngo/tracking', icon: Truck },
         { name: 'Manage Volunteers', path: '/dashboard/ngo/volunteers', icon: Users },
         { name: 'My Profile', path: '/profile', icon: UserCircle },
     ];
 
     const volunteerLinks = [
-        { name: 'Overview', path: '/volunteer/dashboard', icon: LayoutDashboard },
-        { name: 'Active Deliveries', path: '/volunteer/dashboard', icon: Truck },
+        { name: 'Dashboard', path: '/volunteer/dashboard', icon: LayoutDashboard },
+        { name: 'Available Missions', path: '/volunteer/available', icon: Search },
+        { name: 'My Deliveries', path: '/volunteer/deliveries', icon: Truck },
         { name: 'My Profile', path: '/profile', icon: UserCircle },
     ];
 
@@ -42,13 +45,12 @@ const Sidebar = ({ role }) => {
         { name: 'System Stats', path: '/admin/dashboard', icon: LayoutDashboard },
         { name: 'Partner Verification', path: '/admin/users', icon: ShieldCheck },
         { name: 'Donation Audit', path: '/admin/donations', icon: List },
-        { name: 'My Profile', path: '/profile', icon: UserCircle },
     ];
 
     const links = role === 'DONOR' ? donorLinks :
-                  role === 'NGO' ? ngoLinks :
-                  role === 'VOLUNTEER' ? volunteerLinks :
-                  adminLinks;
+        role === 'NGO' ? ngoLinks :
+            role === 'VOLUNTEER' ? volunteerLinks :
+                adminLinks;
 
     return (
         <aside className="sidebar" style={{

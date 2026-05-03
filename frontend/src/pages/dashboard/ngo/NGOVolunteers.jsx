@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const NGOVolunteers = () => {
     const [volunteers, setVolunteers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
     const fetchVolunteers = async () => {
         try {

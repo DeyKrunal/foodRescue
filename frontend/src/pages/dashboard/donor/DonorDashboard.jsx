@@ -4,7 +4,7 @@ import { getImpactStats } from '../../../services/api';
 
 const DonorDashboard = () => {
     const [stats, setStats] = useState({ active: 0, pending: 0, collected: 0 });
-    const userString = localStorage.getItem('user');
+    const userString = sessionStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const DonorDashboard = () => {
         <DashboardLayout role="DONOR">
             <div className="animate-fade">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-                    <h1>Welcome, {user.name}</h1>
+                    <h1>Welcome, {user?.name || 'User'}</h1>
                     {!user.verified && (
                         <span className="badge" style={{ background: '#FFF3E0', color: '#E65100', padding: '8px 16px' }}>
                             ⚠️ Account Pending Admin Approval

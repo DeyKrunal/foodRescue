@@ -1,0 +1,414 @@
+{
+  "F:\\KrunalDey\\foodRescue\\backend\\mvnw": {
+    "mtime": 1777721930.573044,
+    "hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\FoodRescueApplication.java": {
+    "mtime": 1777719113.2694573,
+    "hash": "871fb4a331f3c67104fd32d70082fff5"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\config\\DataInitializer.java": {
+    "mtime": 1777738109.8936777,
+    "hash": "99a28a21dd9fde16cc9f751e2a200035"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\config\\WebConfig.java": {
+    "mtime": 1777737668.1641886,
+    "hash": "01cdfaa4d94b1d07966b93707317133e"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AdminController.java": {
+    "mtime": 1777721930.5740907,
+    "hash": "474299e3885768fe4bec5c6ace1e9733"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\AuthController.java": {
+    "mtime": 1777742797.0453897,
+    "hash": "32074e8b7f288aa73589175427856050"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DeliveryController.java": {
+    "mtime": 1777777395.4703708,
+    "hash": "fb52207015977a2dc2cb310d0a5cf915"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonationController.java": {
+    "mtime": 1777721930.57636,
+    "hash": "ead28b7040178c14bfc12eb70ba9452d"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\DonorController.java": {
+    "mtime": 1777742613.9486308,
+    "hash": "352521f614ede6bc43ebadbbd1aaf35b"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\NotificationController.java": {
+    "mtime": 1777721930.577885,
+    "hash": "4c9dd281c7586982553aa3b6132f055b"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\PublicController.java": {
+    "mtime": 1777719113.2724583,
+    "hash": "94d044e0168e474ab7ef48af8d464def"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\RequestController.java": {
+    "mtime": 1777739265.7080555,
+    "hash": "a2b12809c26af9a0221eb4a773f06e94"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\UserController.java": {
+    "mtime": 1777737668.1651986,
+    "hash": "462674e4fcdf812e21f540013c0d8e00"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\controller\\VolunteerController.java": {
+    "mtime": 1777744293.4212005,
+    "hash": "be0d993b0ad1aeb930ae65b632387cde"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Delivery.java": {
+    "mtime": 1777721930.5798965,
+    "hash": "6af479c58f0a51a24db143c95e7c17da"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Donation.java": {
+    "mtime": 1777719113.273457,
+    "hash": "905ed9c09204f10799800e9a6373b418"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Notification.java": {
+    "mtime": 1777719113.273457,
+    "hash": "c792f2479dd56e7f3857346c4875e2f5"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\model\\Request.java": {
+    "mtime": 1777719113.273457,
+    "hash": "480fc661dfb1b9d21fd073aedad8dc84"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\model\\User.java": {
+    "mtime": 1777721930.5798965,
+    "hash": "c214c2051b849351fd6f95e45e5cbbfb"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DeliveryRepository.java": {
+    "mtime": 1777742813.9683778,
+    "hash": "abd2399e07866e3a9285dda098f39875"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\DonationRepository.java": {
+    "mtime": 1777719113.2744572,
+    "hash": "4986850822a573bcc1420b7657a3966b"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\NotificationRepository.java": {
+    "mtime": 1777719113.2754574,
+    "hash": "c52c2c58834511a328769c43e40c2328"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\RequestRepository.java": {
+    "mtime": 1777719113.2754574,
+    "hash": "09ca5c888156320c600933dd5671933c"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\repository\\UserRepository.java": {
+    "mtime": 1777743125.8797374,
+    "hash": "1c01dd06df85a4367d54c8f6dba35f50"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\main\\java\\com\\foodrescue\\api\\service\\EmailService.java": {
+    "mtime": 1777723676.4334376,
+    "hash": "753d3bf2b5ac41ded0d3e1b252d57544"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\src\\test\\java\\com\\foodrescue\\api\\FoodRescueApplicationTests.java": {
+    "mtime": 1777721930.5824096,
+    "hash": "3777b2cc9a3d96a4ab537fff2d6c6d23"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\eslint.config.js": {
+    "mtime": 1777719113.2784574,
+    "hash": "c15fd0f45c689a8b77c8ff6fe6fada9b"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\vite.config.js": {
+    "mtime": 1777719113.2984557,
+    "hash": "ddf7483e210254ec240441e5b594de85"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\App.jsx": {
+    "mtime": 1777744136.8082933,
+    "hash": "136489a9bb97101687caab7c5ca1e824"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\main.jsx": {
+    "mtime": 1777719113.2914588,
+    "hash": "51fd21c378330142b61bf8d1ef3795ef"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\Footer.jsx": {
+    "mtime": 1777719113.28646,
+    "hash": "d74d4c1d7a99c520dfc0328497319665"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\GetStarted.jsx": {
+    "mtime": 1777719113.28646,
+    "hash": "7fc7d153d71f0108f77d3a19a0caa7f4"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\HeroSection.jsx": {
+    "mtime": 1777719113.287458,
+    "hash": "7055a9c5b9d23452ae998e741ee658ce"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\HowItWorks.jsx": {
+    "mtime": 1777719113.288458,
+    "hash": "887d871ace2529d4ebc5bde0a8b5dadc"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\ImpactStats.jsx": {
+    "mtime": 1777719113.288458,
+    "hash": "744ea6da9d2c7d89380c36d9d44cd5f2"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\Navbar.jsx": {
+    "mtime": 1777740171.149194,
+    "hash": "9ff76b36b0b3313b65c2a1811dee44da"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\Testimonials.jsx": {
+    "mtime": 1777719113.2894585,
+    "hash": "24161bd54adb3a9097479c60bcc10b5b"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\layout\\DashboardLayout.jsx": {
+    "mtime": 1777740247.3262074,
+    "hash": "3fd45ea0bd02e987fa9dc00f7bbcc9a2"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\layout\\Sidebar.jsx": {
+    "mtime": 1777744129.258575,
+    "hash": "0b4c0474d3014d94c5e34f69eefaad83"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\components\\modals\\FoodDetailModal.jsx": {
+    "mtime": 1777742529.6645887,
+    "hash": "dc1463342113f521e7bb68b7e8ba2ada"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\About.jsx": {
+    "mtime": 1777719113.292457,
+    "hash": "6cd1668308f168519a1f2e664ea63485"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\DonateFood.jsx": {
+    "mtime": 1777741644.7295675,
+    "hash": "c24744b36928fcb79de0a46ef577632a"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\Home.jsx": {
+    "mtime": 1777719113.292457,
+    "hash": "a10eaa988530bfa5b73f27f223b1dfbf"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\HowItWorksPage.jsx": {
+    "mtime": 1777719113.293459,
+    "hash": "c350a62ac1b316a952459235b53435f7"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\Login.jsx": {
+    "mtime": 1777740150.204362,
+    "hash": "b923d8632017d25f32a1aa5521a834d3"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\Register.jsx": {
+    "mtime": 1777743475.7130435,
+    "hash": "cf126fcdc90c3e296efeb71d7ea3e76a"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\RescueFood.jsx": {
+    "mtime": 1777741865.1001117,
+    "hash": "b2936b36d995c24677857235b05a678f"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\VerifyEmail.jsx": {
+    "mtime": 1777740777.0610511,
+    "hash": "e9cc550a367d8d8b0108e2ae99d46c9b"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\DeliveryDetails.jsx": {
+    "mtime": 1777721930.630911,
+    "hash": "235c9119fe3c93d3ef9aae549d3da1cc"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\Profile.jsx": {
+    "mtime": 1777741185.366926,
+    "hash": "b3cff28111401d83ebff5d81c21fd613"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\admin\\AdminDashboard.jsx": {
+    "mtime": 1777721930.6319222,
+    "hash": "98854387a0c1db497b903aa50a5e9b7a"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\admin\\AdminDonations.jsx": {
+    "mtime": 1777721930.6319222,
+    "hash": "2e12f168f909eab8c64768e735306747"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\admin\\AdminUserManagement.jsx": {
+    "mtime": 1777721930.6329224,
+    "hash": "219fe06c1898e8c50e80ca97d02fc600"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\donor\\DonorDashboard.jsx": {
+    "mtime": 1777740335.9821684,
+    "hash": "ff838ae958b6f527e7ec4b965e2a3aae"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\donor\\DonorDeliveryTracking.jsx": {
+    "mtime": 1777744115.9562893,
+    "hash": "49fa0c795a91985bc0573beb5986d347"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\donor\\DonorMyDonations.jsx": {
+    "mtime": 1777741223.4736853,
+    "hash": "4d830ed07eb87fcd57761f0efa95c092"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\donor\\DonorRequests.jsx": {
+    "mtime": 1777741212.6485674,
+    "hash": "69edda8bf63fe9c152430d5931941fea"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\ngo\\NGOActiveDeliveries.jsx": {
+    "mtime": 1777744342.970292,
+    "hash": "2d00caad7c47a52a5541cfa7763d53d8"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\ngo\\NGODashboard.jsx": {
+    "mtime": 1777744702.5923762,
+    "hash": "43c15fe6c791f7d40c05fdb0dd6114ab"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\ngo\\NGORequestHistory.jsx": {
+    "mtime": 1777741202.5257425,
+    "hash": "6e4da13ffd36d456c2a58051eb2cc503"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\ngo\\NGOVolunteers.jsx": {
+    "mtime": 1777741194.255442,
+    "hash": "f3d04d84444b2eaf9d233d38776dbd25"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\volunteer\\AvailableMissions.jsx": {
+    "mtime": 1777776601.9912007,
+    "hash": "0196813affd0ae73557b9161c56703c7"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\volunteer\\MyDeliveries.jsx": {
+    "mtime": 1777740184.6077654,
+    "hash": "bc66c891af520edca2735bd228c0c5dd"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\pages\\dashboard\\volunteer\\VolunteerDashboard.jsx": {
+    "mtime": 1777744152.0399182,
+    "hash": "d4b73aad42685b8f4b5a447e1e6ad6bb"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\services\\api.js": {
+    "mtime": 1777742640.9412503,
+    "hash": "221905747dbb5d5534859e0e8a5988ae"
+  },
+  "F:\\KrunalDey\\foodRescue\\FoodRescue_Project_Report.md": {
+    "mtime": 1777719113.2644548,
+    "hash": "62c6130ded175ae7a76fe7fb72f13b21"
+  },
+  "F:\\KrunalDey\\foodRescue\\MONGODB_SETUP.md": {
+    "mtime": 1777719113.2644548,
+    "hash": "ba6a3034530d9d9518a1fc55b424e2ae"
+  },
+  "F:\\KrunalDey\\foodRescue\\README.md": {
+    "mtime": 1777719113.2644548,
+    "hash": "531e0069b9853198468253a20b0268bc"
+  },
+  "F:\\KrunalDey\\foodRescue\\backend\\compile_errors.txt": {
+    "mtime": 1777776884.6160648,
+    "hash": "7ae7e35a5d31266e415c1ad83dbce9b4"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\SCREENSHOT_GUIDE.md": {
+    "mtime": 1777721930.5834084,
+    "hash": "694869f75fdf626e0ee2b5ffbe6179e0"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\index.html": {
+    "mtime": 1777719113.2784574,
+    "hash": "9db5e77aeaef2d3d5bc7efd90156aa4f"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\README.md": {
+    "mtime": 1777719113.2784574,
+    "hash": "a35031cdadd3d3add78fbf2beb5b4b0a"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\01_Landing_Page.jpg": {
+    "mtime": 1777721930.5900333,
+    "hash": "d583949da7bff96a7957e262f55195b0"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\02_About_Us.jpg": {
+    "mtime": 1777721930.5929232,
+    "hash": "8642aa6da3a6808c45cf76825a26a71a"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\03_How_It_Works.jpg": {
+    "mtime": 1777721930.5949297,
+    "hash": "2850568287a89724a96c876ca735f963"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\04_Login_Page.jpg": {
+    "mtime": 1777721930.5964358,
+    "hash": "962079a9f4f7a550f1bb7252159fa79d"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\05b_Register_NGO_View.jpg": {
+    "mtime": 1777721930.5995686,
+    "hash": "cee70310b37b4251d79a7514c27a46c3"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\05c_Register_Volunteer_View.jpg": {
+    "mtime": 1777721930.6020913,
+    "hash": "2c49136ac968ed1084917ad8998ad038"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\05_Register_Page.jpg": {
+    "mtime": 1777721930.5980296,
+    "hash": "75fd68b810baa7399decef11980e505b"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\06_Verify_Email_Page.jpg": {
+    "mtime": 1777721930.603104,
+    "hash": "75fd68b810baa7399decef11980e505b"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\07_Donate_Food_Form.jpg": {
+    "mtime": 1777721930.6051023,
+    "hash": "0a06052fbd3496129ceb8f88f18afb36"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\08_Rescue_Food_List.jpg": {
+    "mtime": 1777721930.6066177,
+    "hash": "4c9a1cf17c861ec7c9811785e3ae7239"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\09_Donor_Dashboard.jpg": {
+    "mtime": 1777721930.6066177,
+    "hash": "bf41b3fd2e2a948c8038b4b916cd0633"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\10_Donor_My_Donations.jpg": {
+    "mtime": 1777721930.6081526,
+    "hash": "f6e2f16d082c6f798a5ab673c4a143d8"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\11_Donor_Requests_Management.jpg": {
+    "mtime": 1777721930.6095374,
+    "hash": "2f32f4e739916373e5f85728ba539d6a"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\12_NGO_Dashboard.jpg": {
+    "mtime": 1777721930.6109047,
+    "hash": "ced6ac76c007c3ae096ff5e3d803bcda"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\13_NGO_Request_History.jpg": {
+    "mtime": 1777721930.6129196,
+    "hash": "dc8cb86968d3f30257008ff0f310746c"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\14_NGO_Volunteer_Management.jpg": {
+    "mtime": 1777721930.6129196,
+    "hash": "2c5a419866b0d70918270a81c11a54a5"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\15_Admin_Dashboard.jpg": {
+    "mtime": 1777721930.6154335,
+    "hash": "ad79123559d89ec4fa05ee6fad660c37"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\16_Admin_Partner_Management.jpg": {
+    "mtime": 1777721930.6164455,
+    "hash": "06bdeb69c0db4a1dc39d57754f52f4b6"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\17_Admin_Donation_Monitoring.jpg": {
+    "mtime": 1777721930.6174433,
+    "hash": "7ea6ec6002b5f8258af6500b6970b0bb"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\18_Volunteer_Pending_Approval.jpg": {
+    "mtime": 1777721930.6184437,
+    "hash": "df7fe8948080a49684d86b7c284c2420"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\19_Volunteer_Available_Missions.jpg": {
+    "mtime": 1777721930.6184437,
+    "hash": "fc8b8bacd7dccaaf8576571e0fb927c4"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\20_Volunteer_Active_Mission_OTP.jpg": {
+    "mtime": 1777721930.6199527,
+    "hash": "fc8b8bacd7dccaaf8576571e0fb927c4"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\21_Volunteer_Mission_In_Transit.jpg": {
+    "mtime": 1777721930.6214821,
+    "hash": "fc8b8bacd7dccaaf8576571e0fb927c4"
+  },
+  "F:\\KrunalDey\\foodRescue\\documentation\\screenshots\\22_Delivery_Tracking_Details.jpg": {
+    "mtime": 1777721930.6219902,
+    "hash": "3f79eb2a73886934af61a4bb0d41732d"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\public\\hotel.png": {
+    "mtime": 1777719113.2804587,
+    "hash": "669cbc64882992c2cdefc59794e76009"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\public\\mission.png": {
+    "mtime": 1777719113.2834566,
+    "hash": "244edadd7d770fb7131fc55cba3db183"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\public\\ngo.jpg": {
+    "mtime": 1777719113.2844565,
+    "hash": "cbb1b7187abbbfdd0130e0a4a5c922a3"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\public\\vite.svg": {
+    "mtime": 1777719113.2844565,
+    "hash": "8e3a10e157f75ada21ab742c022d5430"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\public\\volunter.png": {
+    "mtime": 1777719113.2844565,
+    "hash": "a4938616b4b6dce9c770948d171a3cb9"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\logo.svg": {
+    "mtime": 1777719113.2914588,
+    "hash": "ee7cd8ed2dcec943251eb2763684fc6f"
+  },
+  "F:\\KrunalDey\\foodRescue\\frontend\\src\\assets\\react.svg": {
+    "mtime": 1777719113.28646,
+    "hash": "f0402b67b6ce880f65666bb49e841696"
+  }
+}

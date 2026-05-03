@@ -47,9 +47,13 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Email already exists");
         }
 
-        // Generate NGO ID if user is an NGO
+        // Set NGO ID to Registration Number if user is an NGO
         if ("NGO".equals(user.getRole())) {
-            user.setNgoId(generateNgoId());
+            if (user.getNgoRegistrationNumber() != null && !user.getNgoRegistrationNumber().isEmpty()) {
+                user.setNgoId(user.getNgoRegistrationNumber());
+            } else {
+                user.setNgoId(generateNgoId());
+            }
         }
 
         // Generate random 6-digit OTP
@@ -96,6 +100,34 @@ public class AuthController {
             return ResponseEntity.ok("Email verified successfully");
         } else {
             return ResponseEntity.badRequest().body("Invalid verification code");
+        }
+    }
+
+    @PostMapping("/resend-code")
+    public ResponseEntity<?> resendCode(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        Optional<User> userOpt = userRepository.findByEmail(email);
+        
+        if (!userOpt.isPresent()) {
+            return ResponseEntity.badRequest().body("User not found");
+        }
+
+        User user = userOpt.get();
+        if (user.isEmailVerified()) {
+            return ResponseEntity.badRequest().body("Email already verified");
+        }
+
+        // Generate new random 6-digit OTP
+        String otp = String.format("%06d", new Random().nextInt(999999));
+        user.setVerificationCode(otp);
+        user.setVerificationExpires(LocalDateTime.now().plusMinutes(15));
+        userRepository.save(user);
+
+        try {
+            emailService.sendVerificationEmail(user.getEmail(), otp);
+            return ResponseEntity.ok("Verification code resent successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Failed to send email. Code is: " + otp);
         }
     }
 

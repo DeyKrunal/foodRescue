@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { verifyEmail } from '../services/api';
+import { verifyEmail, resendCode } from '../services/api';
+import Swal from 'sweetalert2';
 
 const VerifyEmail = () => {
     const [code, setCode] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [resending, setResending] = useState(false);
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     // Extract email from location state
     const email = location.state?.email;
 
@@ -34,6 +36,25 @@ const VerifyEmail = () => {
             setError(err.response?.data || 'Verification failed. Please try again.');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleResend = async () => {
+        setResending(true);
+        setError('');
+        try {
+            await resendCode(email);
+            Swal.fire({
+                icon: 'success',
+                title: 'Sent!',
+                text: 'A new verification code has been sent to your email.',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        } catch (err) {
+            setError(err.response?.data || 'Failed to resend code.');
+        } finally {
+            setResending(false);
         }
     };
 
@@ -75,9 +96,16 @@ const VerifyEmail = () => {
                         </button>
                     </form>
                 )}
-                
+
                 <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '0.9rem' }}>
-                    Didn't receive code? <button className="btn-text" style={{ textDecoration: 'underline' }}>Resend</button>
+                    Didn't receive code? <button
+                        className="btn-text"
+                        style={{ textDecoration: 'underline', color: 'var(--primary-color)', cursor: resending ? 'not-allowed' : 'pointer' }}
+                        onClick={handleResend}
+                        disabled={resending}
+                    >
+                        {resending ? 'Resending...' : 'Resend'}
+                    </button>
                 </div>
             </div>
         </div>

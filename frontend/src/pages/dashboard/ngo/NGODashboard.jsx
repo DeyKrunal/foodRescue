@@ -8,13 +8,17 @@ const NGODashboard = () => {
     const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
     const [activeDeliveries, setActiveDeliveries] = useState([]);
-    const userString = localStorage.getItem('user');
+    const userString = sessionStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     const fetchData = async () => {
+        if (!user?.id) return;
         try {
             const delRes = await getNgoDeliveries(user.id);
             setActiveDeliveries(delRes.data);
+            
+            const reqRes = await getNgoRequests(user.id);
+            setRequests(reqRes.data);
         } catch (err) {
             console.error(err);
         }
@@ -22,11 +26,6 @@ const NGODashboard = () => {
 
     useEffect(() => {
         fetchData();
-        // Fetch specific NGO requests here
-        setRequests([
-            { id: 1, item: '50 Meals - Veg', status: 'PENDING', donor: 'Biryani Palace' },
-            { id: 2, item: '10kg Rice', status: 'APPROVED', donor: 'Taj Hotel' }
-        ]);
     }, []);
 
     const handleNgoVerify = async (deliveryId) => {
@@ -49,17 +48,18 @@ const NGODashboard = () => {
         }
     };
 
+
     return (
         <DashboardLayout role="NGO">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
                 <div>
                     <h1>NGO Dashboard</h1>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                        Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user.ngoId || user.id}</strong>
+                        Share your NGO ID with volunteers: <strong style={{ color: 'var(--primary-color)' }}>{user?.ngoId || user?.id || '...'}</strong>
                     </p>
                 </div>
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    {!user.verified && (
+                    {!user?.verified && (
                         <span className="badge" style={{ background: '#FFF3E0', color: '#E65100', padding: '8px 16px' }}>
                             ⚠️ Account Pending Admin Approval
                         </span>
@@ -106,8 +106,8 @@ const NGODashboard = () => {
 
             <div className="stats-row">
                 <div className="stat-mini-card">
-                    <h4>My Requests</h4>
-                    <p>{requests.length}</p>
+                    <h4>Volunteers</h4>
+                    <p>{user?.numberOfVolunteers || 0}</p>
                 </div>
                 <div className="stat-mini-card">
                     <h4>Food Collected</h4>
@@ -133,10 +133,21 @@ const NGODashboard = () => {
                     <tbody>
                         {requests.map(req => (
                             <tr key={req.id}>
-                                <td>{req.item}</td>
-                                <td>{req.donor}</td>
-                                <td><span className={`badge ${req.status === 'APPROVED' ? 'badge-available' : ''}`}>{req.status}</span></td>
-                                <td><button className="btn btn-outline" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>Details</button></td>
+                                <td>{req.donation?.foodItem}</td>
+                                <td>{req.donation?.donor?.name || 'Unknown Donor'}</td>
+                                <td>
+                                    <span className={`badge ${
+                                        req.status === 'ACCEPTED' ? 'badge-available' : 
+                                        req.status === 'REJECTED' ? 'badge-rejected' : ''
+                                    }`}>
+                                        {req.status}
+                                    </span>
+                                </td>
+                                <td>
+                                    <Link to="/ngo/history" className="btn btn-outline" style={{ padding: '6px 12px', fontSize: '0.8rem', textDecoration: 'none' }}>
+                                        Details
+                                    </Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

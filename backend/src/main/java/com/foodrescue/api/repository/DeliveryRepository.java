@@ -11,4 +11,6 @@ public interface DeliveryRepository extends MongoRepository<Delivery, String> {
     Optional<Delivery> findByRequestId(String requestId);
     List<Delivery> findByRequestDonationDonorId(String donorId);
     List<Delivery> findByRequestNgoId(String ngoId);
+    List<Delivery> findByStatusAndRequestNgoNgoId(String status, String ngoId);
+    List<Delivery> findByStatusAndRequestNgoId(String status, String ngoId);
 }

@@ -37,4 +37,6 @@ Thumbs.db
 *.tmp
 *.temp
 
+venv/
+
 Clothing_Report.pdf

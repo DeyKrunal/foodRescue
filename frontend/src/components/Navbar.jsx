@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const userString = localStorage.getItem("user");
+  const userString = sessionStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Navbar = () => {
     } catch (err) {
       console.error("Logout failed", err);
     }
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     navigate("/login");
   };
 

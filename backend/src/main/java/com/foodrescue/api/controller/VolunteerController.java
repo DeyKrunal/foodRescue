@@ -37,6 +37,15 @@ public class VolunteerController {
         volunteer.setVolunteerStatus("APPROVED");
         userRepository.save(volunteer);
 
+        // [FIX] Update NGO Volunteer Count
+        if (volunteer.getAffiliatedNgoId() != null) {
+            userRepository.findByNgoId(volunteer.getAffiliatedNgoId()).ifPresent(ngo -> {
+                int currentCount = ngo.getNumberOfVolunteers() != null ? ngo.getNumberOfVolunteers() : 0;
+                ngo.setNumberOfVolunteers(currentCount + 1);
+                userRepository.save(ngo);
+            });
+        }
+
         // Notify volunteer
         Notification n = new Notification();
         n.setRecipient(volunteer);

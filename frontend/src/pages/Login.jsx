@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -16,14 +17,14 @@ const Login = () => {
         setError('');
 
         // Clear stale session
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
 
         try {
             const res = await loginUser(formData);
             const user = res.data;
 
-            // Use localStorage to maintain session across tabs
-            localStorage.setItem('user', JSON.stringify(user));
+            // Use sessionStorage to maintain session until tab is closed
+            sessionStorage.setItem('user', JSON.stringify(user));
 
             Swal.fire({
                 icon: 'success',

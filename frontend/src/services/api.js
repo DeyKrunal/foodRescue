@@ -19,6 +19,8 @@ export const getTestimonials = () => api.get('/public/testimonials');
 export const registerUser = (userData) => api.post('/auth/register', userData);
 export const loginUser = (credentials) => api.post('/auth/login', credentials);
 export const verifyEmail = (email, code) => api.post('/auth/verify', { email, code });
+export const resendCode = (email) => api.post('/auth/resend-code', { email });
+export const checkSession = () => api.get('/auth/me');
 
 // Notifications
 export const getNotifications = (userId) => api.get(`/notifications/user/${userId}`);
@@ -36,7 +38,7 @@ export const createRequest = (requestData) => api.post('/requests/create', reque
 export const getNgoRequests = (ngoId) => api.get(`/requests/ngo/${ngoId}`);
 
 // Volunteers & Deliveries
-export const getAvailableDeliveries = () => api.get('/deliveries/available');
+export const getAvailableDeliveries = (ngoId) => api.get(`/deliveries/available?ngoId=${ngoId}`);
 export const getDonorDeliveries = (donorId) => api.get(`/deliveries/donor/${donorId}`);
 export const getNgoDeliveries = (ngoId) => api.get(`/deliveries/ngo/${ngoId}`);
 export const getMyTasks = (volunteerId) => api.get(`/deliveries/my-tasks/${volunteerId}`);

@@ -127,6 +127,25 @@ public class RequestController {
                 delivery.setPickupPoint(donation.getPickupLocation());
                 delivery.setDeliveryPoint(request.getNgo().getAddress());
                 deliveryRepository.save(delivery);
+
+                // Notify all approved volunteers of this NGO
+                if (request.getNgo().getNgoId() != null) {
+                    List<User> volunteers = userRepository.findByAffiliatedNgoIdAndRoleAndVolunteerStatus(
+                        request.getNgo().getNgoId(), "VOLUNTEER", "APPROVED");
+                    
+                    for (User volunteer : volunteers) {
+                        Notification vNote = new Notification();
+                        vNote.setRecipient(volunteer);
+                        vNote.setMessage("New delivery task available for " + donation.getFoodItem());
+                        vNote.setType("INFO");
+                        notificationRepository.save(vNote);
+                        
+                        try {
+                            emailService.sendNotification(volunteer.getEmail(), "New Task Available", 
+                                "A new rescue task for '" + donation.getFoodItem() + "' is available in your dashboard.");
+                        } catch (Exception e) {}
+                    }
+                }
             }
 
             Request savedRequest = requestRepository.save(request);

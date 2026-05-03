@@ -18,6 +18,10 @@ public class DonorController {
     private RequestRepository requestRepository;
     @Autowired
     private NotificationRepository notificationRepository;
+    @Autowired
+    private DeliveryRepository deliveryRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/{donorId}/donations")
     public List<Donation> getMyDonations(@PathVariable @NonNull String donorId) {
@@ -56,6 +60,28 @@ public class DonorController {
             n.setMessage("Your rescue request for '" + donation.getFoodItem() + "' has been approved by " + donation.getDonor().getName());
             n.setType("SUCCESS");
             notificationRepository.save(n);
+
+            // [FIX] Create Delivery record for Volunteers
+            Delivery delivery = new Delivery();
+            delivery.setRequest(request);
+            delivery.setStatus("PENDING");
+            delivery.setPickupPoint(donation.getPickupLocation());
+            delivery.setDeliveryPoint(request.getNgo().getAddress());
+            deliveryRepository.save(delivery);
+
+            // Notify all approved volunteers of this NGO
+            if (request.getNgo().getNgoId() != null) {
+                List<User> volunteers = userRepository.findByAffiliatedNgoIdAndRoleAndVolunteerStatus(
+                    request.getNgo().getNgoId(), "VOLUNTEER", "APPROVED");
+                
+                for (User volunteer : volunteers) {
+                    Notification vNote = new Notification();
+                    vNote.setRecipient(volunteer);
+                    vNote.setMessage("New delivery task available for " + donation.getFoodItem());
+                    vNote.setType("INFO");
+                    notificationRepository.save(vNote);
+                }
+            }
 
             // Reject other pending requests for this donation
             List<Request> otherRequests = requestRepository.findByDonationId(donation.getId());

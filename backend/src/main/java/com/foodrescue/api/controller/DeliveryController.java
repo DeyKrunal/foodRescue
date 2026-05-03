@@ -18,6 +18,7 @@ import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/deliveries")
@@ -35,8 +36,26 @@ public class DeliveryController {
     private NotificationRepository notificationRepository;
 
     @GetMapping("/available")
-    public List<Delivery> getAvailableDeliveries() {
-        return deliveryRepository.findByStatus("PENDING");
+    public List<Delivery> getAvailableDeliveries(@RequestParam String ngoId) {
+        if (ngoId == null || ngoId.isEmpty()) return List.of();
+        
+        // Find NGO by either Mongo ID or User-defined NGO ID
+        User ngo = userRepository.findById(ngoId)
+                .orElseGet(() -> userRepository.findByNgoId(ngoId).orElse(null));
+                
+        if (ngo == null) {
+            logger.warn("Available Deliveries requested for non-existent NGO ID: {}", ngoId);
+            return List.of();
+        }
+
+        // Fetch all PENDING deliveries and filter manually.
+        // We cannot use a repository method like findByStatusAndRequestNgoId
+        // because MongoDB does not support querying across nested @DBRefs (Delivery -> Request -> NGO).
+        return deliveryRepository.findByStatus("PENDING").stream()
+                .filter(d -> d.getRequest() != null && 
+                            d.getRequest().getNgo() != null && 
+                            d.getRequest().getNgo().getId().equals(ngo.getId()))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/donor/{donorId}")
@@ -80,7 +99,22 @@ public class DeliveryController {
             String otp = String.format("%06d", random.nextInt(1000000));
             delivery.setPickupOtp(otp);
 
-            return ResponseEntity.ok(deliveryRepository.save(delivery));
+            Delivery saved = deliveryRepository.save(delivery);
+
+            // Notify Donor with OTP
+            if (delivery.getRequest() != null && delivery.getRequest().getDonation() != null) {
+                User donor = delivery.getRequest().getDonation().getDonor();
+                try {
+                    emailService.sendNotification(donor.getEmail(), "Pickup OTP for Food Rescue",
+                        "A volunteer (" + volunteer.getName() + ") has been assigned to rescue your food: " + 
+                        delivery.getRequest().getDonation().getFoodItem() + ". \n\nYour Pickup OTP is: " + otp + 
+                        "\n\nPlease provide this OTP to the volunteer when they arrive.");
+                } catch (Exception e) {
+                    logger.error("Failed to send OTP email to donor", e);
+                }
+            }
+
+            return ResponseEntity.ok(saved);
         }).orElse(ResponseEntity.notFound().build());
     }
 
@@ -157,7 +191,8 @@ public class DeliveryController {
                 }
             }
             delivery.setUpdatedAt(LocalDateTime.now());
-            return ResponseEntity.ok(deliveryRepository.save(delivery));
+            deliveryRepository.save(delivery);
+            return ResponseEntity.ok("Pickup confirmed by NGO. Status is now IN_TRANSIT.");
         }).orElse(ResponseEntity.notFound().build());
     }
 

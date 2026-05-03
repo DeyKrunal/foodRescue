@@ -5,12 +5,12 @@ const FoodDetailModal = ({ donation, isOpen, onClose, onClaim }) => {
     if (!isOpen || !donation) return null;
 
     return (
-        <div className="modal-overlay animate-fade">
+        <div className="modal-overlay animate-fade" style={{ marginTop: '12rem' }}>
             <div className="modal-content glassmorphism">
                 <button className="modal-close" onClick={onClose}>
                     <X size={24} />
                 </button>
-                
+
                 <div className="modal-header">
                     <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
                         <span className={`badge ${donation.status === 'REQUESTED' ? 'badge-requested' : 'badge-available'}`}>

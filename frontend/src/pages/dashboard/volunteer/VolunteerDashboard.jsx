@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import api, { getAvailableDeliveries, getMyTasks, assignDelivery, trackDelivery, completeDelivery } from '../../../services/api';
+import { Link } from 'react-router-dom';
+import api, { getAvailableDeliveries, getMyTasks, assignDelivery, trackDelivery, completeDelivery, verifyPickupOtp } from '../../../services/api';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
-import { Package, MapPin, Navigation, CheckCircle, Clock } from 'lucide-react';
+import { Package, MapPin, Navigation, CheckCircle, Clock, Truck, Users } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const VolunteerDashboard = () => {
     const [deliveries, setDeliveries] = useState([]);
     const [myTasks, setMyTasks] = useState([]);
     const [loading, setLoading] = useState(true);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('user'));
 
     const fetchData = async () => {
         setLoading(true);
         try {
-            const availableRes = await getAvailableDeliveries();
+            const ngoId = user.affiliatedNgoId || user.ngoId;
+            if (ngoId) {
+                const availableRes = await getAvailableDeliveries(ngoId);
+                setDeliveries(availableRes.data);
+            }
             const myTasksRes = await getMyTasks(user.id);
-            setDeliveries(availableRes.data);
             setMyTasks(myTasksRes.data);
         } catch (err) {
             console.error("Failed to fetch deliveries", err);
@@ -57,8 +61,9 @@ const VolunteerDashboard = () => {
                 try {
                     await trackDelivery(deliveryId, [longitude, latitude]);
                     
-                    const newStatus = (myTasks.find(d => d.id === deliveryId).status === 'ASSIGNED' ? 'Picked Up' : 'In Transit');
-                    
+                    const task = myTasks.find(d => d.id === deliveryId);
+                    const newStatus = (task?.status === 'ASSIGNED' ? 'Picked Up' : 'In Transit');
+
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -66,12 +71,12 @@ const VolunteerDashboard = () => {
                         timer: 3000,
                         timerProgressBar: true
                     });
-                    
+
                     Toast.fire({
                         icon: 'success',
                         title: `Location Updated! Status: ${newStatus}`
                     });
-                    
+
                     fetchData();
                 } catch (err) {
                     console.error(err);
@@ -96,25 +101,26 @@ const VolunteerDashboard = () => {
         }
     };
 
-    if (user.volunteerStatus !== 'APPROVED') {
+
+    if (user && user.volunteerStatus !== 'APPROVED') {
         return (
             <DashboardLayout role="VOLUNTEER">
-                <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     minHeight: '60vh',
                     textAlign: 'center',
                     padding: '40px'
                 }}>
-                    <div style={{ 
-                        width: '80px', 
-                        height: '80px', 
-                        background: 'rgba(230, 126, 34, 0.1)', 
-                        borderRadius: '50%', 
-                        display: 'flex', 
-                        alignItems: 'center', 
+                    <div style={{
+                        width: '80px',
+                        height: '80px',
+                        background: 'rgba(230, 126, 34, 0.1)',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '24px',
                         color: 'var(--accent-color)'
@@ -123,7 +129,7 @@ const VolunteerDashboard = () => {
                     </div>
                     <h2 style={{ marginBottom: '16px' }}>Account Pending Approval</h2>
                     <p style={{ maxWidth: '400px', margin: '0 auto 32px', color: 'var(--text-muted)' }}>
-                        Your account is linked to NGO ID: <strong>{user.affiliatedNgoId}</strong>. 
+                        Your account is linked to NGO ID: <strong>{user.affiliatedNgoId}</strong>.
                         Please wait for them to approve your application before you can start accepting delivery missions.
                     </p>
                     <button className="btn btn-outline" onClick={() => window.location.reload()}>
@@ -137,84 +143,97 @@ const VolunteerDashboard = () => {
     return (
         <DashboardLayout role="VOLUNTEER">
             <div className="volunteer-dashboard animate-fade">
-                <div style={{ marginBottom: '32px' }}>
-                    <h1>Volunteer Dashboard</h1>
-                    <p>Help bridge the gap. Pick up food and deliver it to those in need.</p>
+                <div style={{ marginBottom: '40px' }}>
+                    <h1 style={{ fontSize: '2.5rem', fontWeight: '800' }}>Welcome, {user?.name?.split(' ')[0] || 'Volunteer'}!</h1>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>You're making a difference. Here's your impact today.</p>
                 </div>
 
-                <div className="stats-row">
-                    <div className="stat-mini-card">
-                        <h4>Available Deliveries</h4>
-                        <p>{deliveries.length}</p>
+                <div className="stats-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+                    <div className="stat-mini-card" style={{ background: 'linear-gradient(135deg, #4dabf7 0%, #228be6 100%)', color: 'white', padding: '32px', borderRadius: '24px', boxShadow: '0 10px 20px rgba(34, 139, 230, 0.2)' }}>
+                        <h4 style={{ opacity: 0.9, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Available Near You</h4>
+                        <p style={{ fontSize: '2.5rem', fontWeight: '800', margin: '8px 0' }}>{deliveries.length}</p>
+                        <Link to="/volunteer/available" style={{ color: 'white', fontSize: '0.85rem', fontWeight: '600', textDecoration: 'none' }}>View Missions →</Link>
                     </div>
-                    <div className="stat-mini-card">
-                        <h4>My Active Tasks</h4>
-                        <p>{myTasks.filter(t => t.status !== 'DELIVERED').length}</p>
+                    <div className="stat-mini-card" style={{ background: 'linear-gradient(135deg, #63e6be 0%, #20c997 100%)', color: 'white', padding: '32px', borderRadius: '24px', boxShadow: '0 10px 20px rgba(32, 201, 151, 0.2)' }}>
+                        <h4 style={{ opacity: 0.9, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Active Missions</h4>
+                        <p style={{ fontSize: '2.5rem', fontWeight: '800', margin: '8px 0' }}>{myTasks.filter(t => t.status !== 'DELIVERED').length}</p>
+                        <Link to="/volunteer/deliveries" style={{ color: 'white', fontSize: '0.85rem', fontWeight: '600', textDecoration: 'none' }}>Manage Tasks →</Link>
+                    </div>
+                    <div className="stat-mini-card" style={{ background: 'linear-gradient(135deg, #ff922b 0%, #f76707 100%)', color: 'white', padding: '32px', borderRadius: '24px', boxShadow: '0 10px 20px rgba(247, 103, 7, 0.2)' }}>
+                        <h4 style={{ opacity: 0.9, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Rescues</h4>
+                        <p style={{ fontSize: '2.5rem', fontWeight: '800', margin: '8px 0' }}>{myTasks.filter(t => t.status === 'DELIVERED').length}</p>
+                        <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Lifetime Impact</span>
                     </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '32px' }}>
-                    <section>
-                        <h3>Available Near You</h3>
-                        <div className="listing-grid">
-                            {deliveries.length > 0 ? deliveries.map(delivery => (
-                                <div key={delivery.id} className="food-card">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                                        <span className="badge badge-available">New Rescue</span>
-                                        <Package size={20} color="var(--primary-color)" />
-                                    </div>
-                                    <h4>{delivery.request?.donation.foodItem}</h4>
-                                    <div style={{ margin: '16px 0', fontSize: '0.9rem' }}>
-                                        <p><MapPin size={14} /> <strong>From:</strong> {delivery.pickupPoint}</p>
-                                        <p><Navigation size={14} /> <strong>To:</strong> {delivery.deliveryPoint}</p>
-                                    </div>
-                                    <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => handleAccept(delivery.id)}>
-                                        Accept Mission
-                                    </button>
-                                </div>
-                            )) : <p>All caught up! No pending deliveries.</p>}
+                {/* Affiliation Info Section */}
+                <div style={{ background: '#f8fafc', padding: '24px', borderRadius: '24px', marginBottom: '48px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                        <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'var(--primary-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Users size={28} />
                         </div>
-                    </section>
+                        <div>
+                            <h4 style={{ margin: 0, fontSize: '1.1rem' }}>Affiliated Organization</h4>
+                            <p style={{ margin: '4px 0 0', color: '#64748b', fontSize: '0.9rem' }}>NGO ID: <strong>{user.affiliatedNgoId}</strong></p>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Status:</span>
+                        <span className="badge badge-available" style={{ fontSize: '0.8rem', fontWeight: '700' }}>{user.volunteerStatus}</span>
+                    </div>
+                </div>
 
-                    <section>
-                        <h3>My Active Missions</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '40px' }}>
-                            {myTasks.filter(t => t.status !== 'DELIVERED').map(task => (
-                                <div key={task.id} className="stat-mini-card" style={{ borderLeft: '4px solid var(--accent-color)' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-                                        <span style={{ fontWeight: '600', color: 'var(--accent-color)' }}>{task.status.replace('_', ' ')}</span>
-                                        <button className="btn-text" onClick={() => handleTrack(task.id)}>📍 Update GPS</button>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+                    <div style={{ background: 'white', padding: '32px', borderRadius: '24px', border: '1px solid #f1f5f9' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                            <h3 style={{ margin: 0 }}>Latest Missions</h3>
+                            <Link to="/volunteer/available" style={{ color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: '600' }}>See All</Link>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                            {deliveries.slice(0, 3).map(delivery => (
+                                <div key={delivery.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', borderRadius: '16px', background: '#f8fafc' }}>
+                                    <div>
+                                        <p style={{ fontWeight: '700', fontSize: '0.95rem' }}>{delivery.request?.donation?.foodItem}</p>
+                                        <p style={{ fontSize: '0.8rem', color: '#64748b' }}>{delivery.pickupPoint?.split(',')[0] || 'Unknown location'}</p>
                                     </div>
-                                    <div style={{ marginBottom: '12px' }}>
-                                        <Link to={`/delivery/${task.id}`} style={{ fontSize: '0.8rem', color: 'var(--primary-color)', textDecoration: 'none' }}>View Tracking Page →</Link>
-                                    </div>
-                                    <h4>{task.request?.donation.foodItem}</h4>
-                                    <p style={{ fontSize: '0.85rem', marginTop: '8px' }}>Tracking: {task.currentCoordinates ? `${task.currentCoordinates[1].toFixed(4)}, ${task.currentCoordinates[0].toFixed(4)}` : 'Wait for update'}</p>
-                                    
-                                    {task.status === 'ASSIGNED' && (
-                                        <div style={{ marginTop: '16px', background: '#f0f7ff', padding: '12px', borderRadius: '8px', border: '1px dashed #007bff' }}>
-                                            <p style={{ fontSize: '0.75rem', color: '#0056b3', fontWeight: '700', textTransform: 'uppercase', marginBottom: '4px' }}>Pickup OTP</p>
-                                            <p style={{ fontSize: '1.5rem', fontWeight: '800', letterSpacing: '4px', color: '#0056b3' }}>{task.pickupOtp}</p>
-                                            <p style={{ fontSize: '0.7rem', color: '#666', marginTop: '4px' }}>Provide this OTP to the Donor upon arrival.</p>
-                                        </div>
-                                    )}
-
-                                    <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
-                                        {task.status === 'ASSIGNED' ? (
-                                            <div style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', padding: '8px' }}>Waiting for Donor to verify OTP...</div>
-                                        ) : task.status === 'OTP_VERIFIED' ? (
-                                            <div style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', padding: '8px' }}>Waiting for NGO to confirm food items...</div>
-                                        ) : (
-                                            <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => handleComplete(task.id)}>
-                                                <CheckCircle size={16} style={{ marginRight: '8px' }} /> Mark Delivered
-                                            </button>
-                                        )}
-                                    </div>
+                                    <button className="btn btn-primary" style={{ padding: '8px 16px', fontSize: '0.85rem' }} onClick={() => handleAccept(delivery.id)}>Accept</button>
                                 </div>
                             ))}
-                            {myTasks.filter(t => t.status !== 'DELIVERED').length === 0 && <p>No active missions.</p>}
+                            {deliveries.length === 0 && <p style={{ color: '#64748b', textAlign: 'center', padding: '20px' }}>No new missions available.</p>}
                         </div>
-                    </section>
+                    </div>
+
+                    <div style={{ background: 'white', padding: '32px', borderRadius: '24px', border: '1px solid #f1f5f9' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                            <h3 style={{ margin: 0 }}>Active Task Summary</h3>
+                            <Link to="/volunteer/deliveries" style={{ color: 'var(--primary-color)', fontSize: '0.9rem', textDecoration: 'none', fontWeight: '600' }}>Manage</Link>
+                        </div>
+                        {myTasks.filter(t => t.status !== 'DELIVERED').slice(0, 1).map(task => (
+                            <div key={task.id}>
+                                <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '20px' }}>
+                                    <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#fff9db', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f08c00' }}>
+                                        <Truck size={24} />
+                                    </div>
+                                    <div>
+                                        <h3 style={{ fontSize: '1.25rem', marginBottom: '20px' }}>{task.request?.donation?.foodItem || 'Unknown Item'}</h3>
+                                        <p style={{ fontSize: '0.85rem', color: '#64748b' }}>Status: <span style={{ fontWeight: '600', color: '#f08c00' }}>{task.status.replace('_', ' ')}</span></p>
+                                    </div>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    <p style={{ fontSize: '0.85rem' }}>📍 <strong>From:</strong> {task.pickupPoint}</p>
+                                    <p style={{ fontSize: '0.85rem' }}>🎯 <strong>To:</strong> {task.deliveryPoint}</p>
+                                </div>
+                                <Link to="/volunteer/deliveries" className="btn btn-outline" style={{ width: '100%', marginTop: '20px', textAlign: 'center', textDecoration: 'none', display: 'block' }}>
+                                    Go to Task Management
+                                </Link>
+                            </div>
+                        ))}
+                        {myTasks.filter(t => t.status !== 'DELIVERED').length === 0 && (
+                            <div style={{ textAlign: 'center', padding: '40px' }}>
+                                <p style={{ color: '#64748b' }}>No active tasks at the moment.</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </DashboardLayout>

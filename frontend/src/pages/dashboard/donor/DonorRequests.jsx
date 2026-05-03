@@ -3,12 +3,13 @@ import DashboardLayout from '../../../components/layout/DashboardLayout';
 import { verifyPickupOtp, getDonorDeliveries } from '../../../services/api';
 import api from '../../../services/api';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const DonorRequests = () => {
     const [requests, setRequests] = useState([]);
     const [activeDeliveries, setActiveDeliveries] = useState([]);
     const [loading, setLoading] = useState(true);
-    const userString = localStorage.getItem('user');
+    const userString = sessionStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     const fetchRequests = async () => {
