@@ -3,6 +3,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { checkSession } from '../../services/api';
 import Sidebar from './Sidebar';
 import Navbar from '../Navbar';
+import { getCurrentUser } from '../../services/api';
 
 const DashboardLayout = ({ children, role }) => {
     const navigate = useNavigate();
@@ -44,7 +45,7 @@ const DashboardLayout = ({ children, role }) => {
     return (
         <div className="dashboard-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             <Navbar />
-            <div className="dashboard-container" style={{ flex: 1, display: 'flex', background: '#f8fafc' }}>
+            <div className="dashboard-container" style={{ flex: 1, display: 'flex', background: '#f8fafc', paddingTop: '68px' }}>
                 <Sidebar role={user.role} />
                 <main className="dashboard-content" style={{ flex: 1, padding: '40px', overflowY: 'auto' }}>
                     <div style={{ maxWidth: '1200px', margin: '35px auto' }}>

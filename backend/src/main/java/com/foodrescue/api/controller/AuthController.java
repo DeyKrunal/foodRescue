@@ -153,6 +153,7 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
+        System.out.println("Logout request received for session: " + request.getSession().getId());
         request.getSession().invalidate();
         return ResponseEntity.ok("Logged out");
     }

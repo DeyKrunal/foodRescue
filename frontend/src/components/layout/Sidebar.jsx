@@ -15,6 +15,7 @@ import {
 
 const Sidebar = ({ role }) => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const donorLinks = [
         { name: 'Overview', path: '/donor/dashboard', icon: LayoutDashboard },
@@ -93,6 +94,12 @@ const Sidebar = ({ role }) => {
                     );
                 })}
             </nav>
+            <div className="sidebar-footer">
+                <button type="button" onClick={handleLogout} className="logout-btn">
+                    <LogOut size={18} />
+                    <span>Logout</span>
+                </button>
+            </div>
         </aside>
     );
 };
