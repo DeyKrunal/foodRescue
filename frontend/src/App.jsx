@@ -17,10 +17,18 @@ import DonorRequests from './pages/dashboard/donor/DonorRequests';
 import NGODashboard from './pages/dashboard/ngo/NGODashboard';
 import NGORequestHistory from './pages/dashboard/ngo/NGORequestHistory';
 import NGOVolunteers from './pages/dashboard/ngo/NGOVolunteers';
+import NGOActiveDeliveries from './pages/dashboard/ngo/NGOActiveDeliveries';
+
+import DonorDeliveryTracking from './pages/dashboard/donor/DonorDeliveryTracking';
 
 import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
 import AdminUserManagement from './pages/dashboard/admin/AdminUserManagement';
+import AdminDonations from './pages/dashboard/admin/AdminDonations';
 import VolunteerDashboard from './pages/dashboard/volunteer/VolunteerDashboard';
+import AvailableMissions from './pages/dashboard/volunteer/AvailableMissions';
+import MyDeliveries from './pages/dashboard/volunteer/MyDeliveries';
+import DeliveryDetails from './pages/dashboard/DeliveryDetails';
+import Profile from './pages/dashboard/Profile';
 
 function App() {
   return (
@@ -44,19 +52,27 @@ function App() {
           <Route path="/donor/dashboard" element={<DonorDashboard />} />
           <Route path="/donor/donations" element={<DonorMyDonations />} />
           <Route path="/donor/requests" element={<DonorRequests />} />
+          <Route path="/donor/tracking" element={<DonorDeliveryTracking />} />
 
           {/* NGO Dashboard */}
           <Route path="/ngo/dashboard" element={<NGODashboard />} />
           <Route path="/ngo/history" element={<NGORequestHistory />} />
+          <Route path="/ngo/tracking" element={<NGOActiveDeliveries />} />
           <Route path="/dashboard/ngo/volunteers" element={<NGOVolunteers />} />
 
           {/* Admin Dashboard */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUserManagement />} />
-          <Route path="/admin/donations" element={<AdminDashboard />} /> {/* Placeholder */}
+          <Route path="/admin/donations" element={<AdminDonations />} />
           
           {/* Volunteer Dashboard */}
           <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
+          <Route path="/volunteer/available" element={<AvailableMissions />} />
+          <Route path="/volunteer/deliveries" element={<MyDeliveries />} />
+          <Route path="/delivery/:id" element={<DeliveryDetails />} />
+
+          {/* Profile Route */}
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>

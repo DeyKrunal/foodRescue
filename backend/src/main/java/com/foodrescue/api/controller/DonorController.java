@@ -16,6 +16,12 @@ public class DonorController {
     private DonationRepository donationRepository;
     @Autowired
     private RequestRepository requestRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
+    @Autowired
+    private DeliveryRepository deliveryRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/{donorId}/donations")
     public List<Donation> getMyDonations(@PathVariable @NonNull String donorId) {
@@ -48,6 +54,35 @@ public class DonorController {
             donation.setStatus("RESERVED");
             donationRepository.save(donation);
 
+            // Notify the approved NGO
+            Notification n = new Notification();
+            n.setRecipient(request.getNgo());
+            n.setMessage("Your rescue request for '" + donation.getFoodItem() + "' has been approved by " + donation.getDonor().getName());
+            n.setType("SUCCESS");
+            notificationRepository.save(n);
+
+            // [FIX] Create Delivery record for Volunteers
+            Delivery delivery = new Delivery();
+            delivery.setRequest(request);
+            delivery.setStatus("PENDING");
+            delivery.setPickupPoint(donation.getPickupLocation());
+            delivery.setDeliveryPoint(request.getNgo().getAddress());
+            deliveryRepository.save(delivery);
+
+            // Notify all approved volunteers of this NGO
+            if (request.getNgo().getNgoId() != null) {
+                List<User> volunteers = userRepository.findByAffiliatedNgoIdAndRoleAndVolunteerStatus(
+                    request.getNgo().getNgoId(), "VOLUNTEER", "APPROVED");
+                
+                for (User volunteer : volunteers) {
+                    Notification vNote = new Notification();
+                    vNote.setRecipient(volunteer);
+                    vNote.setMessage("New delivery task available for " + donation.getFoodItem());
+                    vNote.setType("INFO");
+                    notificationRepository.save(vNote);
+                }
+            }
+
             // Reject other pending requests for this donation
             List<Request> otherRequests = requestRepository.findByDonationId(donation.getId());
             for (Request other : otherRequests) {
@@ -55,9 +90,23 @@ public class DonorController {
                     other.setStatus("REJECTED");
                     other.setDonorMessage("Donation was assigned to another NGO.");
                     requestRepository.save(other);
+
+                    // Notify the rejected NGOs
+                    Notification nOther = new Notification();
+                    nOther.setRecipient(other.getNgo());
+                    nOther.setMessage("Your rescue request for '" + donation.getFoodItem() + "' was rejected (assigned to another NGO).");
+                    nOther.setType("ALERT");
+                    notificationRepository.save(nOther);
                 }
             }
         } else if (status.equals("REJECTED")) {
+            // Notify the rejected NGO
+            Notification n = new Notification();
+            n.setRecipient(request.getNgo());
+            n.setMessage("Your rescue request for '" + request.getDonation().getFoodItem() + "' was rejected by the donor.");
+            n.setType("ALERT");
+            notificationRepository.save(n);
+
             // Only set back to AVAILABLE if there are no other PENDING requests
             Donation donation = request.getDonation();
             List<Request> pendingRequests = requestRepository.findByDonationId(donation.getId());
@@ -80,6 +129,13 @@ public class DonorController {
         request.setStatus("COLLECTED");
         Donation donation = request.getDonation();
         donation.setStatus("COLLECTED");
+
+        // Notify NGO
+        Notification n = new Notification();
+        n.setRecipient(request.getNgo());
+        n.setMessage("The donation '" + donation.getFoodItem() + "' has been marked as collected by the donor.");
+        n.setType("SUCCESS");
+        notificationRepository.save(n);
 
         donationRepository.save(donation);
         return requestRepository.save(request);

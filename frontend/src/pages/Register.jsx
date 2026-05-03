@@ -33,7 +33,7 @@ const Register = () => {
         restaurantName: '',
         ownerManagerName: '',
         geoLocation: '',
-        foodType: 'Both',
+        foodType: 'BOTH',
         pickupTimeWindow: '',
         averageDonationCapacity: '',
         fssaiLicenseNumber: '',
@@ -221,7 +221,19 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Mobile Number *</label>
-                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" minLength="10" maxLength="10" title="Please enter exactly 10 digits" value={formData.mobileNumber} onChange={handleChange} placeholder="e.g. 9876543210" />
+                            <input
+                                type="tel"
+                                name="mobileNumber"
+                                required
+                                pattern="[0-9]{10}"
+                                minLength="10"
+                                maxLength="10"
+                                title="Please enter exactly 10 digits"
+                                inputMode="numeric"
+                                value={formData.mobileNumber}
+                                onChange={handleChange}
+                                placeholder="9876543210"
+                            />
                         </div>
                         <div className="form-group">
                             <label>Password *</label>
@@ -247,7 +259,19 @@ const Register = () => {
                         </div>
                         <div className="form-group">
                             <label>Pincode *</label>
-                            <input type="text" name="pincode" required pattern="[0-9]{6}" minLength="6" maxLength="6" title="Please enter a valid 6-digit Pincode" value={formData.pincode} onChange={handleChange} />
+                            <input
+                                type="text"
+                                name="pincode"
+                                required
+                                pattern="[0-9]{6}"
+                                minLength="6"
+                                maxLength="6"
+                                title="Please enter a valid 6-digit Pincode"
+                                inputMode="numeric"
+                                value={formData.pincode}
+                                onChange={handleChange}
+                                placeholder="380001"
+                            />
                         </div>
 
                         {formData.role === 'NGO' ? (
@@ -263,11 +287,20 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>NGO Registration Number *</label>
-                                    <input type="text" name="ngoRegistrationNumber" required value={formData.ngoRegistrationNumber} onChange={handleChange} />
+                                    <input 
+                                        type="text" 
+                                        name="ngoRegistrationNumber" 
+                                        required 
+                                        pattern="[A-Z]{2}/[0-9]{4}/[0-9]{7}"
+                                        title="Format: State/Year/ID (e.g. GJ/2009/0007763)"
+                                        value={formData.ngoRegistrationNumber} 
+                                        onChange={handleChange} 
+                                        placeholder="e.g. GJ/2009/0007763"
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label>Service Radius (in km) *</label>
-                                    <input type="number" name="serviceRadius" required min="0" value={formData.serviceRadius} onChange={handleChange} />
+                                    <input type="number" name="serviceRadius" required min="0" inputMode="numeric" value={formData.serviceRadius} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Available? *</label>
@@ -278,7 +311,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-group">
                                     <label>Number of Volunteers</label>
-                                    <input type="number" name="numberOfVolunteers" min="0" value={formData.numberOfVolunteers} onChange={handleChange} />
+                                    <input type="number" name="numberOfVolunteers" min="0" inputMode="numeric" value={formData.numberOfVolunteers} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Vehicle Type (if any)</label>
@@ -289,8 +322,15 @@ const Register = () => {
                                     <input type="text" name="storageCapacity" value={formData.storageCapacity} onChange={handleChange} placeholder="e.g. 100kg" />
                                 </div>
                                 <div className="form-group full-width">
-                                    <label>Availability Timing</label>
-                                    <input type="text" name="availabilityTiming" value={formData.availabilityTiming} onChange={handleChange} placeholder="e.g. 9 AM - 9 PM" />
+                                    <label>Availability Timing *</label>
+                                    <select name="availabilityTiming" required value={formData.availabilityTiming} onChange={handleChange}>
+                                        <option value="">Select Time Window</option>
+                                        <option value="MORNING">Morning (8 AM - 12 PM)</option>
+                                        <option value="AFTERNOON">Afternoon (12 PM - 4 PM)</option>
+                                        <option value="EVENING">Evening (4 PM - 8 PM)</option>
+                                        <option value="NIGHT">Night (8 PM - 12 AM)</option>
+                                        <option value="FULL_DAY">Full Day (24 Hours)</option>
+                                    </select>
                                 </div>
                             </>
                         ) : formData.role === 'DONOR' ? (
@@ -305,20 +345,30 @@ const Register = () => {
                                     <input type="text" name="ownerManagerName" required value={formData.ownerManagerName} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
-                                    <label>FSSAI License Number *</label>
-                                    <input type="text" name="fssaiLicenseNumber" required value={formData.fssaiLicenseNumber} onChange={handleChange} />
+                                    <label>FSSAI License Number (14 Digits) *</label>
+                                    <input 
+                                        type="text" 
+                                        name="fssaiLicenseNumber" 
+                                        required 
+                                        pattern="[0-9]{14}"
+                                        title="Please enter exactly 14 digits"
+                                        maxLength="14"
+                                        value={formData.fssaiLicenseNumber} 
+                                        onChange={handleChange} 
+                                        placeholder="10012011000345"
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label>Food Type *</label>
                                     <select name="foodType" value={formData.foodType} onChange={handleChange}>
-                                        <option value="Veg">Pure Veg</option>
-                                        <option value="Non-Veg">Non-Veg</option>
-                                        <option value="Both">Both</option>
+                                        <option value="VEG">Pure Veg</option>
+                                        <option value="NON-VEG">Non-Veg</option>
+                                        <option value="BOTH">Both</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
                                     <label>Average Donation Capacity (kg/day)</label>
-                                    <input type="text" name="averageDonationCapacity" value={formData.averageDonationCapacity} onChange={handleChange} />
+                                    <input type="number" name="averageDonationCapacity" min="0" inputMode="numeric" value={formData.averageDonationCapacity} onChange={handleChange} />
                                 </div>
                                 <div className="form-group">
                                     <label>Refrigeration Available? *</label>
@@ -328,12 +378,19 @@ const Register = () => {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Pickup Time Window</label>
-                                    <input type="text" name="pickupTimeWindow" value={formData.pickupTimeWindow} onChange={handleChange} placeholder="e.g. 10 PM - 11 PM" />
+                                    <label>Preferred Pickup Window *</label>
+                                    <select name="pickupTimeWindow" required value={formData.pickupTimeWindow} onChange={handleChange}>
+                                        <option value="">Select Pickup Window</option>
+                                        <option value="9PM-10PM">9 PM - 10 PM (Late Night)</option>
+                                        <option value="10PM-11PM">10 PM - 11 PM (Late Night)</option>
+                                        <option value="11PM-12AM">11 PM - 12 AM (Late Night)</option>
+                                        <option value="MORNING_AFTER">Morning After (8 AM - 10 AM)</option>
+                                        <option value="FLEXIBLE">Flexible / Contact for Details</option>
+                                    </select>
                                 </div>
                                 <div className="form-group">
                                     <label>Emergency Contact Number</label>
-                                    <input type="tel" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} />
+                                    <input type="tel" name="emergencyContact" inputMode="numeric" value={formData.emergencyContact} onChange={handleChange} />
                                 </div>
                                 <div className="form-group full-width" style={{ marginTop: '16px' }}>
                                     <label>Precision Location (GPS) *</label>
@@ -371,9 +428,10 @@ const Register = () => {
                                     <label>Affiliated NGO ID</label>
                                     <input
                                         type="text"
+                                        name="affiliatedNgoId"
                                         placeholder="Enter the NGO ID provided by your organization"
                                         value={formData.affiliatedNgoId}
-                                        onChange={(e) => setFormData({ ...formData, affiliatedNgoId: e.target.value })}
+                                        onChange={handleChange}
                                         required
                                     />
                                 </div>

@@ -16,18 +16,22 @@ public class DataInitializer {
             DonationRepository donationRepository,
             RequestRepository requestRepository) {
         return args -> {
-            if (userRepository.count() > 0)
-                return;
-
             // Create Admin
             if (!userRepository.findByEmail("admin@foodrescue.com").isPresent()) {
                 User admin = new User();
                 admin.setName("System Administrator");
                 admin.setEmail("admin@foodrescue.com");
-                admin.setPassword("admin");
+                admin.setPassword("admin123");
                 admin.setRole("ADMIN");
+                admin.setEmailVerified(true);
                 admin.setVerified(true);
                 admin.setMobileNumber("+91 99999 88888");
+                userRepository.save(admin);
+            } else {
+                User admin = userRepository.findByEmail("admin@foodrescue.com").get();
+                admin.setPassword("admin123");
+                admin.setEmailVerified(true);
+                admin.setVerified(true);
                 userRepository.save(admin);
             }
 
@@ -39,6 +43,7 @@ public class DataInitializer {
                 donor.setEmail("donor@test.com");
                 donor.setPassword("password");
                 donor.setRole("DONOR");
+                donor.setEmailVerified(true);
                 donor.setVerified(true);
                 donor.setRestaurantName("The Green Bistro");
                 donor.setOwnerManagerName("John Baker");
@@ -53,6 +58,9 @@ public class DataInitializer {
                 donor = userRepository.save(donor);
             } else {
                 donor = userRepository.findByEmail("donor@test.com").get();
+                donor.setEmailVerified(true);
+                donor.setVerified(true);
+                userRepository.save(donor);
             }
 
             // Create NGO
@@ -63,6 +71,7 @@ public class DataInitializer {
                 ngo.setEmail("ngo@test.com");
                 ngo.setPassword("password");
                 ngo.setRole("NGO");
+                ngo.setEmailVerified(true);
                 ngo.setVerified(false);
                 ngo.setNgoName("Helping Hearts Foundation");
                 ngo.setAuthorizedPersonName("Sarah Help");
@@ -77,6 +86,23 @@ public class DataInitializer {
                 ngo = userRepository.save(ngo);
             } else {
                 ngo = userRepository.findByEmail("ngo@test.com").get();
+                ngo.setEmailVerified(true);
+                userRepository.save(ngo);
+            }
+
+            // Create Volunteer
+            if (!userRepository.findByEmail("volunteer@test.com").isPresent()) {
+                User vol = new User();
+                vol.setName("Jack Volunteer");
+                vol.setEmail("volunteer@test.com");
+                vol.setPassword("password");
+                vol.setRole("VOLUNTEER");
+                vol.setEmailVerified(true);
+                vol.setVerified(true);
+                vol.setVolunteerStatus("APPROVED");
+                vol.setAffiliatedNgoId(ngo.getNgoId() != null ? ngo.getNgoId() : ngo.getId());
+                vol.setMobileNumber("+91 99887 76655");
+                userRepository.save(vol);
             }
 
             if (donationRepository.count() == 0) {

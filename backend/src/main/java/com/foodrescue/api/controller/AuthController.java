@@ -47,15 +47,20 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Email already exists");
         }
 
-        // Generate NGO ID if user is an NGO
+        // Set NGO ID to Registration Number if user is an NGO
         if ("NGO".equals(user.getRole())) {
-            user.setNgoId(generateNgoId());
+            if (user.getNgoRegistrationNumber() != null && !user.getNgoRegistrationNumber().isEmpty()) {
+                user.setNgoId(user.getNgoRegistrationNumber());
+            } else {
+                user.setNgoId(generateNgoId());
+            }
         }
 
         // Generate random 6-digit OTP
         String otp = String.format("%06d", new Random().nextInt(999999));
         user.setVerificationCode(otp);
         user.setVerificationExpires(LocalDateTime.now().plusMinutes(15));
+        user.setEmailVerified(false);
         user.setVerified(false);
 
         User savedUser = userRepository.save(user);
@@ -80,8 +85,8 @@ public class AuthController {
         }
 
         User user = userOpt.get();
-        if (user.isVerified()) {
-            return ResponseEntity.ok("User already verified");
+        if (user.isEmailVerified()) {
+            return ResponseEntity.ok("Email already verified");
         }
 
         if (user.getVerificationExpires().isBefore(LocalDateTime.now())) {
@@ -89,7 +94,7 @@ public class AuthController {
         }
 
         if (user.getVerificationCode().equals(code)) {
-            user.setVerified(true);
+            user.setEmailVerified(true);
             user.setVerificationCode(null);
             userRepository.save(user);
             return ResponseEntity.ok("Email verified successfully");
@@ -98,22 +103,57 @@ public class AuthController {
         }
     }
 
+    @PostMapping("/resend-code")
+    public ResponseEntity<?> resendCode(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        Optional<User> userOpt = userRepository.findByEmail(email);
+        
+        if (!userOpt.isPresent()) {
+            return ResponseEntity.badRequest().body("User not found");
+        }
+
+        User user = userOpt.get();
+        if (user.isEmailVerified()) {
+            return ResponseEntity.badRequest().body("Email already verified");
+        }
+
+        // Generate new random 6-digit OTP
+        String otp = String.format("%06d", new Random().nextInt(999999));
+        user.setVerificationCode(otp);
+        user.setVerificationExpires(LocalDateTime.now().plusMinutes(15));
+        userRepository.save(user);
+
+        try {
+            emailService.sendVerificationEmail(user.getEmail(), otp);
+            return ResponseEntity.ok("Verification code resent successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Failed to send email. Code is: " + otp);
+        }
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> credentials, HttpServletRequest request) {
         String email = credentials.get("email");
         String password = credentials.get("password");
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> userOpt = userRepository.findByEmail(email);
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
+        if (userOpt.isPresent() && userOpt.get().getPassword().equals(password)) {
+            User user = userOpt.get();
+            // Ensure login works for verified users (except Admin who is auto-verified)
+            if (!user.isEmailVerified()) {
+                 return ResponseEntity.status(403).body("Please verify your email first");
+            }
+
             // Set session attribute
-            request.getSession().setAttribute("user", user.get());
-            return ResponseEntity.ok(user.get());
+            request.getSession().setAttribute("user", user);
+            return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(401).body("Invalid credentials");
     }
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
+        System.out.println("Logout request received for session: " + request.getSession().getId());
         request.getSession().invalidate();
         return ResponseEntity.ok("Logged out");
     }

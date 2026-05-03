@@ -17,7 +17,7 @@ const RescueFood = () => {
     const fetchDonations = async () => {
         setLoading(true);
         try {
-            const userString = localStorage.getItem('user');
+            const userString = sessionStorage.getItem('user');
             const user = userString ? JSON.parse(userString) : null;
             // Use NGO's stored location if available for proximity matching.
             if (user?.location && user.location.length === 2) {
@@ -38,17 +38,24 @@ const RescueFood = () => {
     };
 
     useEffect(() => {
-        const userString = localStorage.getItem('user');
+        const userString = sessionStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
         if (!user || user.role !== 'NGO') {
             navigate('/login');
+        } else if (!user.verified) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Approval Pending',
+                text: 'Your NGO account is pending admin approval. You cannot rescue food yet.',
+                confirmButtonColor: 'var(--primary-color)'
+            }).then(() => navigate('/ngo/dashboard'));
         } else {
             fetchDonations();
         }
     }, [navigate]);
 
     const handleClaim = async (id) => {
-        const userString = localStorage.getItem('user');
+        const userString = sessionStorage.getItem('user');
         const user = userString ? JSON.parse(userString) : null;
 
         const { value: message } = await Swal.fire({

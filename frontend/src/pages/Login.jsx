@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -14,20 +15,48 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
         setError('');
+
+        // Clear stale session
+        sessionStorage.removeItem('user');
+
         try {
             const res = await loginUser(formData);
             const user = res.data;
 
-            // Use localStorage to maintain session across tabs
-            localStorage.setItem('user', JSON.stringify(user));
+            // Use sessionStorage to maintain session until tab is closed
+            sessionStorage.setItem('user', JSON.stringify(user));
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Successful',
+                text: `Welcome back, ${user.name}!`,
+                timer: 1500,
+                showConfirmButton: false
+            });
 
             // Redirect based on role
             if (user.role === 'ADMIN') navigate('/admin/dashboard');
             else if (user.role === 'DONOR') navigate('/donor/dashboard');
             else if (user.role === 'NGO') navigate('/ngo/dashboard');
+            else if (user.role === 'VOLUNTEER') navigate('/volunteer/dashboard');
             else navigate('/');
         } catch (err) {
-            setError('Invalid email or password');
+            if (err.response?.status === 403) {
+                setError(err.response.data || 'Please verify your email first');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Email Not Verified',
+                    text: 'Please verify your email address to continue.',
+                    confirmButtonText: 'Verify Now',
+                    confirmButtonColor: 'var(--primary-color)'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/verify-email', { state: { email: formData.email } });
+                    }
+                });
+            } else {
+                setError('Invalid email or password');
+            }
         } finally {
             setLoading(false);
         }

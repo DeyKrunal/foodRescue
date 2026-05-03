@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const NGORequestHistory = () => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
-    const userString = localStorage.getItem('user');
+    const userString = sessionStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
 
     useEffect(() => {

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import api from "../services/api";
-import { Bell } from "lucide-react";
-import axios from "axios";
+import api, { getUnreadCount, getNotifications, markAllNotificationsAsRead } from "../services/api";
+import { Bell, Info, CheckCircle, AlertTriangle, MessageSquare, Clock } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +15,7 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const userString = localStorage.getItem("user");
+  const userString = sessionStorage.getItem("user");
   const user = userString ? JSON.parse(userString) : null;
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const Navbar = () => {
     if (user) {
       const fetchUnread = async () => {
         try {
-          const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}/unread-count`);
+          const res = await getUnreadCount(user.id);
           setUnreadCount(res.data);
         } catch (err) {
           console.error("Failed to fetch unread count", err);
@@ -43,13 +42,13 @@ const Navbar = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/notifications/user/${user.id}`);
+      const res = await getNotifications(user.id);
       setNotifications(res.data);
       setShowNotifications(!showNotifications);
       // Mark all as read when opening
       if (!showNotifications) {
-          await axios.post(`http://localhost:8080/api/notifications/user/${user.id}/read-all`);
-          setUnreadCount(0);
+        await markAllNotificationsAsRead(user.id);
+        setUnreadCount(0);
       }
     } catch (err) {
       console.error("Failed to fetch notifications", err);
@@ -66,7 +65,7 @@ const Navbar = () => {
     } catch (err) {
       console.error("Logout failed", err);
     }
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     navigate("/login");
   };
 
@@ -75,12 +74,23 @@ const Navbar = () => {
       ? "/donor/dashboard"
       : user.role === "NGO"
         ? "/ngo/dashboard"
-        : "/admin/dashboard"
+        : user.role === "VOLUNTEER"
+          ? "/volunteer/dashboard"
+          : "/admin/dashboard"
     : "/";
 
-  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" : user?.role === "NGO" ? "🤝 NGO" : "⚙️ Admin";
-  const roleColor = user?.role === "DONOR" ? "#1a4d6e" : user?.role === "NGO" ? "#2d6a4f" : "#7a3d9e";
-  const roleBg = user?.role === "DONOR" ? "#e8f4fb" : user?.role === "NGO" ? "#e8f5ee" : "#f3e8fb";
+  const roleLabel = user?.role === "DONOR" ? "🏪 Donor" :
+    user?.role === "NGO" ? "🤝 NGO" :
+      user?.role === "VOLUNTEER" ? "🛵 Volunteer" :
+        "⚙️ Admin";
+  const roleColor = user?.role === "DONOR" ? "#1a4d6e" :
+    user?.role === "NGO" ? "#2d6a4f" :
+      user?.role === "VOLUNTEER" ? "#e67e22" :
+        "#7a3d9e";
+  const roleBg = user?.role === "DONOR" ? "#e8f4fb" :
+    user?.role === "NGO" ? "#e8f5ee" :
+      user?.role === "VOLUNTEER" ? "#fdf2e9" :
+        "#f3e8fb";
 
   return (
     <>
@@ -555,8 +565,11 @@ const Navbar = () => {
 
         .notif-item:hover { background: #f9fdf7; }
         .notif-item.unread { background: #f3f9ef; }
-        .notif-item p { margin: 0 0 6px; font-size: 13.5px; color: #2a4025; line-height: 1.4; }
-        .notif-item span { font-size: 11px; color: #7a9070; }
+        .notif-item-content { display: flex; gap: 12px; }
+        .notif-icon-wrapper { flex-shrink: 0; margin-top: 2px; }
+        .notif-text-wrapper { flex: 1; }
+        .notif-item p { margin: 0 0 4px; font-size: 13.5px; color: #2a4025; line-height: 1.4; }
+        .notif-time { font-size: 11px; color: #7a9070; display: flex; align-items: center; gap: 4px; }
         .no-notif { padding: 32px; text-align: center; color: #7a9070; font-size: 14px; }
 
         @media (max-width: 900px) {
@@ -594,6 +607,13 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+            {user?.role === "VOLUNTEER" && (
+              <li>
+                <Link to="/volunteer/dashboard" className={isActive("/volunteer/dashboard") ? "active-link" : ""}>
+                  Missions
+                </Link>
+              </li>
+            )}
             {user?.role === "DONOR" && (
               <li>
                 <Link to="/donate-food" className={isActive("/donate-food") ? "active-link" : ""}>
@@ -620,7 +640,7 @@ const Navbar = () => {
                 >
                   {roleLabel}
                 </span>
-                
+
                 {/* Notification Bell */}
                 <div className="nav-notification-container">
                   <button className="nav-bell-btn" onClick={fetchNotifications}>
@@ -635,12 +655,31 @@ const Navbar = () => {
                         <button onClick={() => setShowNotifications(false)}>✕</button>
                       </div>
                       <div className="notif-list">
-                        {notifications.length > 0 ? notifications.map(n => (
-                          <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>
-                            <p>{n.message}</p>
-                            <span>{new Date(n.createdAt).toLocaleString()}</span>
-                          </div>
-                        )) : <p className="no-notif">No notifications yet</p>}
+                        {notifications.length > 0 ? notifications.map(n => {
+                          const Icon = n.type === 'SUCCESS' ? CheckCircle :
+                            n.type === 'ALERT' ? AlertTriangle :
+                              n.type === 'REQUEST' ? MessageSquare : Info;
+                          const iconColor = n.type === 'SUCCESS' ? '#27ae60' :
+                            n.type === 'ALERT' ? '#e74c3c' :
+                              n.type === 'REQUEST' ? '#3498db' : '#7f8c8d';
+
+                          return (
+                            <div key={n.id} className={`notif-item ${!n.read ? 'unread' : ''}`}>
+                              <div className="notif-item-content">
+                                <div className="notif-icon-wrapper">
+                                  <Icon size={18} color={iconColor} />
+                                </div>
+                                <div className="notif-text-wrapper">
+                                  <p>{n.message}</p>
+                                  <span className="notif-time">
+                                    <Clock size={10} />
+                                    {new Date(n.createdAt).toLocaleString()}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        }) : <p className="no-notif">No notifications yet</p>}
                       </div>
                     </div>
                   )}
@@ -732,6 +771,12 @@ const Navbar = () => {
           <Link to="/rescue-food" className={`drawer-link ${isActive("/rescue-food") ? "active-link" : ""}`}>
             <span className="drawer-link-icon">🤝</span>
             Rescue Food
+          </Link>
+        )}
+        {user?.role === "VOLUNTEER" && (
+          <Link to="/volunteer/dashboard" className={`drawer-link ${isActive("/volunteer/dashboard") ? "active-link" : ""}`}>
+            <span className="drawer-link-icon">🛵</span>
+            Delivery Missions
           </Link>
         )}
 
